@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block content %}<br>
+<div class="container-fluid">
+    <h2 class="page-title text-center">Active Policy Details</h2><br>
+
+    <div class="input-icon d-flex mb-4 justify-content-center">
+        <div class="btn-group">
+            <!-- Add any buttons or actions here -->
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-12 col-md-6 mb-4">
+                    {% comment %} {% for act in active %} {% endcomment %}
+                     <p><strong>Company Name:</strong> {{ active.enquiry.companyname }}</p>
+                     <p><strong>Customer Name:</strong> {{active.enquiry.customername }}</p>
+                     <p><strong>Email:</strong> {{active.enquiry.email }}</p>
+                     <p><strong>Contact:</strong> {{active.enquiry.contact }}</p>
+                     <p><strong>Location:</strong> {{active.enquiry.location }}</p>
+                     <p><strong>policy No:</strong> {{active.vid }}</p>
+                     <p><strong>Start Date:</strong> {{active.startdate }}</p>
+                     <p><strong>End Date:</strong> {{active.enddate }}</p>
+                     <p><strong>Sum Insured:</strong> {{active.sum_amount }}</p>
+                     <p><strong>Premium Amount:</strong> {{active.premium_amount }}</p>
+
+                     <p><strong>Gst Amount:</strong> {{active.cal_gst }}</p>
+
+                     <p><strong>premium with Gst:</strong> {{active.Gst_amount }}</p>
+                     <p><strong>SPOC-TPA - </strong></p>
+                        <p><strong>Name : </strong>{{ active.tpa_name }}</p>
+                        <p><strong>Phone : </strong>{{ active.tpa_phone }}</p>
+                        <p><strong>Email : </strong>{{ active.tpa_email }}</p>
+ 
+                    {% comment %} {% endfor %} {% endcomment %}
+                    
+
+                </div>
+
+                <!-- Right column -->
+                <div class="col-12 col-md-6 mb-4">
+                    <p><strong>Policies:</strong> {{ active.enquiry.products }}</p>
+                    <p><strong>Sub Product:</strong> {{ active.enquiry.subproduct }}</p>
+                    <p><strong>Enquiry Date:</strong> {{ active.enquiry.closuredate }}</p>
+                    <p><strong>Executive:</strong> {{ active.enquiry.executive }}</p>
+                    <p><strong>Remarks:</strong> {{ active.enquiry.remarks }}</p>
+                    <p><strong>SPOC-Client - </strong></p>
+                        <p><strong>Name : </strong>{{ active.client_name }}</p>
+                        <p><strong>Phone :</strong> {{ active.client_phone }}</p>
+                        <p><strong>Email : </strong>{{ active.client_email }}</p>
+                
+                    <p><strong>SPOC-Vrddhi - </strong></p>
+                        <p><strong>Name : </strong>{{ active.vrd_name }}</p>
+                        <p><strong>Phone :</strong> {{ active.vrd_phone }}</p>
+                        <p><strong>Email : </strong>{{ active.vrd_email }}</p>
+                
+                    <p><strong>Files (Enquiry):</strong></p>
+                    {% if filess %}
+                        <p>Total Files: {{ filess.count }}</p>
+                        <ul>
+                        {% for file in filess %}
+                            <li>
+                                <a href="{{ file.file.url }}" download>{{ file.file.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No files uploaded</p>
+                    {% endif %}
+                
+                    <p><strong>Files (Confirmed):</strong></p>
+                    {% if uploaded_files %} 
+                        <p>Total Files: {{ uploaded_files.count }}</p>
+                        <ul>
+                        {% for file in uploaded_files %}
+                            <li>
+                                <a href="{{ file.file.url }}" download>{{ file.file.name|cut:"uploads/" }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No files uploaded</p>
+                    {% endif %}
+                </div>
+                
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-end mt-auto gap-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+                    </div>
+                </div>
+                <a href="{% url 'confirmedorderss' %}" class="btn btn-dark">Back</a>
+                
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3>Add Follow-Up</h3>
+                <form method="post" action="{% url 'confirmed_add_followup' id=active.enquiry.id vid=active.vid %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label for="foname">Follow-up Details:</label>
+                            <input type="text" id="foname" name="foname" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fodate">Follow-up Date:</label>
+                            <input type="date" id="fodate" name="fodate" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fotime">Follow-up Time:</label>
+                            <input type="time" id="fotime" name="fotime" class="form-control" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">Add Follow-Up</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Display Follow-Up Records -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3>Active Policy Follow-Up History</h3>
+                {% if confirmed_fup %}
+                    <ul>
+                        {% for followup in confirmed_fup %}
+                            <li>
+                                <strong>Name:</strong> {{ followup.foname }},
+                                <strong>Date:</strong> {{ followup.fodate }},
+                                <strong>Time:</strong> {{ followup.fotime }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No follow-ups recorded yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="confirmPoliciesModal" tabindex="-1" aria-labelledby="confirmPoliciesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmPoliciesModalLabel">Confirm Policies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="confirmPoliciesForm" method="POST" action="{% url 'confirmedorderss' %}">
+                        {% csrf_token %}
+                        
+                        <!-- Hidden Enquiry ID -->
+                        <input type="hidden" name="enquiry_id" value="{{ enquiry_data.id }}">
+    
+                        <!-- Policy Type -->
+                        <div class="mb-3">
+                            <label for="policyType" class="form-label">Policy Type</label>
+                            <input type="text" class="form-control" id="policyType" name="policyType" value="{{ enquiry_data.products }}" readonly>
+                        </div>
+    
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label for="startdate" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="startdate" name="startdate" required>
+                        </div>
+    
+                        <!-- End Date -->
+                        <div class="mb-3">
+                            <label for="enddate" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="enddate" name="enddate" required>
+                        </div>
+    
+                        <!-- Flag Field -->
+                        <div class="mb-3">
+                            <label for="flag" class="form-label">Flag</label>
+                            <input type="text" class="form-control" id="flag" name="flag" placeholder="Enter flag information" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selection" class="form-label">Renewal Days</label>
+                            <input type="text" class="form-control"  id="renewal_days" name="renewal_days"  placeholder="No of days" required>
+                        </div>
+    
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </form>
+                </div>
+    
+                <!-- Modal Footer -->
+                
+                
+            </div>
+        </div>
+    </div>
+    
+      
+      
+
+    
+
+<!-- Modal for Confirmation -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Action</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to push this order to Lost Orders?</p>
+                <form id="confirmLostForm" method="POST" action="#">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason for Moving to Lost Orders</label>
+                        <textarea id="reason" name="reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lostdate" class="form-label">Next Renewal Date</label>
+                        <input type="date" class="form-control" id="lostdate" name="lostdate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lost_renewal_days" class="form-label">No Of Days Before Renewal</label>
+                        <input type="text" class="form-control" id="lost_renewal_days" name="lost_renewal_days" placeholder="No of days" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Yes, Move to Lost Orders</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .form-control {
+            font-size: 0.875rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    }
+</style>
+
+<script>
+    function printPage() {
+        const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header, .input-icon');
+        elementsToHide.forEach(element => element.style.display = 'none');
+        window.print();
+        setTimeout(() => {
+            elementsToHide.forEach(element => element.style.display = '');
+        }, 0);
+    }
+</script>
+{% endblock %}

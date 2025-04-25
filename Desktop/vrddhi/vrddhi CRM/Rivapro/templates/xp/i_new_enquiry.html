@@ -1,0 +1,427 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row row-deck">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Vehicle policy in Quick 3 Steps!</h3>
+        </div>
+        <div class="card-body">
+          {% if messages %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            {% for message in messages %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>Success!</strong> {{ message }}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <form id="multi-step-form" method="POST" action="{% url 'submit_form_vehicle' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+			<div id="step-1" class="form-step">
+				<legend class="text-primary mb-4">Customer Details - Step 1 of 3</legend>
+		
+				<!-- Insurance Category -->
+				<div class="mb-3 row">
+					<label class="col-md-3 col-form-label">Insurance Category <span style="color: red;">*</span></label>
+					<div class="col-md-9 form-group">
+						<select class="form-select"  name="field3_category" required>
+							<option value="" selected>Select Any</option>
+							{% for i in inscat %}
+							<option value="{{ i.id }}">{{ i.insname }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+		
+				<!-- Name and Contact No -->
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class="form-label">Name <span style="color: red;">*</span></label>
+						<input type="text" class="form-control" id="cclient" name="field1_cname"
+							value="{{ form_data.field1_cname }}" placeholder="Enter name" required autocomplete="off">
+						<div id="client-list" class="list-group" style="position:absolute; z-index:1000;"></div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label class="form-label">Contact No</label>
+						<input type="number" class="form-control" id="ccontactno" name="field1_ccontact" 
+							value="{{ form_data.field1_ccontact }}" placeholder="Enter contact number">
+					</div>
+				</div>
+		
+				<!-- Email and Address -->
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class="form-label">Email Address</label>
+						<input type="email" class="form-control" id="cemail" name="field1_cemail" value="{{ form_data.field1_cemail }}" placeholder="Enter email address">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label class="form-label">Address</label>
+						<input type="text" class="form-control" id="caddress" name="field1_caddress" value="{{ form_data.field1_caddress }}" placeholder="Enter address">
+					</div>
+				</div>
+		
+				<!-- Next Button -->
+				<div class="text-end mt-4">
+					
+					<button type="button" class="btn btn-primary next-btn" onclick="showStep(2)">Next</button>
+				</div>
+			</div>
+
+
+			<div id="step-2" class="form-step" style="display:none;">
+				<legend>Policy Details - Step 2 of 3</legend>
+			
+				<div id="motor">
+					<h4 class="card-title">Motor Policy Details</h4>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Prev Policy No</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="XXXXXXXXXXXXXXX" name="field2_expolno"  value="{{ form_data.field2_expolno }}">
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Make/Model</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="SUZUKI SWIFT" name="field2_makemodel" value="{{ form_data.field2_makemodel }}" >
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Policy Type <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<select class="form-control" required name="field2_poltype">
+										<option value=" ">Select Any</option>
+										{% for j in poltyp %}
+										<option value="{{j.id}}">{{j.pltname}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Policy Coverage <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<select class="form-control" required name="field2_polcov">
+										<option value=" ">Select Any</option>
+										{% for k in mtrpolcov %}
+										<option value="{{k.id}}">{{k.polname}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Engine No</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="XXXXXXXXX" name="field2_engineno" value="{{ form_data.field2_engineno }}" >
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Chassis No</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="XXXXXXXXX" name="field2_chassisno"   value="{{ form_data.field2_chassisno }}" >
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Date Of Reg <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<input class="form-control" type="date" required name="field2_dor" />
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">NCB % <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<select class="form-control" required name="field2_ncb">
+										<option value=" ">Select Any</option>
+										{% for l in mtrncb %}
+										<option value="{{l.id}}">{{l.ncbno}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">Reg No</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="KA XX XX XXXX" name="field2_regno"   value="{{ form_data.field2_regno }}">
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">RTO City</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" placeholder="KA 01 BANGALORE" name="field2_rtocity"  value="{{ form_data.field2_rtocity }}" >
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">TP Name <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<select class="form-control" required name="field2_tpname">
+										<option value=" ">Select Any</option>
+										{% for i in insurer %}
+										<option value="{{i.id}}">{{i.insname}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div><br>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label">IDV <span style="color: red;">*</span></label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" placeholder="XXXXXX" name="field2_idv" required min="1">
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">RC Copy <span style="color: red;">*</span></label>
+								<div class="col-sm-4">
+									<div class="custom-file form-control">
+										<input type="file" class="custom-file-input" id="customFile"  name="attachment[]" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-end mt-4">
+					<button type="button" class="btn btn-secondary back-btn">
+						Back
+					</button>
+					<button type="button" class="btn btn-primary next-btn" onclick="showStep(3)">
+						Next 
+					</button>
+				</div>
+			</div>
+
+			<div id="step-3" class="form-step" style="display:none;">
+				<legend>Policy 	 - Step 3 of 3</legend>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Insurer Name <span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<select class="form-control getinsbranch"  name="field3_inscomp" required>
+									<option value="">Select Any</option>
+									{% for i in insurer %}
+									<option value="{{i.id}}">{{i.insname}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div><br>
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Insurer Branch<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<select class="form-control" name="field3_insbranch" id="insselect" required>
+									<option value="">Select Any</option>
+									{% for ib in ibranch %}
+									<option value="{{ib.id}}">{{ib.insbranch}}</option>
+									{% endfor %}
+
+								</select>
+							</div>
+						</div>
+					</div>
+				</div><br>
+			
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Start Date<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input class="form-control" type="date" name="field3_strtdate" required />
+							</div>
+						</div>
+					</div><br>
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">End Date (Renewal)<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input class="form-control" type="date" name="field3_enddate" required />
+							</div>
+						</div>
+					</div>
+				</div><br>
+			
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Premium Amount<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control amtchg" step=".01" placeholder="XXXXX.XX" name="field3_amtpd" min="1" required />
+							</div>
+						</div><br>
+						
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">GST Value <span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control gstnewamt" step=".01" placeholder="XXXXX.XX" name="field3_gst_value" min="1" required readonly />
+							</div>
+						</div>
+						
+					</div><br>
+				
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Total Amount (GST)<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control totamt" step=".01" placeholder="XXXXX.XX" name="field3_amtpdgst" min="1" required readonly />
+							</div>
+						</div><br>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Amount Insured<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control amt" step=".01" placeholder="XXXXX.XX" name="field3_amt_insured" min="1" required  />
+							</div>
+						</div>
+					</div>
+				</div><br>
+			
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Policy No<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" placeholder="XXXXXXXXXXXXXXX" name="field3_polno" required />
+							</div>
+						</div>
+					</div><br>
+					<div class="col-md-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">Policy Copy<span style="color: red;">*</span></label>
+							<div class="col-sm-8">
+								<div class="custom-file form-control">
+									<input type="file" class="custom-file-input" id="customFile" name="policy_attachment[]" required />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn-secondary back-btn">
+					Back
+				</button>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	
+	document.querySelector('[name="field3_amtpd"]').addEventListener('input', function() {
+		let premiumAmount = parseFloat(this.value); // Get entered Premium Amount
+		let gstRate = 0.18; // GST rate (18%)
+	
+		if (!isNaN(premiumAmount) && premiumAmount > 0) {
+			let gstValue = premiumAmount * gstRate; // Calculate GST Value
+			let totalAmountWithGST = premiumAmount + gstValue; // Calculate Total Amount (GST included)
+	
+			// Update GST Value field
+			document.querySelector('[name="field3_gst_value"]').value = gstValue.toFixed(2);
+	
+			// Update Total Amount (GST) field
+			document.querySelector('[name="field3_amtpdgst"]').value = totalAmountWithGST.toFixed(2);
+		} else {
+			// Clear fields if input is invalid
+			document.querySelector('[name="field3_gst_value"]').value = '';
+			document.querySelector('[name="field3_amtpdgst"]').value = '';
+		}
+	});
+
+
+	// JavaScript to handle multi-step form navigation
+	document.addEventListener("DOMContentLoaded", function () {
+		const steps = document.querySelectorAll(".form-step");
+		const nextButtons = document.querySelectorAll(".next-btn");
+		const backButtons = document.querySelectorAll(".back-btn");
+
+		let currentStep = 0;
+
+		function showStep(stepIndex) {
+			// Hide all steps
+			steps.forEach((step) => {
+				step.style.display = "none";
+			});
+
+			// Show the specified step
+			if (steps[stepIndex]) {
+				steps[stepIndex].style.display = "block";
+			}
+		}
+		console.log("entered")
+		// Handle "Next" button clicks
+		nextButtons.forEach((btn, index) => {
+			btn.addEventListener("click", function () {
+				// Perform form validation before proceeding to the next step
+				const currentStepFields = steps[currentStep].querySelectorAll("input, select, textarea");
+				let isValid = true;
+
+				currentStepFields.forEach((field) => {
+					if (!field.checkValidity()) {
+						field.reportValidity();
+						isValid = false;
+					}
+				});
+
+				if (isValid) {
+					currentStep++;
+					showStep(currentStep);
+				}
+			});
+		});
+		console.log("completed")
+		// Handle "Back" button clicks
+		backButtons.forEach((btn, index) => {
+			btn.addEventListener("click", function () {
+				if (currentStep > 0) {
+					currentStep--;
+					showStep(currentStep);
+				}
+			});
+		});
+
+		// Show the initial step
+		showStep(currentStep);
+	});
+</script>    
+{% endblock %}

@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/js/tabler.min.js"></script> {% endcomment %}
+<div class="page-header d-print-none">
+  <div class="container-fluid">
+    <div class="row g-2 align-items-center">
+      <div class="col"><br>
+        <h2 class="page-title">New Enquiry</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+  <div class="container-fluid">
+    <form action="{% url 'add_data' %}" method="post" class="card" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="card-header">
+        <h4 class="card-title">New Enquiry</h4>
+      </div>
+      <div class="card-body">
+        <div class="row g-4">
+          <!-- Left Half -->
+          <div class="col-lg-6">
+            <div class="mb-3 position-relative">
+              <label class="form-label">
+                <span class="red-asterisk">*</span> Company Name
+                <span id="suggestion-available" style="color: red; font-size: 12px; display: none; margin-left: 10px;">
+                  Client Suggestions Available
+                </span>
+              </label>
+              <input type="text" class="form-control" name="companyname" id="companyname" 
+                     placeholder="Company name" required autocomplete="off">
+              <div id="suggestion-box" class="dropdown-menu show" 
+                   style="position: absolute; max-height: 200px; overflow-y: auto; z-index: 9999; background-color: #fff; border: 1px solid #ccc; display: none;"></div>
+              <style>
+                .red-asterisk {
+                  color: red;
+                }
+                #suggestion-box a {
+                  font-size: 14px;
+                  padding: 5px 5px;
+                }
+                #suggestion-box a:hover {
+                  background-color: #f2f2f2;
+                  cursor: pointer;
+                }
+              </style>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><span class="red-asterisk">*</span> Client Contact Name</label>
+              <input type="text" class="form-control" name="customername" placeholder="enter name"required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Refrence</label>
+                <input type="text" class="form-control" name="refrencename" placeholder="">
+              </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" placeholder="example@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><span class="red-asterisk">*</span> Client Contact Number</label>
+              <input type="text" class="form-control" name="contact" placeholder="Contact number"required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Location<span class="red-asterisk">*</span></label>
+              <input type="text" class="form-control" name="location" placeholder="location" required>
+              {% comment %} <div class="input-group">
+                <input id="editldcorploc" placeholder="Enter your address" onFocus="geolocate2()" type="text" class="form-control" name="crp_location">
+                <button type="button" class="input-group-text" onclick="getLocation2()">
+                  <i class="fa fa-crosshairs"></i>
+                </button> {% endcomment %}
+              
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Status</label>
+              <select  class="form-select" name="status">
+                <option value="1">HOT</option>
+                <option value="2">WARM</option>
+                <option value="3">COLD</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Right Half -->
+          <div class="col-lg-6">
+            <div class="mb-3">
+                <label class="form-label" for="products-name">Policy Type</label>
+                <select class="form-select" id="products-name" name="products" >
+                    {% for product in products %}
+                        <option value="{{ product.id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Sub Product</label>
+              <input type="text" class="form-control" name="subproduct" placeholder="subproduct name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Enquiry Date</label>
+              <input type="date" class="form-control" name="closuredate" placeholder="dd/mm/yyyy">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="executive-name">Executive</label>
+                <select class="form-select" id=" executive-name" name="executive_name" >
+                  {% for  executive in executive %}
+                  <option value="{{  executive.id }}">{{  executive.name }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+           
+              {% csrf_token %}
+              <!-- Other form fields... -->
+            
+              <div class="row" id="attachment-section">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="attachment">Attachment</label>
+                  <input type="file" class="form-control" name="attachment[]" multiple>
+                </div>
+                <div class="col-md-6 mb-3 d-flex align-items-end">
+                  <button type="button" class="btn btn-outline-primary" id="add-attachment-btn">Add More</button>
+                </div>
+              </div>
+
+              
+            
+             
+            <div class="mb-3">
+              <label class="form-label">Remarks <span class="form-label-description">0/100</span></label>
+              <textarea class="form-control" name="remarks" rows="6" placeholder="Content.."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-end">
+        <a class="btn btn-link"  href="{% url 'enquries' %}">Cancel</a>
+        <button type="submit" class="btn btn-primary ms-auto">Add data</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const attachmentSection = document.getElementById("attachment-section");
+    const addAttachmentBtn = document.getElementById("add-attachment-btn");
+  
+    addAttachmentBtn.addEventListener("click", function () {
+      // Create a new row for the attachment input and remove button
+      const newRow = document.createElement("div");
+      newRow.classList.add("row", "mt-2");
+  
+      // Create the column for the file input
+      const inputCol = document.createElement("div");
+      inputCol.classList.add("col-md-6", "mb-3");
+  
+      // Create the file input element
+      const newInput = document.createElement("input");
+      newInput.type = "file";
+      newInput.name = "attachment[]";
+      newInput.classList.add("form-control");
+  
+      // Append the input to the input column
+      inputCol.appendChild(newInput);
+  
+      // Create the column for the remove button
+      const buttonCol = document.createElement("div");
+      buttonCol.classList.add("col-md-6", "mb-3", "d-flex", "align-items-center");
+  
+      // Create the remove button
+      const removeBtn = document.createElement("button");
+      removeBtn.type = "button";
+      removeBtn.classList.add("btn", "btn-outline-danger", "ms-2");
+      removeBtn.textContent = "Remove";
+  
+      // Add event listener to remove the row
+      removeBtn.addEventListener("click", function () {
+        attachmentSection.removeChild(newRow);
+      });
+  
+      // Append the remove button to the button column
+      buttonCol.appendChild(removeBtn);
+  
+      // Append the columns to the new row
+      newRow.appendChild(inputCol);
+      newRow.appendChild(buttonCol);
+  
+      // Append the new row to the attachment section
+      attachmentSection.appendChild(newRow);
+    });
+  });
+</script>
+<script>
+  document.getElementById("add-attachment-btn").addEventListener("click", function() {
+    const attachmentSection = document.getElementById("attachment-section");
+    const newInput = document.createElement("div");
+    newInput.classList.add("col-md-6", "mb-3");
+    newInput.innerHTML = `
+        <label class="form-label" for="attachment">Attachment</label>
+        <input type="file" class="form-control" name="attachment[]">
+    `;
+    attachmentSection.appendChild(newInput);
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#companyname').keyup(function() {
+      var query = $(this).val();
+      if (query.length > 1) {
+        $.ajax({
+          url: "{% url 'get_company_suggestions' %}",
+          method: "GET",
+          data: {query: query},
+          success: function(data) {
+            $('#suggestion-box').empty().show();
+            $('#suggestion-available').hide(); // Hide the message first
+
+            if (data.length > 0) {
+              $('#suggestion-available').show();
+
+              $.each(data, function(index, company) {
+                $('#suggestion-box').append(
+                  '<a class="dropdown-item" href="#" onclick="selectCompany(\'' + company.id + '\', \'' + company.companyname + '\')">' + 
+                  company.companyname + '</a>'
+                );
+              });
+
+              // 🚀 *** MAGIC FIX 🚀 ***
+              $('#suggestion-box').css({
+                position: 'absolute',
+                top: $('#companyname').position().top + $('#companyname').outerHeight(),
+                left: $('#companyname').position().left,
+                width: $('#companyname').outerWidth(),
+                zIndex: 9999
+              });
+
+            } else {
+              $('#suggestion-box').hide();
+              $('#suggestion-available').hide();
+            }
+          }
+        });
+      } else {
+        $('#suggestion-box').hide();
+        $('#suggestion-available').hide();
+      }
+    });
+
+    // ✅ Handle Selection
+    window.selectCompany = function(id, name) {
+      $('#companyname').val(name);
+      $('#suggestion-box').hide();
+      $('#suggestion-available').hide();
+
+      // ✅ Auto-fill the form with company details
+      $.ajax({
+        url: "{% url 'get_company_details' %}",
+        method: "GET",
+        data: {id: id},
+        success: function(data) {
+          $('input[name="customername"]').val(data.customername);
+          $('input[name="email"]').val(data.email);
+          $('input[name="contact"]').val(data.contact);
+          $('input[name="location"]').val(data.location);
+          $('textarea[name="remarks"]').val(data.remarks);
+          $('input[name="refrencename"]').val(data.refrence);
+          $('input[name="subproduct"]').val(data.subproduct);
+          $('select[name="status"]').val(data.status);
+          $('select[name="products"]').val(data.product_id);
+          $('select[name="executive_name"]').val(data.executive_id);
+        }
+      });
+    };
+
+    // ✅ Close dropdown if clicked outside
+    $(document).click(function(e) {
+      if (!$(e.target).closest("#companyname, #suggestion-box").length) {
+        $('#suggestion-box').hide();
+      }
+    });
+  });
+</script>
+
+
+{% endblock %} 
+
+

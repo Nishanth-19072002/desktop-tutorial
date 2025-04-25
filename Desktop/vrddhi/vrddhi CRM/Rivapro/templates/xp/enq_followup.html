@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-wrapper d-flex flex-column justify-content-start">
+    <!-- Page header -->
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="row g-2 align-items-center">
+                <div class="col d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">Follow up</h1>
+                 
+                    <div class="input-icon d-flex">
+                        <form method="GET" action="" class="d-flex">
+                            <!-- Search Input -->
+                            <input type="text" name="search" value="{{ search_query }}" class="hides form-control me-2" placeholder="Search Client Name" aria-label="Search in website">
+                            
+                            <!-- Search Button -->
+                            <button type="submit" class="hides btn btn-primary me-2">Search</button>
+                    
+                            <!-- Clear Button -->
+                            <button type="button" class="hides btn btn-secondary" onclick="clearSearch()">Clear</button>
+                        </form>
+                    </div>
+                </div>
+            </div><br>
+            <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Export
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'export_followup_csvs' %}">Export  as  CSV</a>
+                    <a class="dropdown-item" href="{% url 'export_followup_excels' %}">Export  as  XLSX</a>
+                    <a class="dropdown-item" href="{% url 'export_followup_pdfs' %}">Export  as  PDF</a>
+
+                    
+                    <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+                </div>
+            </div>
+            {% comment %} <button class="btn btn-primary" onclick="addFollowUp()">Add Follow-Up</button> {% endcomment %}
+            <a href="{% url 'newenquirypage' %}" class="hides btn btn-primary" role="button">New Enquiry</a>
+
+        </div>
+    </div>
+
+    <!-- Follow-Up Table -->
+    <div class="card">
+        <div class="card-body">
+            <div class="container-fluid mt-4">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Client</th>
+                            <th>Follow-up Remarks</th>
+                            <th>Follow-up Date</th>
+                            <th>Follow-up Time</th>
+                            <th class="hides">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="followUpTable">
+                        <!-- Dynamic Follow-up Entries will be added here -->
+                        {% for followup in followup_history %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    {% if followup.confirmed_order %}
+                                        {{ followup.confirmed_order.vid }} - {{ followup.confirmed_order.enquiry.companyname }}
+                                    {% elif followup.enquiry %}
+                                        {{ followup.enquiry.companyname }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td>{{ followup.foname }}</td>
+                                <td>{{ followup.fodate }}</td>
+                                <td>{{ followup.fotime }}</td>
+                                <td class="hides">
+                                    <button class="btn btn-success"disabled>Update</button>
+                                    <button class="btn btn-danger"disabled>Delete</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="hides btn btn-primary mt-3" onclick="openFollowUpModal()">Add Follow-Up</button>
+            </div>
+        </div>
+        <!-- Modal for Follow-Up Selection -->
+        <div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="followUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="followUpModalLabel">Select Follow-Up Type</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Please select the type of follow-up you want to add:</p>
+                        <button class="btn btn-primary m-2" onclick="addFollowUp('enquiry')" data-bs-dismiss="modal">Enquiry Follow-Up</button>
+                        <button class="btn btn-secondary m-2" onclick="addFollowUp('active')" data-bs-dismiss="modal">Active Follow-Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        let slNo = 1;
+    
+        // Store only non-confirmed enquiries from Django context
+        let enquiries = [
+            {% for enquiry in enquiries %}
+                {% if not enquiry.confirmed %}
+                    { id: "{{ enquiry.id }}", name: "{{ enquiry.companyname }}" },
+                {% endif %}
+            {% endfor %}
+        ];
+    
+        // Store only confirmed orders from Django context
+        let confirmed_orders = [
+            {% for followup in confirmed_orders %}
+                { id: "{{ followup.vid }}", name: "{{ followup.vid }} - {{ followup.enquiry.companyname }}" },
+            {% endfor %}
+        ];
+    
+        // Open the Bootstrap Modal
+        function openFollowUpModal() {
+            let followUpModal = new bootstrap.Modal(document.getElementById('followUpModal'));
+            followUpModal.show();
+        }
+    
+        function addFollowUp(type) {
+            let table = document.getElementById("followUpTable");
+            let row = table.insertRow();
+    
+            let options = "";
+            if (type === "enquiry") {
+                // Generate dropdown for only non-confirmed enquiries
+                options = enquiries.map(client => `<option value="${client.id}">${client.name}</option>`).join("");
+            } else if (type === "active") {
+                // Generate dropdown for only confirmed orders
+                options = confirmed_orders.map(active => `<option value="${active.id}">${active.name}</option>`).join("");
+            }
+    
+            row.innerHTML = `
+                <td>${slNo}</td>
+                <td>
+                    <select class="form-select follow-up-client">
+                        <option value="">Select ${type === "enquiry" ? "Client" : "Active Follow-Up"}</option>
+                        ${options}
+                    </select>
+                </td>
+                <td contenteditable="true" class="follow-up-remarks"></td>
+                <td><input type="date" class="form-control follow-up-date"></td>
+                <td><input type="time" class="form-control follow-up-time"></td>
+                <td>
+                    <button class="btn btn-success" onclick="saveFollowUp(this, '${type}')">Update</button>
+                    <button class="btn btn-danger" onclick="deleteRow(this)">Delete</button>
+                </td>
+            `;
+    
+            slNo++; // Increment the Serial Number
+        }
+    
+        function deleteRow(btn) {
+            let row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    
+        function saveFollowUp(btn, type) {
+            let row = btn.closest("tr");
+            let remarks = row.querySelector(".follow-up-remarks").innerText.trim();
+            let clientId = row.querySelector(".follow-up-client").value;
+            let date = row.querySelector(".follow-up-date").value;
+            let time = row.querySelector(".follow-up-time").value;
+    
+            if (!clientId || !remarks || !date || !time) {
+                alert("All fields are required!");
+                return;
+            }
+    
+            let followUpData = {
+                followup_type: type,
+                foname: remarks,
+                fodate: date,
+                fotime: time
+            };
+    
+            // Handle data differently for enquiry and active follow-up
+            if (type === "active") {
+                followUpData.confirmed_order_id = clientId;
+            } else if (type === "enquiry") {
+                followUpData.enquiry_id = clientId;
+            }
+    
+            fetch("{% url 'follow_up' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify(followUpData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Follow-up saved successfully!");
+                    location.reload();
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An unexpected error occurred. Please try again.");
+            });
+        }
+    </script>
+    
+    <script>
+        // JavaScript function to clear the search field
+        function clearSearch() {
+            // Get the search input field
+            var searchInput = document.querySelector('input[name="search"]');
+            // Clear the value of the search input field
+            searchInput.value = '';
+            // Optionally, submit the form to reset the search query on the page
+            searchInput.form.submit();
+        }
+    </script>
+    <script>
+        function printPage() {
+            // Hide non-printable elements like the export dropdown, search bar, etc., if needed
+            const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header,.hides, .input-icon');
+            elementsToHide.forEach(element => element.style.display = 'none');
+    
+            // Trigger the browser's print functionality
+            window.print();
+    
+            // Restore hidden elements after printing
+            setTimeout(() => {
+                elementsToHide.forEach(element => element.style.display = '');
+            }, 0);
+        }
+    </script>
+    <style>
+        @media print {
+            /* Hide unnecessary UI elements */
+            .btn-group, 
+            .page-header, 
+            .pagination, 
+            .navbar, 
+            .footer {
+                display: none !important;
+            }
+            
+            /* Adjust table layout for better printing */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            th, td {
+                border: 1px solid #000;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            /* Ensure the content takes up the full width of the print page */
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+    
+            /* Hide other unnecessary elements */
+            .dropdown-menu {
+                display: none !important;
+            }
+        }
+    </style>
+{% endblock %}

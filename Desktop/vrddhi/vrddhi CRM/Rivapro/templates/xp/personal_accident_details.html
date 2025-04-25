@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid"><br>
+    <h2 class="page-title text-center">Personal Accident Details</h2><br>
+
+    <div class="input-icon d-flex mb-4 justify-content-center">
+        <div class="btn-group">
+            <!-- Add any buttons or actions here -->
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-12 col-md-6 mb-4">
+                    
+                    <p><strong>Insurance Category:</strong> {{ personal.category.insname}}</p>
+                    <p><strong>Name:</strong> {{ personal.cid.cname  }}</p>
+                    <p><strong>Email:</strong> {{ personal.cid.cemail }}</p>
+                    <p><strong>Contact:</strong> {{ personal.cid.ccontact }}</p>
+                    <p><strong>Address:</strong> {{ personal.cid.caddress }} </p>
+                    <p><strong>Date of Reg:</strong> {{ personal.dateof_reg }}</p>
+                    <p><strong>Pincode:</strong> {{ personal.pincode }}</p>
+                    <p><strong>Policy No:</strong> {{ personal.policy_no }}</p>
+                    <p><strong>Aadhar No:</strong> {{ personal.aadhar }}</p>
+                    <p><strong>PAN No:</strong> {{ personal.pan_card }}</p>
+                    <p><strong>Age:</strong> {{ personal.age }}</p>
+                    <p><strong>Dob:</strong> {{ personal.dob }}</p>
+                    
+
+
+                    <h3>Renewal Remarks</h3>
+                    <ul>
+                    {% for remark in revert_remarks %}
+                        <li>{{ remark.text }} - {{ remark.created_at }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Right column -->
+                <div class="col-12 col-md-6 mb-4">
+                    <p><strong>Insurer Name:</strong> {{ personal.inscomp_name.insname}}</p>
+                    <p><strong>Branch:</strong> {{ personal.ins_branch.insbranch }}</p>
+                    <p><strong>Contact Person:</strong> {{ personal.contact_person }}</p>
+                    <p><strong>Nominee Name:</strong> {{ personal.nominee_name }}</p>
+                    <p><strong>Nominee Age:</strong> {{ personal.nominee_age }}</p>
+                    <p><strong>Nominee Relationship:</strong> {{ personal.relationship }}</p>
+                    <p><strong>Amount Insured:</strong> {{ personal.amount_insured }}</p>
+                    <p><strong>Premium:</strong> {{ personal.premium }}</p>
+                    <p><strong>Gst Value:</strong> {{ personal.p_gst }}</p>
+
+                    <p><strong>Total Amount:</strong> {{ personal.total_gst }} </p>
+                    <p><strong>Start Date:</strong> {{ personal.start_date }}</p>
+                    <p><strong>End Date:</strong> {{ personal.end_date }}</p>
+
+                    
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-end mt-auto gap-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+                    </div>
+                </div>
+                <a href="{% url 'ienquiry' %}" class="btn btn-dark">Back</a>
+            </div>
+        </div>
+    </div>
+
+    
+    
+      
+      
+
+    <!-- Follow-up Box -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3>Add Follow-Up</h3>
+            <form method="post" action="{% url 'personal_add_followup' personal.id %}"> 
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label for="foname">Follow-up Details:</label>
+                        <input type="text" id="foname" name="foname" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fodate">Follow-up Date:</label>
+                        <input type="date" id="fodate" name="fodate" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fotime">Follow-up Time:</label>
+                        <input type="time" id="fotime" name="fotime" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Add Follow-Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Display Follow-Up Records -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3>Follow-Up History</h3>
+            {% if personal_accfollowups %}
+                <ul>
+                    {% for followup in personal_accfollowups %}
+                        <li>
+                            <strong>Name:</strong> {{ followup.foname }},
+                            <strong>Date:</strong> {{ followup.fodate }},
+                            <strong>Time:</strong> {{ followup.fotime }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No follow-ups recorded yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Confirmation -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Action</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to push this order to Lost Orders?</p>
+                {% comment %} <form id="confirmLostForm" method="POST" action="{% url 'push_to_lost_order' enquiry_data.id %}"> {% endcomment %}
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason for Moving to Lost Orders</label>
+                        <textarea id="reason" name="reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lostdate" class="form-label">Next Renewal Date</label>
+                        <input type="date" class="form-control" id="lostdate" name="lostdate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lost_renewal_days" class="form-label">No Of Days Before Renewal</label>
+                        <input type="text" class="form-control" id="lost_renewal_days" name="lost_renewal_days" placeholder="No of days" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Yes, Move to Lost Orders</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .form-control {
+            font-size: 0.875rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    }
+</style>
+
+<script>
+    function printPage() {
+        const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header, .input-icon');
+        elementsToHide.forEach(element => element.style.display = 'none');
+        window.print();
+        setTimeout(() => {
+            elementsToHide.forEach(element => element.style.display = '');
+        }, 0);
+    }
+</script>
+
+
+{% endblock  %}

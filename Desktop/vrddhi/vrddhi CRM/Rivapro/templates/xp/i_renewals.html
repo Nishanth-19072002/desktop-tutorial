@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/js/tabler.min.js"></script> {% endcomment %}
+<div class="container-fluid"><br>
+  <h2>Policy Renewals</h2>
+
+
+
+  <div class="input-icon d-flex flex-column flex-sm-row mb-4">
+    <div class="btn-group mb-2 mb-sm-0">
+        <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Export
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'i_renewals_export_csv' %}">Export as CSV</a>
+            <a class="dropdown-item" href="{% url 'i_renewals_export_xlsx' %}">Export as XLSX</a>
+            <a class="dropdown-item" href="{% url 'i_renewals_export_pdf' %}">Export as PDF</a>
+            <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+        </div>
+    </div>
+    
+    <form method="GET" action="" class="d-flex flex-column flex-sm-row align-items-start">
+        <!-- Search Input -->
+        <input 
+            type="text" 
+            name="search" 
+            value="{{ search_query }}" 
+            class="hides form-control mb-2 mb-sm-0"
+            placeholder="Search Policy Renewals…" 
+            aria-label="Search Confirmed Orders">
+        
+        <!-- Search Button -->
+        <button type="submit" class="hides btn btn-primary ms-2 mb-2 mb-sm-0">Search</button>
+
+        <!-- Clear Button -->
+        <button 
+            type="button" 
+            class="hides btn btn-secondary ms-2 mb-2 mb-sm-0" 
+            onclick="clearSearch()">Clear</button>
+    </form>
+    <!-- Date Filter Form -->
+    <form id="filter-form" method="GET" action="{% url 'renewal_filter_policies' %}" class="d-flex flex-column flex-sm-row gap-2 w-100">
+      <input type="date" id="start-date" name="start-date" class="hides form-control form-control-md" required>
+      <input type="date" id="end-date" name="end-date" class="hides form-control form-control-md" required>
+      <button type="submit" class="hides btn btn-primary btn-md">Filter</button>
+      <button type="button" class="hides btn btn-secondary btn-md" onclick="clearSearch()">Clear</button>
+    </form>
+
+
+
+</div>
+<div class="card">
+  <div id="table-default" class="table-responsive">
+
+    <table class="table">
+      <thead>
+          <tr>
+              <th><label>Client</label></th>
+              <th><label>Policy No</label></th>
+              <th><label>Category</label></th>
+              <th><label>Insurer</label></th>
+              <th><label>Branch</label></th>
+              <th><label>Start Date</label></th>
+              <th><label>End Date</label></th>
+              <th><label>Contact</label></th>
+              <th class="hides"><label>Actions</label></th>
+          </tr>
+      </thead>
+      <tbody id="data-table">
+          {% for rp in renewal_policies %}
+          <tr>
+              <td>{{ rp.cid.cname }}</td> <!-- Access related client name -->
+              <td>{{ rp.polno }}</td>
+              <td>{{ rp.retpol.insname}}</td>
+              <td>{{ rp.inscomp.insname }}</td> <!-- Access related insurer -->
+              <td>{{ rp.insbranch.insbranch }}</td> <!-- Access related branch -->
+              <td>{{ rp.strtdate }}</td>
+              <td>{{ rp.enddate }}</td>
+              <td>{{ rp.cid.ccontact }}</td> <!-- Access related user (employer) -->
+              <td class="hides">
+                  <a class="btn btn-info" href="{% url 'i_policy_details'  rp.id %}">
+                      View
+                  </a>
+                  <a class="btn btn-success {% if rp.renewals %}disabled{% endif %}" href="{% url 'i_add_renewal' rp.id %}">
+                    Renew
+                </a>
+              </td>
+
+
+
+          </tr>
+          {% endfor %}
+          {% for pa in personal_acc %}
+          <tr>
+              {% comment %} <td>{{ pa.id }}</td> {% endcomment %}
+              <td>{{ pa.cid.cname }}</td> <!-- Access related client name -->
+              <td>{{ pa.policy_no }}</td>
+              <td>{{ pa.category.insname }}</td>
+
+              <td>{{ pa.inscomp_name.insname }}</td> <!-- Access related insurer -->
+              <td>{{ pa.ins_branch.insbranch }}</td> <!-- Access related branch -->
+              <td>{{pa.start_date}}</td>
+              <td>{{pa.end_date}}</td>
+              <td>{{ pa.cid.ccontact }}</td> <!-- Access related user (employer) -->
+              <td class="hides">
+                  <a class="btn btn-info" href="{% url 'personal_accident_details'  pa.id %}">
+                      View
+                  </a>
+                  <a class="btn btn-success {% if pa.renewals %}disabled{% endif %}" href="{% url 'accident_renew' pa.id %}">
+                    Renew
+                </a>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  </div>
+
+
+</div>
+</div>
+<div class="modal fade" id="revertModal" tabindex="-1" aria-labelledby="revertModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="{% url 'revert_to_enquiries' 0 %}" id="revertForm">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="revertModalLabel">Revert to Enquiries</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Remarks Field -->
+          <div class="mb-3">
+            <label for="remarks" class="form-label">Remarks</label>
+            <textarea name="remarks" id="remarks" class="form-control" rows="3" required></textarea>
+          </div>
+          <!-- Hidden Timestamp Field -->
+          <input type="hidden" name="timestamp" id="timestamp">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bootstrap Confirmation Modal with Reason -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Confirm Action</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to push this order to Lost Orders?</p>
+        <form id="confirmLostForm" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="reason" class="form-label">Reason for Moving to Lost Orders</label>
+            <textarea id="reason" name="reason" class="form-control" rows="3" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" form="confirmLostForm" class="btn btn-danger">Yes, Move to Lost Orders</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const revertModal = document.getElementById('revertModal');
+    revertModal.addEventListener('show.bs.modal', function () {
+      const timestampField = revertModal.querySelector('input[name="timestamp"]');
+      const currentTime = new Date().toISOString();
+      timestampField.value = currentTime; // Set the current timestamp
+    });
+  });
+
+  // Update the form action dynamically when the modal is triggered
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('confirmModal');
+    const form = document.getElementById('confirmLostForm');
+  
+    modal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget; // Button that triggered the modal
+      const orderId = button.getAttribute('data-order-id'); // Extract order ID
+      const quotationNumber = button.getAttribute('data-quotation-number'); // Extract quotation number
+      // Set the form action with both the orderId and quotationNumber
+      form.action = `/push-to-lost-order/${orderId}/${quotationNumber}/`; 
+     
+    });
+  });
+  
+</script>
+<script>
+  // Replace the current history state on page load
+ // window.history.replaceState({ page: 'initial' }, '', window.location.href);
+
+  // Push a new history state after replacing
+  //window.history.pushState({ page: 'custom' }, '', window.location.href);
+
+  // Listen for back navigation
+  //window.addEventListener('popstate', function () {
+     // alert("Back navigation is not allowed.");
+     // window.location.href = '/enqhome/';
+  //});
+  function printPage() {
+      // Hide non-printable elements like the export dropdown, search bar, etc., if needed
+      const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header,.hides, .input-icon');
+      elementsToHide.forEach(element => element.style.display = 'none');
+
+      // Trigger the browser's print functionality
+      window.print();
+
+      // Restore hidden elements after printing
+      setTimeout(() => {
+          elementsToHide.forEach(element => element.style.display = '');
+      }, 0);
+  }
+</script>
+<style>
+  @media print {
+      /* Hide unnecessary UI elements */
+      .btn-group, 
+      .page-header, 
+      .pagination, 
+      .navbar, 
+      .footer {
+          display: none !important;
+      }
+      
+      /* Adjust table layout for better printing */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+
+      th, td {
+          border: 1px solid #000;
+          padding: 8px;
+          text-align: left;
+      }
+
+      /* Ensure the content takes up the full width of the print page */
+      body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+      }
+
+      /* Hide other unnecessary elements */
+      .dropdown-menu {
+          display: none !important;
+      }
+  }
+</style>    
+<script>
+  function clearSearch() {
+      const searchInput = document.querySelector('input[name="search"]');
+      searchInput.value = '';
+      searchInput.form.submit();
+  }
+  // Capture the button click event
+  document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      // Get the order ID from the data attribute of the clicked button
+      var orderId = button.getAttribute('data-order-id');
+      
+      // Update the form action in the modal to include the correct order ID
+      var form = document.getElementById('revertForm');
+      var actionUrl = "{% url 'revert_to_enquiries' enquiry_id=0 %}".replace('0', orderId);
+      form.setAttribute('action', actionUrl);
+    });
+  });
+</script>
+
+{% endblock %}

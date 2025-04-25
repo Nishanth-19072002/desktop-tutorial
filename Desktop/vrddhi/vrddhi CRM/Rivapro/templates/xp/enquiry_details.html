@@ -1,0 +1,352 @@
+{% extends "base.html" %}
+
+{% block content %}<br>
+<div class="container-fluid">
+    <h2 class="page-title text-center">Enquiry Details</h2><br>
+
+    <div class="input-icon d-flex mb-4 justify-content-center">
+        <div class="btn-group">
+            <!-- Add any buttons or actions here -->
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-12 col-md-6 mb-4">
+
+                    <p><strong>Company Name:</strong> {{ enquiry_data.companyname }}</p>
+                    <p><strong>Customer Name:</strong> {{ enquiry_data.customername }}</p>
+                    <p><strong>Reference:</strong> {{ enquiry_data.refrence }} </p>
+                    <p><strong>Email:</strong> {{ enquiry_data.email }}</p>
+                    <p><strong>Contact:</strong> {{ enquiry_data.contact }}</p>
+                    <p><strong>Location:</strong> {{ enquiry_data.location }}</p>
+                    <p><strong>Status:</strong> {{ enquiry_data.status }}</p>
+
+                    <h3>Renewal Remarks</h3>
+                    <ul>
+                    {% for remark in revert_remarks %}
+                        <li>{{ remark.text }} - {{ remark.created_at }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Right column -->
+                <div class="col-12 col-md-6 mb-4">
+                    <p><strong>Policies:</strong> {{ enquiry_data.products }}</p>
+                    <p><strong>Sub Product:</strong> {{ enquiry_data.subproduct }}</p>
+                    <p><strong>Enquiry Date:</strong> {{ enquiry_data.closuredate }}</p>
+                    <p><strong>Executive:</strong> {{ enquiry_data.executive }}</p>
+
+                    <p><strong>Remarks:</strong> {{ enquiry_data.remarks }}</p>
+                    <p><strong>Files:</strong></p>
+                    {% if enquiry_data.files %}
+                        <p>Total Files: {{ enquiry_data.files.count }}</p>
+                        <ul>
+                        {% for file in enquiry_data.files %}
+                            <li>
+                                <a href="{{ file.file.url }}" download>{{ file.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No files uploaded</p>
+                    {% endif %}<br>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-end mt-auto gap-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'export_details_enquiries_pdf' enquiry_data.id %}">Export as PDF</a>
+                        <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+                    </div>
+                </div>
+                <a href="{% url 'enquries' %}" class="btn btn-dark">Back</a>
+                <a href="{% url 'edit-enquiry' enquiry_id=enquiry_data.id %}" class="btn btn-warning">Edit</a>
+                <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmPoliciesModal">Confirm Policies</a>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Push to Lost Order</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmPoliciesModal" tabindex="-1" aria-labelledby="confirmPoliciesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmPoliciesModalLabel">Confirm Policies</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form id="confirmPoliciesForm" method="POST" enctype="multipart/form-data" action="{% url 'confirmedorderss' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="enquiry_id" value="{{ enquiry_data.id }}">
+
+                    <!-- Grid Layout -->
+                    <div class="row g-3">
+                        <!-- Column 1: Policy Type to Renewal Days -->
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="policyType" class="form-label">Policy Type</label>
+                                <input type="text" class="form-control" id="policyType" name="policyType" value="{{ enquiry_data.products }}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="startdate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="startdate" name="startdate" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="enddate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="enddate" name="enddate" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="flag" class="form-label">Flag</label>
+                                <input type="text" class="form-control" id="flag" name="flag" placeholder="Enter flag information" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="sum_amt" class="form-label">Sum Insured</label>
+                                <input type="text" class="form-control" id="sum_amt" name="sum_insured" placeholder="Enter amount" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="premium_amt" class="form-label">Premium Amount</label>
+                                <input type="text" class="form-control" id="premium_amt" name="premium_amount" placeholder="Enter amount" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="gst_value" class="form-label">GST Amount</label>
+                                <input type="text" class="form-control" name="calculated_gst" id="gst_value" placeholder="GST Amount" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="GST_amt" class="form-label">Premium with GST</label>
+                                <input type="text" class="form-control" id="GST_amt" name="GST_amount" placeholder="Enter amount" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="renewal_days" class="form-label">Renewal Days</label>
+                                <input type="text" class="form-control" id="renewal_days" name="renewal_days" placeholder="No of days" required>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: SPOC-Client -->
+                        <div class="col-md-4">
+                            <h5 class="mt-2"><strong>SPOC-Client</strong></h5>
+
+                            <div class="mb-3">
+                                <label for="client_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="client_name" name="client_name" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="client_phone" class="form-label">Phone No</label>
+                                <input type="text" class="form-control" id="client_phone" name="client_phone" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="client_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="client_email" name="client_email" >
+                            </div>
+                            <h5 class="mt-4"><strong>SPOC-Vrddhi</strong></h5>
+                            <div class="mb-3">
+                                <label for="vrddhi_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="vrddhi_name" name="vrddhi_name" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="vrddhi_phone" class="form-label">Phone No</label>
+                                <input type="text" class="form-control" id="vrddhi_phone" name="vrddhi_phone" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="vrddhi_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="vrddhi_email" name="vrddhi_email" >
+                            </div>
+
+                            <h5 class="mt-4"><strong>Upload File</strong></h5>
+                            <div class="mb-3">
+                                <input type="file" class="form-control" name="file_attachment" multiple>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: SPOC-TPA, SPOC-Vrddhi, Upload File -->
+                        <div class="col-md-4">
+                            <h5 class="mt-2"><strong>SPOC-TPA</strong></h5>
+
+                            <div class="mb-3">
+                                <label for="tpa_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="tpa_name" name="tpa_name" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tpa_phone" class="form-label">Phone No</label>
+                                <input type="text" class="form-control" id="tpa_phone" name="tpa_phone" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tpa_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="tpa_email" name="tpa_email" >
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-flex justify-content-end mt-4">
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    
+      
+      
+
+    <!-- Follow-up Box -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3>Add Follow-Up</h3>
+            <form method="post" action="{% url 'add_followup' enquiry_data.id %}">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label for="foname">Follow-up Details:</label>
+                        <input type="text" id="foname" name="foname" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fodate">Follow-up Date:</label>
+                        <input type="date" id="fodate" name="fodate" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fotime">Follow-up Time:</label>
+                        <input type="time" id="fotime" name="fotime" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Add Follow-Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Display Follow-Up Records -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3>Follow-Up History</h3>
+            {% if followupss %}
+                <ul>
+                    {% for followup in followupss %}
+                        <li>
+                            <strong>Name:</strong> {{ followup.foname }},
+                            <strong>Date:</strong> {{ followup.fodate }},
+                            <strong>Time:</strong> {{ followup.fotime }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No follow-ups recorded yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Confirmation -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Action</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to push this order to Lost Orders?</p>
+                <form id="confirmLostForm" method="POST" action="{% url 'push_to_lost_order' enquiry_data.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason for Moving to Lost Orders</label>
+                        <textarea id="reason" name="reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lostdate" class="form-label">Next Renewal Date</label>
+                        <input type="date" class="form-control" id="lostdate" name="lostdate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lost_renewal_days" class="form-label">No Of Days Before Renewal</label>
+                        <input type="text" class="form-control" id="lost_renewal_days" name="lost_renewal_days" placeholder="No of days" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Yes, Move to Lost Orders</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .form-control {
+            font-size: 0.875rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    }
+</style>
+
+<script>
+    function printPage() {
+        const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header, .input-icon');
+        elementsToHide.forEach(element => element.style.display = 'none');
+        window.print();
+        setTimeout(() => {
+            elementsToHide.forEach(element => element.style.display = '');
+        }, 0);
+    }
+
+
+    
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let premiumInput = document.getElementById("premium_amt");
+        let gstInput = document.getElementById("GST_amt");
+        let gstValueInput = document.getElementById("gst_value"); // New GST amount field
+        let gstRate = 18; // GST Rate in percentage (adjust as needed)
+
+        premiumInput.addEventListener("input", function () {
+            let premiumValue = parseFloat(premiumInput.value) || 0;
+            let gstAmount = premiumValue * (gstRate / 100); // GST Calculation
+            let totalAmount = premiumValue + gstAmount;
+
+            gstValueInput.value = gstAmount.toFixed(2); // Display GST amount
+            gstInput.value = totalAmount.toFixed(2); // Display total amount with GST
+        });
+    });
+</script>
+{% endblock %}

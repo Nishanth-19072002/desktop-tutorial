@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+{% block content  %}
+<div class="container-fluid">
+    <div class="row row-deck">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Personal Accident Quick 3 Steps!</h3>
+          </div>
+          <div class="card-body">
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible" role="alert">
+              {% for message in messages %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <strong>Success!</strong> {{ message }}
+              {% endfor %}
+            </div>
+            {% endif %}
+  
+            <form id="multi-step-form" method="POST" action="{% url 'submit_pa' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+  
+              <div id="step-1" class="form-step">
+                  <legend class="text-primary mb-4">Personal Accident Details - Step 1 of 3</legend>
+          
+                  <!-- Insurance Category -->
+                  <div class="mb-3 row">
+                    <label class="col-sm-4 col-form-label">Insurance Category<span style="color: red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control getcategory"  name="field3_category"  required>
+                                            <option value="">Select Any</option>
+                                            {% for i in inscat %}
+                                            <option value="{{i.id}}">{{i.insname}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                      
+                  </div>
+          
+                  <!-- Name and Contact No -->
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label class="form-label"> Client Name<span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" id="cclient" name="field1_cname" 
+                              value="{{ form_data.field1_cname }}" placeholder="Enter name"  required>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                          <label class="form-label">Contact No<span style="color: red;">*</span></label>
+                          <input type="number" class="form-control" id="ccontactno" name="field1_ccontact" 
+                              value="{{ form_data.field1_ccontact }}" placeholder="Enter contact number">
+                      </div>
+                  </div>
+          
+                  <!-- Email and Address -->
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label class="form-label">Email Address</label>
+                          <input type="email" class="form-control" id="cemail" name="field1_cemail" value="{{ form_data.field1_cemail }}" placeholder="Enter email address">
+                      </div>
+                      <div class="col-md-6 mb-3">
+                          <label class="form-label">Address</label>
+                          <input type="text" class="form-control" id="caddress" name="field1_caddress" value="{{ form_data.field1_caddress }}" placeholder="Enter address">
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Pincode</label>
+                        <input type="text" class="form-control" id="pincode" name="field1_pincode" value="{{ form_data.field1_pincode }}" placeholder="Enter pincode">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="text" class="form-control" id="age" name="field1_age" value="{{ form_data.field1_age }}" placeholder="Enter age">
+                      </div>
+                  </div>
+          
+                  <!-- Next Button -->
+                  <div class="text-end mt-4">
+                      
+                      <button type="button" class="btn btn-primary next-btn" onclick="showStep(2)">Next</button>
+                  </div>
+              </div>
+  
+  
+              <div id="step-2" class="form-step" style="display:none;">
+                  <legend>Personal Accident Details - Step 2 of 3</legend>
+              
+                  <div id="motor">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Policy No<span style="color: red;">*</span></label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" placeholder="XXXXXXXXXXXXXXX" name="field2_expolno"  value="{{ form_data.field2_expolno }}">
+                                  </div>
+                              </div>
+                          </div><br>
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Insurer Name<span style="color: red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control getinsbranch" required name="field3_inscomp"  >
+                                            <option value="">Select Any</option>
+                                            {% for i in insurer %}
+                                            <option value="{{i.id}}">{{i.insname}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                              </div>
+                          </div>
+                      </div><br>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Contact Person</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="name/number" name="field2_contperson" value="{{ form_data.field2_contperson }}"  >
+                                    </div>
+                              </div>
+                          </div><br>
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Insurer Branch<span style="color: red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="field3_insbranch" id="insselect" required >
+                                            <option value="">Select Any</option>
+                                            {% for ib in ibranch %}
+                                            <option value="{{ib.id}}">{{ib.insbranch}}</option>
+                                            {% endfor %}
+        
+                                        </select>
+                                    </div>
+                              </div>
+                          </div>
+                      </div><br>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Aadhar no</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="XXXXXXXXX" name="field2_aadhar" value="{{ form_data.field2_aadhar }}"  >
+                                    </div>
+                              </div>
+                          </div><br>
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">PAN no</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="XXXXXXXXX" name="field2_pan" value="{{ form_data.field2_pan }}"  >
+                                    </div>
+                              </div>
+                          </div>
+                      </div><br>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Date Of Reg<span style="color: red;">*</span></label>
+                                  <div class="col-sm-8">
+                                      <input class="form-control" type="date"  required name="field2_dor" />
+                                  </div>
+                              </div>
+                          </div><br>
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">DOB</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control"  name="field2_dob"  value="{{ form_data.field2_dob }}"  >
+                                    </div>
+                              </div>
+                          </div>
+                      </div><br>
+                      
+                  </div>
+                  <div class="text-end mt-4">
+                      <button type="button" class="btn btn-secondary back-btn">
+                          Back
+                      </button>
+                      <button type="button" class="btn btn-primary next-btn" onclick="showStep(3)">
+                          Next 
+                      </button>
+                  </div>
+              </div>
+  
+              <div id="step-3" class="form-step" style="display:none;">
+                <legend>Personal Accident Details - Step 3 of 3</legend>
+                <br>
+                
+                <div class="row">
+                    <!-- Left Side -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nominee Name</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="field3_nominee_name" value="{{ form_data.field3_nominee_name }}" placeholder="Enter nominee name" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nominee Age</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="field3_nom_age" value="{{ form_data.field3_nom_age }}" placeholder="Enter nominee age" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Amount Insured<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" step=".01" placeholder="XXXXX.XX" required name="field3_amtpd" min="1" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Start Date<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" required name="field3_stdate" />
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+            
+                    <!-- Right Side -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nominee - Relationship</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="field3_relationship" value="{{ form_data.field3_relationship }}" placeholder="Enter relationship" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Premium<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control amtchg" step=".01" placeholder="XXXXX.XX" required name="field3_premium" min="1" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">GST Value<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" step=".01" placeholder="XXXXX.XX" required name="field3_gst_value" min="1" />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Total Amount (GST)<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control gstnewamt" step=".01" required placeholder="XXXXX.XX" name="field3_total_gst" min="1" readonly />
+                            </div>
+                        </div>
+                        <br>
+            
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">End Date<span style="color: red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" required name="field3_endate" />
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+            
+                <button type="button" class="btn btn-secondary back-btn">Back</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+            
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script>
+	
+	// JavaScript to calculate the total amount with GST
+    document.querySelector('.amtchg').addEventListener('input', function() {
+        let amount = parseFloat(this.value); // Get the premium amount entered
+        let gstRate = 0.18; // GST rate (18%)
+    
+        if (!isNaN(amount) && amount > 0) {
+            let gstValue = amount * gstRate; // Calculate GST value
+            let totalAmount = amount + gstValue; // Calculate total amount including GST
+    
+            document.querySelector('[name="field3_gst_value"]').value = gstValue.toFixed(2); // Update GST Value field
+            document.querySelector('[name="field3_total_gst"]').value = totalAmount.toFixed(2); // Update Total Amount field
+        } else {
+            document.querySelector('[name="field3_gst_value"]').value = ''; // Clear GST Value if invalid amount
+            document.querySelector('[name="field3_total_gst"]').value = ''; // Clear Total Amount if invalid amount
+        }
+    });
+    
+	// JavaScript to handle multi-step form navigation
+	document.addEventListener("DOMContentLoaded", function () {
+		const steps = document.querySelectorAll(".form-step");
+		const nextButtons = document.querySelectorAll(".next-btn");
+		const backButtons = document.querySelectorAll(".back-btn");
+
+		let currentStep = 0;
+
+		function showStep(stepIndex) {
+			// Hide all steps
+			steps.forEach((step) => {
+				step.style.display = "none";
+			});
+
+			// Show the specified step
+			if (steps[stepIndex]) {
+				steps[stepIndex].style.display = "block";
+			}
+		}
+		console.log("entered")
+		// Handle "Next" button clicks
+		nextButtons.forEach((btn, index) => {
+			btn.addEventListener("click", function () {
+				// Perform form validation before proceeding to the next step
+				const currentStepFields = steps[currentStep].querySelectorAll("input, select, textarea");
+				let isValid = true;
+
+				currentStepFields.forEach((field) => {
+					if (!field.checkValidity()) {
+						field.reportValidity();
+						isValid = false;
+					}
+				});
+
+				if (isValid) {
+					currentStep++;
+					showStep(currentStep);
+				}
+			});
+		});
+		console.log("completed")
+		// Handle "Back" button clicks
+		backButtons.forEach((btn, index) => {
+			btn.addEventListener("click", function () {
+				if (currentStep > 0) {
+					currentStep--;
+					showStep(currentStep);
+				}
+			});
+		});
+
+		// Show the initial step
+		showStep(currentStep);
+	});
+</script>
+
+ 
+{% endblock  %}
+

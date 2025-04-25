@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/js/tabler.min.js"></script> {% endcomment %}
+<div class="container-fluid mt-4">
+  <h2 class="page-title">Active Policy Details</h2><br>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <!-- Enquiry Details -->
+        <div class="col-md-6">
+          <h4><strong>Enquiry Details:</strong></h4>
+          <p><strong>Enquiry id:</strong> {{ enquiry_id }}</p>
+          <p><strong>Company Name:</strong> {{ enquiry.companyname }}</p>
+          <p><strong>Customer Name:</strong> {{ enquiry.customername }}</p>
+          <p><strong>Email:</strong> {{ enquiry.email }}</p>
+          <p><strong>Contact:</strong> {{ order.contact }}</p>
+          <p><strong>Location:</strong> {{ enquiry.location }}</p>
+          <p><strong>Status:</strong> {{ enquiry.get_status_display }}</p>
+          <p><strong>Closure Date:</strong> {{ enquiry.closuredate }}</p>
+          <p><strong>Executive:</strong> {{ enquiry.executive.name }}</p>
+          <p><strong>Remarks:</strong> {{ enquiry.remarks }}</p>
+        </div>
+  
+
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <!-- Add Follow-Up Section -->
+  <div class="card mt-4">
+    <div class="card-body">
+        <h3>Add Follow-Up</h3>
+        {% comment %} {{enquiry.id}} {% endcomment %}
+        <form method="post" action="{% url 'add_confirmed_order_followup' enquiry_id=enquiry_id id=vid %}">
+            {% csrf_token %}
+            <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                <!-- Follow-up Name -->
+                <div class="form-group col-12 col-md-7">
+                    <label for="foname">Follow-up Details:</label>
+                    <input type="text" id="foname" name="foname" class="form-control" required>
+                </div>
+                <!-- Follow-up Date -->
+                <div class="col-12 col-md-2">
+                    <label for="fodate">Follow-up Date:</label>
+                    <input class="form-control" type="date" id="fodate" name="fodate" required>
+                </div>
+                <!-- Follow-up Time -->
+                <div class="col-12 col-md-2">
+                    <label for="fotime">Follow-up Time:</label>
+                    <input type="time" id="fotime" name="fotime" class="form-control" required placeholder="Select Time">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Add Follow-Up</button>
+        </form>
+    </div>
+</div>
+
+<!-- Display Follow-Up Records -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>Follow-ups for Quotation: {{ order.vid }}</h3>
+        <ul>
+            {% for followup in followups %}
+                <li>
+                    <strong>{{ followup.foname }}</strong> on {{ followup.fodate }} at {{ followup.fotime }}
+                </li>
+            {% empty %}
+                <li>No follow-ups found for this confirmed enquiry.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

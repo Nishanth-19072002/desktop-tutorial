@@ -1,0 +1,53 @@
+{% extends "base_generic.html"%}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-90">
+    <div class="col-md-6">
+        <form method="POST" class="card">
+          {% csrf_token %}
+            <div class="card-header">
+                <h3 class="card-title">Login</h3>
+            </div>
+            <div class="card-body">
+                <!-- Username Field -->
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label required" for="id_username">Username</label>
+                    <div class="col">
+                        <input type="text" name="username" class="form-control" id="id_username" placeholder="Enter username" required>
+                        <small class="form-hint">Please enter your username.</small>
+                    </div>
+                </div>
+                
+                <!-- Password Field -->
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label required" for="id_password">Password</label>
+                    <div class="col">
+                        <input type="password" name="password" class="form-control" id="id_password" placeholder="Enter password" required>
+                        <small class="form-hint">Your password must be between 6-20 characters.</small>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                {% comment %} <div class="mb-3 row">
+                    <label class="col-3 col-form-label pt-0">Remember Me</label>
+                    <div class="col">
+                        <label class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember_me">
+                            <span class="form-check-label">Keep me logged in</span>
+                        </label>
+                    </div>
+                </div> {% endcomment %}
+
+                {% if next %}
+                <div class="alert alert-info mt-3 text-center" role="alert">
+                    You will be redirected to <a href="{{ next }}" class="alert-link">{{ next }}</a> after login.
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer text-end">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

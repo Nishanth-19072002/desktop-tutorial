@@ -1,0 +1,41 @@
+
+from django.contrib import admin
+from .models import Enquiry, FileUploadModel, FollowUp_History, Notification ,Products , Executive, Retail_FollowUp_History, clients, firepol, inscategory, insurancebranch, insurancecomp, marinepol, mediclaimpol, motorncb, motorpol, motorpolcoverage, motorpoltype, personal_Accident, personal_accident_FollowUp, policycopy,quotation,ConfirmedOrder,FollowUp,ConfirmedOrderFollowUp,confirmed_enquiry,RevertRemark, rccopymodel, retailpolicies, retailpolicies_FollowUp, shopkeeperspol, suminstype, wcpol
+admin.site.register(Enquiry)
+admin.site.register(Products)
+admin.site.register(Executive)
+admin.site.register(quotation)
+admin.site.register(ConfirmedOrder)
+admin.site.register(FollowUp)
+admin.site.register(ConfirmedOrderFollowUp)
+
+admin.site.register(confirmed_enquiry)
+admin.site.register(RevertRemark)
+admin.site.register(rccopymodel)
+admin.site.register(policycopy)
+admin.site.register(retailpolicies_FollowUp)
+admin.site.register(personal_Accident)
+admin.site.register(personal_accident_FollowUp)
+admin.site.register(Notification)
+admin.site.register(FileUploadModel)
+admin.site.register(FollowUp_History)
+admin.site.register(Retail_FollowUp_History)
+
+
+# admin.site.register(Profile)
+admin.site.register(clients)
+admin.site.register(motorpolcoverage)
+admin.site.register(motorpoltype)
+admin.site.register(insurancecomp)
+admin.site.register(insurancebranch)
+admin.site.register(motorpol)
+admin.site.register(marinepol)
+admin.site.register(firepol)
+admin.site.register(shopkeeperspol)
+admin.site.register(mediclaimpol)
+admin.site.register(wcpol)
+admin.site.register(retailpolicies) 
+admin.site.register(inscategory) 
+admin.site.register(motorncb) 
+admin.site.register(suminstype) 
+

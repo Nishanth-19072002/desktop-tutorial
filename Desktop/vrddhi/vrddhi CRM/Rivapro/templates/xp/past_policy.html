@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid"><br>
+    <h2>Past Policies</h2>
+  
+  
+  
+    <div class="input-icon d-flex flex-column flex-sm-row mb-4">
+      <div class="btn-group mb-2 mb-sm-0">
+          <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Export
+          </button>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'export_past_policies_csv' %}">Export as CSV</a>
+              <a class="dropdown-item" href="{% url 'export_past_policies_xlsx' %}">Export as XLSX</a>
+              <a class="dropdown-item" href="{% url 'export_past_policies_pdf' %}">Export as PDF</a>
+              <a class="dropdown-item" href="#" onclick="printPage()">Print</a>
+          </div>
+      </div>
+      
+      <form method="GET" action="" class="d-flex flex-column flex-sm-row align-items-start">
+          <!-- Search Input -->
+          <input 
+              type="text" 
+              name="search" 
+              value="{{ search_query }}" 
+              class="hides form-control mb-2 mb-sm-0"
+              placeholder="Search Past Policies…" 
+              aria-label="Search Confirmed Orders">
+          
+          <!-- Search Button -->
+          <button type="submit" class="hides btn btn-primary ms-2 mb-2 mb-sm-0">Search</button>
+  
+          <!-- Clear Button -->
+          <button 
+              type="button" 
+              class="hides btn btn-secondary ms-2 mb-2 mb-sm-0" 
+              onclick="clearSearch()">Clear</button>
+      </form>
+  </div>
+  <div class="card">
+    <div id="table-default" class="table-responsive">
+  
+      <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Company Name</th>
+              <th>Cust Name</th>
+              <th>Contact</th>
+              <th>Policies</th>
+              {% comment %} <th>ID</th> {% endcomment %}
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Policy No</th>
+              <th class="hides">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if past_policies %}
+              {% with counter=0 %}
+                  {% for pp in past_policies %}
+                      <tr>
+                          <td>{{ pp.enquiry.companyname }}</td>
+                          <td>{{ pp.enquiry.customername }}</td>
+                          <td>{{ pp.enquiry.contact }}</td>
+                          <td>{{ pp.enquiry.products }}</td>
+                          {% comment %} <td>{{ pp.enquiry.id }}</td> {% endcomment %}
+                          <td>{{ pp.startdate }}</td>
+                          <td>{{ pp.enddate }}</td>
+                          <td>{{ pp.vid }}</td>
+                          <td class="hides">
+                              <div class="d-flex flex-column flex-sm-row">
+                                  <a class="btn btn-info mb-2 mb-sm-0 me-sm-2 {% if entry.relegate %}disabled{% endif %}" 
+                                  href="{% url 'active_view' pp.enquiry.id  pp.vid %}">
+                                  View
+                                  </a>   
+                                  {% comment %} <button type="button" 
+                                          class="btn btn-danger mb-2 mb-sm-0 me-sm-2 {% if entry.relegate %}disabled{% endif %}" 
+                                          data-bs-toggle="modal" 
+                                          data-bs-target="#confirmModal" 
+                                          data-order-id="{{ entry.enquiry.id }}" 
+                                          data-quotation-number="{{ entry.vid }}">
+                                      Relegate
+                                  </button> {% endcomment %}
+                                  {% comment %} <a class="btn btn-success mb-2 mb-sm-0 me-sm-2 {% if entry.revert %}disabled{% endif %}" 
+                                     data-bs-toggle="modal" 
+                                     data-bs-target="#revertModal" 
+                                     data-order-id="{{ entry.enquiry.id }}" 
+                                     id="revertButton-{{ entry.enquiry.id }}">
+                                     Renew policy
+                                  </a>{% endcomment %}
+                              </div>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              {% endwith %}
+          {% else %}
+              <tr>
+                  <td colspan="10">No Past Policies</td>
+              </tr>
+          {% endif %}
+        </tbody> 
+      </table>    
+    </div>
+  
+  
+  </div>
+  </div>
+
+  <script>
+    // JavaScript function to clear the search field
+    function clearSearch() {
+        // Get the search input field
+        var searchInput = document.querySelector('input[name="search"]');
+        // Clear the value of the search input field
+        searchInput.value = '';
+        // Optionally, submit the form to reset the search query on the page
+        searchInput.form.submit();
+    }
+</script>
+<script>
+    function printPage() {
+        // Hide non-printable elements like the export dropdown, search bar, etc., if needed
+        const elementsToHide = document.querySelectorAll('.dropdown, .pagination, .page-header,.hides, .input-icon');
+        elementsToHide.forEach(element => element.style.display = 'none');
+
+        // Trigger the browser's print functionality
+        window.print();
+
+        // Restore hidden elements after printing
+        setTimeout(() => {
+            elementsToHide.forEach(element => element.style.display = '');
+        }, 0);
+    }
+</script>
+<style>
+    @media print {
+        /* Hide unnecessary UI elements */
+        .btn-group, 
+        .page-header, 
+        .pagination, 
+        .navbar, 
+        .footer {
+            display: none !important;
+        }
+        
+        /* Adjust table layout for better printing */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Ensure the content takes up the full width of the print page */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* Hide other unnecessary elements */
+        .dropdown-menu {
+            display: none !important;
+        }
+    }
+</style>
+{% endblock  %}
