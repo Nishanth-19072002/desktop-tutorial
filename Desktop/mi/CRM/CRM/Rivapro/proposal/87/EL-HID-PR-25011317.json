@@ -1,0 +1,152 @@
+{
+    "quotation_number": "EL-HID-PR-25011317",
+    "contents": [],
+    "site_info": [],
+    "table_data": [],
+    "treatment_processes": [
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        }
+    ],
+    "observations_and_suggestions": [],
+    "requirements_and_specifications": [],
+    "specifications": [
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "SPECS",
+            "hidrec": "15 20"
+        },
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "AREA",
+            "hidrec": "1300"
+        },
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "WEDWFCWF",
+            "hidrec": "2-3"
+        }
+    ],
+    "process_diagram": [],
+    "process_description": [],
+    "output_table": [],
+    "pricing": [],
+    "installation": [
+        {
+            "product_name": "HIDREC BIO",
+            "capacity": "40 KLD",
+            "total_needed_capacity": "40KLD",
+            "waste_water_type": "STP",
+            "total_no_machines": "1",
+            "is_checked": false
+        }
+    ],
+    "specification": [
+        {
+            "sl_no": "1",
+            "specification": "SUPPPLYOF BIO",
+            "qnty": "1",
+            "unit": "NONE",
+            "unit_rate": "12000.00",
+            "price_exgst": "12456.00",
+            "total": "14658.00",
+            "is_checked": false
+        },
+        {
+            "sl_no": "2",
+            "specification": "INSTALLATION",
+            "qnty": "1",
+            "unit": "LOT",
+            "unit_rate": "26000.00",
+            "price_exgst": "26000.00",
+            "total": "46000.00",
+            "is_checked": false
+        }
+    ],
+    "hardware": [],
+    "general_terms_conditions": [
+        {
+            "performance_checked": false,
+            "performance_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "flow_characteristics_checked": false,
+            "flow_characteristics_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "trial_quality_check_checked": false,
+            "trial_quality_check_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "virtual_completion_checked": false,
+            "virtual_completion_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "limitation_liability_checked": false,
+            "limitation_liability_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "force_clause_checked": false,
+            "force_clause_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "additional_works_checked": false,
+            "additional_works_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "warranty_guaranty_checked": false,
+            "warranty_guaranty_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "arbitration_checked": false,
+            "arbitration_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "validity_checked": false,
+            "validity_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "appendix": [
+        {
+            "supply_eq_checked": false,
+            "supply_eq_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "instal_commissioning_checked": false,
+            "instal_commissioning_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "clients_scope_checked": false,
+            "clients_scope_text": "BIO \r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "note_checked": false,
+            "note_text": "BIO  English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia'",
+            "dristi_checked": false,
+            "dristi_subscription_text": "NONE",
+            "iot_checked": false,
+            "iot_hardware_text": "NONE"
+        }
+    ],
+    "enquiry_id": 87,
+    "terms": [
+        {
+            "text": "Lorem ipsum dolor sit amet",
+            "is_checked": false
+        },
+        {
+            "text": " Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla",
+            "is_checked": false
+        },
+        {
+            "text": " Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto",
+            "is_checked": false
+        },
+        {
+            "text": " Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste",
+            "is_checked": false
+        },
+        {
+            "text": "",
+            "is_checked": false
+        }
+    ]
+}

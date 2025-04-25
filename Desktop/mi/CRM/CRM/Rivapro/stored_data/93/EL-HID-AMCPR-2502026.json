@@ -1,0 +1,130 @@
+{
+    "quotation_number": "EL-HID-AMCPR-2502026",
+    "contents": [
+        {
+            "value": "hello Nishanth-------------------",
+            "is_checked": true
+        },
+        {
+            "value": "hello shashank-------------------",
+            "is_checked": true
+        }
+    ],
+    "terms": [
+        {
+            "value": "1st Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 4th Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 5th Term and Condition",
+            "is_checked": false
+        }
+    ],
+    "Amc_Proposal": [],
+    "maintenance_support": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": false
+        },
+        {
+            "value": " 4th point",
+            "is_checked": false
+        },
+        {
+            "value": " 5th point",
+            "is_checked": false
+        }
+    ],
+    "yearly_maintenance": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": false
+        },
+        {
+            "value": " 4th point",
+            "is_checked": false
+        },
+        {
+            "value": " 5th point",
+            "is_checked": false
+        }
+    ],
+    "running_consumables": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": false
+        },
+        {
+            "value": " 4th point",
+            "is_checked": false
+        },
+        {
+            "value": " 5th point",
+            "is_checked": false
+        }
+    ],
+    "exclusions": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": false
+        },
+        {
+            "value": " 4th point",
+            "is_checked": false
+        },
+        {
+            "value": " 5th point",
+            "is_checked": false
+        }
+    ],
+    "amc_pricing": [],
+    "Particulars": [],
+    "Subtotal_list": [],
+    "GST": [],
+    "Grand_Total": [],
+    "enquiry_id": 93
+}

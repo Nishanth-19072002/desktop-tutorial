@@ -1,0 +1,206 @@
+{
+    "quotation_number": "EL-HID-PR-2502024",
+    "contents": [],
+    "site_info": [],
+    "table_data": [],
+    "treatment_processes": [
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "grit removal",
+            "unit_processes": "grit chambers"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fgbdfgbdsf"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "dfbhdsfbh",
+            "unit_processes": "fghnfgh"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "frhynhfhnf",
+            "unit_processes": "hnfhnxgxg"
+        },
+        {
+            "is_checked": false,
+            "principal_purpose_unit_process": "jhnfghnfgn",
+            "unit_processes": "fhnfgcgbfg"
+        }
+    ],
+    "observations_and_suggestions": [],
+    "requirements_and_specifications": [],
+    "specifications": [
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "lxwxh",
+            "hidrec": "14 x 4 x 7 feet"
+        },
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "area/footprint sqft",
+            "hidrec": "<80ft"
+        },
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "total power consumption for plant in kw",
+            "hidrec": "2.5-5 kwh"
+        },
+        {
+            "spec_checked": false,
+            "specs_for_25kld": "man power reqd",
+            "hidrec": "only ocasional"
+        }
+    ],
+    "process_diagram": [],
+    "process_description": [],
+    "output_table": [],
+    "pricing": [],
+    "installation": [
+        {
+            "product_name": "EZ1000",
+            "capacity": "1kld",
+            "total_needed_capacity": "1kld",
+            "waste_water_type": "ETP",
+            "total_no_machines": "1",
+            "is_checked": false
+        },
+        {
+            "product_name": "EZ1000",
+            "capacity": "8kld",
+            "total_needed_capacity": "8kld",
+            "waste_water_type": "STP cum ETP",
+            "total_no_machines": "1",
+            "is_checked": false
+        }
+    ],
+    "specification": [
+        {
+            "sl_no": "1",
+            "specification": "supply ogbjtgb",
+            "qnty": "1",
+            "unit": "no",
+            "unit_rate": "23000.00",
+            "price_exgst": "23000.00",
+            "total": "46000.00",
+            "is_checked": false
+        },
+        {
+            "sl_no": "2",
+            "specification": "fbhfdbhfgbhdfg",
+            "qnty": "1",
+            "unit": "no",
+            "unit_rate": "22000.00",
+            "price_exgst": "22000.00",
+            "total": "52900.00",
+            "is_checked": false
+        },
+        {
+            "sl_no": "3",
+            "specification": "fghnklfjgjhnfklhnfghn",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "12000.00",
+            "price_exgst": "12000.00",
+            "total": "36000.00",
+            "is_checked": false
+        },
+        {
+            "sl_no": "4",
+            "specification": "hujicgjhkgj",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "5000.00",
+            "price_exgst": "5000.00",
+            "total": "15000.00",
+            "is_checked": false
+        }
+    ],
+    "hardware": [
+        {
+            "sl_no": "1",
+            "optional_hardware": "iot hardware sdfgsdhgbsdbfgsdfg",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "12000.00",
+            "price_exgst": "12653.00",
+            "total": "14562.00",
+            "is_checked": true
+        },
+        {
+            "sl_no": "2",
+            "optional_hardware": "wifi dongle",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "16000.00",
+            "price_exgst": "16353.00",
+            "total": "16356.00",
+            "is_checked": true
+        }
+    ],
+    "general_terms_conditions": [
+        {
+            "performance_checked": false,
+            "performance_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "flow_characteristics_checked": false,
+            "flow_characteristics_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "trial_quality_check_checked": false,
+            "trial_quality_check_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "virtual_completion_checked": false,
+            "virtual_completion_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "limitation_liability_checked": false,
+            "limitation_liability_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "force_clause_checked": false,
+            "force_clause_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "additional_works_checked": false,
+            "additional_works_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "warranty_guaranty_checked": false,
+            "warranty_guaranty_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "arbitration_checked": false,
+            "arbitration_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+            "validity_checked": false,
+            "validity_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste."
+        }
+    ],
+    "appendix": [
+        {
+            "supply_eq_checked": false,
+            "supply_eq_text": "Lorem ipsum dolor sit amet. Aut quas harum eos iure harum ea dolores ullam et iure impedit et explicabo dolorem id consequatur ducimus. Ut commodi aperiam ex dolorem sint ex sequi deleniti eum amet enim. Ut recusandae maxime sit consequatur saepe ut nisi voluptas 33 debitis error.",
+            "instal_commissioning_checked": false,
+            "instal_commissioning_text": "Lorem ipsum dolor sit amet. Aut quas harum eos iure harum ea dolores ullam et iure impedit et explicabo dolorem id consequatur ducimus. Ut commodi aperiam ex dolorem sint ex sequi deleniti eum amet enim. Ut recusandae maxime sit consequatur saepe ut nisi voluptas 33 debitis error.",
+            "clients_scope_checked": false,
+            "clients_scope_text": "Lorem ipsum dolor sit amet. Aut quas harum eos iure harum ea dolores ullam et iure impedit et explicabo dolorem id consequatur ducimus. Ut commodi aperiam ex dolorem sint ex sequi deleniti eum amet enim. Ut recusandae maxime sit consequatur saepe ut nisi voluptas 33 debitis error.",
+            "note_checked": false,
+            "note_text": "al  dimensions mentioned are tentative and it may vary as per site conditions",
+            "dristi_checked": false,
+            "dristi_subscription_text": "NONE",
+            "iot_checked": false,
+            "iot_hardware_text": "NONE"
+        }
+    ],
+    "enquiry_id": 92,
+    "terms": [
+        {
+            "text": "Lorem ipsum dolor sit amet",
+            "is_checked": false
+        },
+        {
+            "text": " Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla",
+            "is_checked": false
+        },
+        {
+            "text": " Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto",
+            "is_checked": false
+        },
+        {
+            "text": " Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste",
+            "is_checked": false
+        },
+        {
+            "text": "",
+            "is_checked": false
+        }
+    ]
+}

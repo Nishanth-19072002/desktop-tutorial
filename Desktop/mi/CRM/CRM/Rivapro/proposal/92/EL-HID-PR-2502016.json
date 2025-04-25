@@ -1,0 +1,325 @@
+{
+    "quotation_number": "EL-HID-PR-2502016",
+    "contents": [
+        {
+            "value": "EC 1000 CONTENT 1",
+            "is_checked": true
+        },
+        {
+            "value": "EC 1000 CONTENT",
+            "is_checked": true
+        },
+        {
+            "value": "EC 1000 CONTENT 3",
+            "is_checked": true
+        },
+        {
+            "value": "EC 1000 CONTENT 4",
+            "is_checked": true
+        }
+    ],
+    "site_info": [
+        {
+            "is_checked": true,
+            "info_text": "EC\r\nclass=\"table table-bordered table-striped\"",
+            "is_standard_checked": true,
+            "standard_text": "EC\r\nclass=\"table table-bordered table-striped\"\r\nEC\r\nclass=\"table table-bordered table-striped\""
+        }
+    ],
+    "table_data": [
+        {
+            "sl_no": "1",
+            "raw_sewage_characteristics": "pH",
+            "unit": "mg/l",
+            "value": "7-8.5",
+            "is_checked": true
+        },
+        {
+            "sl_no": "2",
+            "raw_sewage_characteristics": "Biological oxygen demand",
+            "unit": "mg/l",
+            "value": "100-250",
+            "is_checked": true
+        },
+        {
+            "sl_no": "3",
+            "raw_sewage_characteristics": "chemical oxygen demand",
+            "unit": "mg/l",
+            "value": "300-450",
+            "is_checked": true
+        },
+        {
+            "sl_no": "5",
+            "raw_sewage_characteristics": "total suspended solids",
+            "unit": "mg/l",
+            "value": "200-450",
+            "is_checked": true
+        }
+    ],
+    "treatment_processes": [
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "jhnfghnfgn",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "jhnfghnfgn",
+            "unit_processes": "grit chambers"
+        },
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "grit removal",
+            "unit_processes": "fhnfgcgbfg"
+        },
+        {
+            "is_checked": true,
+            "principal_purpose_unit_process": "sdtfbhdgbsd",
+            "unit_processes": "fhnfgcgbfg"
+        }
+    ],
+    "observations_and_suggestions": [
+        {
+            "observation_checked": true,
+            "observation": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "suggestion_checked": true,
+            "suggestion": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "features_checked": true,
+            "features": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "salient_checked": true,
+            "salient": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "requirements_and_specifications": [
+        {
+            "requirement_checked": true,
+            "requirement_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "specifications": [
+        {
+            "spec_checked": true,
+            "specs_for_25kld": "LXWXH",
+            "hidrec": "14 X 4 X 7"
+        },
+        {
+            "spec_checked": true,
+            "specs_for_25kld": "area/footprint sqft",
+            "hidrec": "<80ft"
+        },
+        {
+            "spec_checked": true,
+            "specs_for_25kld": "total power consumption for plant in kw",
+            "hidrec": "2.5-5 kwh"
+        },
+        {
+            "spec_checked": true,
+            "specs_for_25kld": "plant",
+            "hidrec": "less"
+        },
+        {
+            "spec_checked": true,
+            "specs_for_25kld": "man power reqd",
+            "hidrec": "only ocasional"
+        }
+    ],
+    "process_diagram": [
+        {
+            "process_diagram1_checked": true,
+            "process_diagram1_path": "process_diagrams/92/process_diagram1_1_IMG_1337.JPG",
+            "process_diagram2_checked": true,
+            "process_diagram2_path": "process_diagrams/92/process_diagram2_1_IMG_1337.JPG",
+            "process_diagram_checked": true,
+            "req_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "process_description": [
+        {
+            "process_data": {
+                "process_description_checked": true,
+                "process_description": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+                "is_checked": false,
+                "etp_text": "NONE",
+                "is_standard_checked": false,
+                "stp_text": "NONE",
+                "is_shs_checked": true,
+                "shs_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+                "is_atm_checked": true,
+                "automation_text": "Lorem ipsum dolor sit amet. Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla. Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto. Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste.",
+                "is_foot_checked": false,
+                "footprint_area": "NONE",
+                "is_tentative_checked": false,
+                "tentative_BOM": "NONE"
+            }
+        }
+    ],
+    "output_table": [
+        {
+            "output_data": {
+                "sl_no": "1",
+                "treated_water_characteristics": "pH",
+                "unit": "0",
+                "standard_value": "6.5-9",
+                "is_checked": true
+            }
+        },
+        {
+            "output_data": {
+                "sl_no": "3",
+                "treated_water_characteristics": "chemical oxygen",
+                "unit": "mg/l",
+                "standard_value": "10",
+                "is_checked": true
+            }
+        },
+        {
+            "output_data": {
+                "sl_no": "5",
+                "treated_water_characteristics": "total",
+                "unit": "mg/l",
+                "standard_value": "20",
+                "is_checked": true
+            }
+        },
+        {
+            "output_data": {
+                "sl_no": "6",
+                "treated_water_characteristics": "total",
+                "unit": "mg/l",
+                "standard_value": "20",
+                "is_checked": true
+            }
+        },
+        {
+            "output_data": {
+                "sl_no": "8",
+                "treated_water_characteristics": "faceal",
+                "unit": "mg/l",
+                "standard_value": "110",
+                "is_checked": true
+            }
+        }
+    ],
+    "pricing": [
+        {
+            "machine_cost_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "is_machine_checked": true
+        }
+    ],
+    "installation": [
+        {
+            "product_name": "EC1000",
+            "capacity": "30 KLD",
+            "total_needed_capacity": "30 KLD",
+            "waste_water_type": "STP",
+            "total_no_machines": "1",
+            "is_checked": true
+        }
+    ],
+    "specification": [
+        {
+            "sl_no": "1",
+            "specification": "hujicgjhkgj",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "5000.00",
+            "price_exgst": "5000.00",
+            "total": "15000.00",
+            "is_checked": true
+        },
+        {
+            "sl_no": "2",
+            "specification": "JHIGJHGKFJH",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "5000.00",
+            "price_exgst": "5000.00",
+            "total": "15000.00",
+            "is_checked": true
+        },
+        {
+            "sl_no": "3",
+            "specification": "FGJHTFGJK",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "5000.00",
+            "price_exgst": "5000.00",
+            "total": "15000.00",
+            "is_checked": true
+        },
+        {
+            "sl_no": "4",
+            "specification": "UJH",
+            "qnty": "1",
+            "unit": "Lot",
+            "unit_rate": "5000.00",
+            "price_exgst": "5000.00",
+            "total": "15000.00",
+            "is_checked": true
+        }
+    ],
+    "hardware": [],
+    "general_terms_conditions": [
+        {
+            "performance_checked": true,
+            "performance_text": "EC 1000 English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "flow_characteristics_checked": true,
+            "flow_characteristics_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "trial_quality_check_checked": true,
+            "trial_quality_check_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "virtual_completion_checked": true,
+            "virtual_completion_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "limitation_liability_checked": true,
+            "limitation_liability_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "force_clause_checked": true,
+            "force_clause_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "additional_works_checked": true,
+            "additional_works_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "warranty_guaranty_checked": true,
+            "warranty_guaranty_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "arbitration_checked": true,
+            "arbitration_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "validity_checked": true,
+            "validity_text": "English Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "appendix": [
+        {
+            "supply_eq_checked": true,
+            "supply_eq_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "instal_commissioning_checked": true,
+            "instal_commissioning_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "clients_scope_checked": true,
+            "clients_scope_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "note_checked": true,
+            "note_text": "EC 1000 good",
+            "dristi_checked": true,
+            "dristi_subscription_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021",
+            "iot_checked": true,
+            "iot_hardware_text": "EC 1000\r\nEnglish Wikipedia is the most-read version of Wikipedia,[2][3] accounting for 48% of Wikipedia's cumulative traffic, with the remaining percentage split among the other languages.[4] The English Wikipedia has the most articles of any edition, at 6,936,981 as of January 2025.[b] It contains 10.8% of articles in all Wikipedias,[b] although it lacks millions of articles found in other editions.[1] The edition's one-billionth edit was made on 13 January 2021"
+        }
+    ],
+    "enquiry_id": 92,
+    "terms": [
+        {
+            "text": "Lorem ipsum dolor sit amet",
+            "is_checked": true
+        },
+        {
+            "text": " Id eveniet corporis vel itaque vitae aut natus omnis sed impedit saepe quo nihil consectetur qui eveniet iusto! Est pariatur quaerat quo cumque alias sed aliquam tempora At sint nulla",
+            "is_checked": true
+        },
+        {
+            "text": " Eum magni libero et omnis autem sit sequi vero qui adipisci dolorum aut repellendus fugit ea maxime iusto",
+            "is_checked": true
+        },
+        {
+            "text": " Vel provident ipsa et facilis laudantium 33 quis deserunt qui ipsum iste",
+            "is_checked": true
+        },
+        {
+            "text": "",
+            "is_checked": false
+        }
+    ]
+}

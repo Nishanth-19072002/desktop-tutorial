@@ -1,0 +1,156 @@
+{
+    "contents": [
+        {
+            "value": "hello Nishanth-------------------",
+            "is_checked": true
+        },
+        {
+            "value": "hello shashank-------------------",
+            "is_checked": true
+        }
+    ],
+    "terms": [
+        {
+            "value": "1st Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 4th Term and Condition",
+            "is_checked": false
+        },
+        {
+            "value": " 5th Term and Condition",
+            "is_checked": false
+        }
+    ],
+    "Amc_Proposal": [],
+    "maintenance_support": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": true
+        },
+        {
+            "value": " 4th point",
+            "is_checked": true
+        },
+        {
+            "value": " 5th point",
+            "is_checked": true
+        }
+    ],
+    "yearly_maintenance": [
+        {
+            "value": "1st point",
+            "is_checked": true
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": true
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": true
+        },
+        {
+            "value": " 4th point",
+            "is_checked": true
+        },
+        {
+            "value": " 5th point",
+            "is_checked": true
+        }
+    ],
+    "running_consumables": [
+        {
+            "value": "1st point",
+            "is_checked": true
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": true
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": true
+        },
+        {
+            "value": " 4th point",
+            "is_checked": true
+        },
+        {
+            "value": " 5th point",
+            "is_checked": true
+        }
+    ],
+    "exclusions": [
+        {
+            "value": "1st point",
+            "is_checked": false
+        },
+        {
+            "value": " 2nd point",
+            "is_checked": false
+        },
+        {
+            "value": " 3rd point",
+            "is_checked": false
+        },
+        {
+            "value": " 4th point",
+            "is_checked": false
+        },
+        {
+            "value": " 5th point",
+            "is_checked": false
+        }
+    ],
+    "amc_pricing": [],
+    "Particulars": [
+        {
+            "particulars": "comprehensive amc for hidrec ec1000+5kld refgwrfgwrfgwegfwer",
+            "first_year_exgst": "15960.00",
+            "is_checked": true
+        },
+        {
+            "particulars": "comprehensive amc for hidrec ec1000+5kld refgwrfgwrfgwegfwer",
+            "first_year_exgst": "96000.00",
+            "is_checked": true
+        }
+    ],
+    "Subtotal_list": [
+        {
+            "value": "111960.00",
+            "is_checked": true
+        }
+    ],
+    "GST": [
+        {
+            "value": "20152.80",
+            "is_checked": true
+        }
+    ],
+    "Grand_Total": [
+        {
+            "value": "132112.80",
+            "is_checked": true
+        }
+    ],
+    "enquiry_id": 86,
+    "quotation_number": "EL-HID-AMCPR-25011298"
+}

@@ -1,0 +1,46 @@
+{
+    "quotation_number": "EL-HID-AMCPR-2502027",
+    "contents": [
+        {
+            "value": "site info-------------------",
+            "is_checked": false
+        },
+        {
+            "value": "observation and suggestion-------------------",
+            "is_checked": false
+        },
+        {
+            "value": "process diagram-------------------",
+            "is_checked": false
+        }
+    ],
+    "terms": [],
+    "Amc_Proposal": [],
+    "maintenance_support": [],
+    "yearly_maintenance": [],
+    "running_consumables": [],
+    "exclusions": [],
+    "amc_pricing": [
+        {
+            "pd_name": "EZ1000",
+            "capacity": "1kld",
+            "total_needed_capacity": "1kld",
+            "waste_water_type": "ETP",
+            "total_no_machines": "1",
+            "is_checked": true
+        },
+        {
+            "pd_name": "EZ1000",
+            "capacity": "8kld",
+            "total_needed_capacity": "8kld",
+            "waste_water_type": "STP cum ETP",
+            "total_no_machines": "1",
+            "is_checked": true
+        }
+    ],
+    "Particulars": [],
+    "Subtotal_list": [],
+    "GST": [],
+    "Grand_Total": [],
+    "enquiry_id": 93
+}
