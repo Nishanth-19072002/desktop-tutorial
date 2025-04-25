@@ -1,0 +1,59 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_Flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Avg_Flow(Cum/day)"
+        },
+        {
+            "param_name": "Assumed_Detention_period",
+            "unit": "hours",
+            "val_from": "previous",
+            "previous_block": "ET@12Clone1739534576958",
+            "previous_block_proxy": "ET-1",
+            "dependent": true,
+            "previous_block_output": "36",
+            "previous_block_output_proxy": "Volume_of_the_Tank(Cum)"
+        },
+        {
+            "param_name": "No._of_Tanks_Proposed",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No._of_Tanks_Proposed(nil)"
+        },
+        {
+            "param_name": "Assumed_Depth_of_Liquid_column",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_Depth_of_Liquid_column(m)"
+        },
+        {
+            "param_name": "Length_to_Breadth_ratio",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Length_to_Breadth_ratio(nil)"
+        },
+        {
+            "param_name": "Breadth_of_the_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Breadth_of_the_tank(m)"
+        }
+    ]
+}

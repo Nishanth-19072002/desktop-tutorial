@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_flow",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "treated_water_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Avg_flow(KLD)"
+        },
+        {
+            "param_name": "Detention_time",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "treated_water_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Detention_time(hrs)"
+        },
+        {
+            "param_name": "Depth_of_the_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "treated_water_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_the_tank(m)"
+        },
+        {
+            "param_name": "L:B",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "treated_water_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "L:B"
+        }
+    ]
+}

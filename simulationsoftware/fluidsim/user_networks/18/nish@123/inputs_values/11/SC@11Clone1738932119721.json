@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_flow",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Avg_Flow(Cum/day)"
+        },
+        {
+            "param_name": "Detention_time",
+            "unit": "sec",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_Detention_period(hours)"
+        },
+        {
+            "param_name": "Depth_of_the_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "ET.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No._of_Tanks_Proposed(nil)"
+        },
+        {
+            "param_name": "L_B",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "SC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "L_B(m)"
+        }
+    ]
+}

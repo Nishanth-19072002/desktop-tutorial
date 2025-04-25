@@ -1,0 +1,49 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "No._of_pumps",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "RAS_ESP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No._of_pumps(nil)"
+        },
+        {
+            "param_name": "Assumed_return_flow",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "RAS_ESP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_return_flow(%)"
+        },
+        {
+            "param_name": "Operating_hours",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "RAS_ESP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Operating_hours(hrs)"
+        },
+        {
+            "param_name": "Head_required",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "RAS_ESP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Head_required(m)"
+        },
+        {
+            "param_name": "Average_Sewage_flow_entering_the_treatment_plant",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "RAS_ESP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_Sewage_flow_entering_the_treatment_plant(KLD)"
+        }
+    ]
+}

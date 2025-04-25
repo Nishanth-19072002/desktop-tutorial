@@ -1,0 +1,31 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Average_Flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "PSF.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_Flow(Cum/day)"
+        },
+        {
+            "param_name": "Filter_Operating_hours",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "PSF.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Filter_Operating_hours(hrs)"
+        },
+        {
+            "param_name": "Filter_Loading_rate",
+            "unit": "Cum/hr/Sq.m",
+            "val_from": "excel",
+            "excel_file": "PSF.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Filter_Loading_rate(Cum/hr/Sq.m)"
+        }
+    ]
+}

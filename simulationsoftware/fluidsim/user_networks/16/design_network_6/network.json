@@ -1,0 +1,423 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "SDS@21Clone1740040161272",
+            "blockName": "SDS-1",
+            "blockTrueId": "21",
+            "left": "755px",
+            "top": "412.009px"
+        },
+        {
+            "blockId": "PSF@17Clone1739864401809",
+            "blockName": "PSF-1",
+            "blockTrueId": "17",
+            "left": "102px",
+            "top": "352px"
+        },
+        {
+            "blockId": "ET@12Clone1739537404591",
+            "blockName": "ET-2",
+            "blockTrueId": "12",
+            "left": "1013px",
+            "top": "279px"
+        },
+        {
+            "blockId": "ET@12Clone1739534576958",
+            "blockName": "ET-1",
+            "blockTrueId": "12",
+            "left": "641px",
+            "top": "314px"
+        },
+        {
+            "blockId": "ET@12Clone1739795489648",
+            "blockName": "ET-10",
+            "blockTrueId": "12",
+            "left": "263px",
+            "top": "347px"
+        },
+        {
+            "blockId": "SC@11Clone1739537502381",
+            "blockName": "SC-2",
+            "blockTrueId": "11",
+            "left": "583.5px",
+            "top": "231px"
+        },
+        {
+            "blockId": "BC@23Clone1740045526793",
+            "blockName": "BC-1",
+            "blockTrueId": "23",
+            "left": "954px",
+            "top": "130px"
+        },
+        {
+            "blockId": "DPD@20Clone1740036678575",
+            "blockName": "DPD-1",
+            "blockTrueId": "20",
+            "left": "92px",
+            "top": "500px"
+        },
+        {
+            "blockId": "ACF@18Clone1739871017623",
+            "blockName": "ACF-1",
+            "blockTrueId": "18",
+            "left": "471.5px",
+            "top": "56px"
+        },
+        {
+            "blockId": "ET@12Clone1739614276766",
+            "blockName": "ET-3",
+            "blockTrueId": "12",
+            "left": "394px",
+            "top": "362px"
+        },
+        {
+            "blockId": "SHT@16Clone1739862528720",
+            "blockName": "SHT-1",
+            "blockTrueId": "16",
+            "left": "138.5px",
+            "top": "183px"
+        },
+        {
+            "blockId": "HD@22Clone1740043663071",
+            "blockName": "HD-1",
+            "blockTrueId": "22",
+            "left": "407px",
+            "top": "469px"
+        },
+        {
+            "blockId": "ET@12Clone1739604164253",
+            "blockName": "ET-4",
+            "blockTrueId": "12",
+            "left": "755px",
+            "top": "159px"
+        },
+        {
+            "blockId": "RASESP@25Clone1740048386848",
+            "blockName": "RAS-ESP-1",
+            "blockTrueId": "25",
+            "left": "299.5px",
+            "top": "515px"
+        },
+        {
+            "blockId": "FBP@27Clone1740051097097",
+            "blockName": "FBP-1",
+            "blockTrueId": "27",
+            "left": "182.5px",
+            "top": "273px"
+        },
+        {
+            "blockId": "TWT@19Clone1739870633391",
+            "blockName": "TWT-1",
+            "blockTrueId": "19",
+            "left": "125.5px",
+            "top": "76px"
+        },
+        {
+            "blockId": "FFP@26Clone1740049427734",
+            "blockName": "FFP-1",
+            "blockTrueId": "26",
+            "left": "297px",
+            "top": "280px"
+        },
+        {
+            "blockId": "RSP@24Clone1740050163324",
+            "blockName": "RSP-1",
+            "blockTrueId": "24",
+            "left": "611px",
+            "top": "36px"
+        },
+        {
+            "blockId": "TWTP@28Clone1740051870510",
+            "blockName": "TWTP-1",
+            "blockTrueId": "28",
+            "left": "565px",
+            "top": "471px"
+        },
+        {
+            "blockId": "SECCLA@15Clone1740048371801",
+            "blockName": "SEC-CLA-1",
+            "blockTrueId": "15",
+            "left": "357px",
+            "top": "179px"
+        },
+        {
+            "blockId": "FBBR@14Clone1740054146166",
+            "blockName": "FBBR-1",
+            "blockTrueId": "14",
+            "left": "1081.5px",
+            "top": "158px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 528,
+            "srcBlockId": "ET@12Clone1739534576958",
+            "destBlockId": "ET@12Clone1739614276766",
+            "startX": "695.996591091156px",
+            "startY": "342.49436712265015px",
+            "endX": "390.5011076927185px",
+            "endY": "390.48985052108765px"
+        },
+        {
+            "connection_id": 560,
+            "srcBlockId": "ACF@18Clone1739871017623",
+            "destBlockId": "ET@12Clone1739604164253",
+            "startX": "537.7533659934998px",
+            "startY": "84.48760747909546px",
+            "endX": "751.5033659934998px",
+            "endY": "187.49436712265015px"
+        },
+        {
+            "connection_id": 561,
+            "srcBlockId": "DPD@20Clone1740036678575",
+            "destBlockId": "ET@12Clone1739795489648",
+            "startX": "161.9200530052185px",
+            "startY": "528.4966254234314px",
+            "endX": "259.4988799095154px",
+            "endY": "375.48985052108765px"
+        },
+        {
+            "connection_id": 527,
+            "srcBlockId": "ET@12Clone1739614276766",
+            "destBlockId": "ET@12Clone1739534576958",
+            "startX": "449.00336599349976px",
+            "startY": "390.48985052108765px",
+            "endX": "637.4943327903748px",
+            "endY": "342.49436712265015px"
+        },
+        {
+            "connection_id": 554,
+            "srcBlockId": "ET@12Clone1739795489648",
+            "destBlockId": "ET@12Clone1739614276766",
+            "startX": "326.62726736068726px",
+            "startY": "375.48985052108765px",
+            "endX": "390.5011076927185px",
+            "endY": "390.48985052108765px"
+        },
+        {
+            "connection_id": 555,
+            "srcBlockId": "SC@11Clone1739537502381",
+            "destBlockId": "ET@12Clone1739537404591",
+            "startX": "640.4223113059998px",
+            "startY": "259.4876227378845px",
+            "endX": "1009.4989104270935px",
+            "endY": "307.49436712265015px"
+        },
+        {
+            "connection_id": 525,
+            "srcBlockId": "ET@12Clone1739534576958",
+            "destBlockId": "ET@12Clone1739604164253",
+            "startX": "695.996591091156px",
+            "startY": "342.49436712265015px",
+            "endX": "751.5033659934998px",
+            "endY": "187.49436712265015px"
+        },
+        {
+            "connection_id": 524,
+            "srcBlockId": "ET@12Clone1739604164253",
+            "destBlockId": "ET@12Clone1739534576958",
+            "startX": "810.005624294281px",
+            "startY": "187.49436712265015px",
+            "endX": "637.4943327903748px",
+            "endY": "342.49436712265015px"
+        },
+        {
+            "connection_id": 523,
+            "srcBlockId": "ET@12Clone1739604164253",
+            "destBlockId": "ET@12Clone1739537404591",
+            "startX": "810.005624294281px",
+            "startY": "187.49436712265015px",
+            "endX": "1009.4989104270935px",
+            "endY": "307.49436712265015px"
+        },
+        {
+            "connection_id": 568,
+            "srcBlockId": "SHT@16Clone1739862528720",
+            "destBlockId": "SECCLA@15Clone1740048371801",
+            "startX": "205.25336599349976px",
+            "startY": "211.4921088218689px",
+            "endX": "353.496591091156px",
+            "endY": "207.49436712265015px"
+        },
+        {
+            "connection_id": 558,
+            "srcBlockId": "PSF@17Clone1739864401809",
+            "destBlockId": "ET@12Clone1739795489648",
+            "startX": "165.79392385482788px",
+            "startY": "380.48985052108765px",
+            "endX": "259.4988799095154px",
+            "endY": "375.48985052108765px"
+        },
+        {
+            "connection_id": 567,
+            "srcBlockId": "TWT@19Clone1739870633391",
+            "destBlockId": "ACF@18Clone1739871017623",
+            "startX": "196.36823415756226px",
+            "startY": "104.48760747909546px",
+            "endX": "468.0011076927185px",
+            "endY": "84.48760747909546px"
+        },
+        {
+            "connection_id": 573,
+            "srcBlockId": "FFP@26Clone1740049427734",
+            "destBlockId": "SC@11Clone1739537502381",
+            "startX": "360.10700368881226px",
+            "startY": "308.4966254234314px",
+            "endX": "579.9943327903748px",
+            "endY": "259.4876227378845px"
+        },
+        {
+            "connection_id": 569,
+            "srcBlockId": "SECCLA@15Clone1740048371801",
+            "destBlockId": "SC@11Clone1739537502381",
+            "startX": "456.63849782943726px",
+            "startY": "207.49436712265015px",
+            "endX": "579.9943327903748px",
+            "endY": "259.4876227378845px"
+        },
+        {
+            "connection_id": 562,
+            "srcBlockId": "SDS@21Clone1740040161272",
+            "destBlockId": "ET@12Clone1739537404591",
+            "startX": "821.7398772239685px",
+            "startY": "440.50111150741577px",
+            "endX": "1009.4989104270935px",
+            "endY": "307.49436712265015px"
+        },
+        {
+            "connection_id": 575,
+            "srcBlockId": "ACF@18Clone1739871017623",
+            "destBlockId": "RSP@24Clone1740050163324",
+            "startX": "537.7533659934998px",
+            "startY": "84.48760747909546px",
+            "endX": "607.4943327903748px",
+            "endY": "64.48761510848999px"
+        },
+        {
+            "connection_id": 530,
+            "srcBlockId": "ET@12Clone1739537404591",
+            "destBlockId": "ET@12Clone1739604164253",
+            "startX": "1068.0011076927185px",
+            "startY": "307.49436712265015px",
+            "endX": "751.5033659934998px",
+            "endY": "187.49436712265015px"
+        },
+        {
+            "connection_id": 572,
+            "srcBlockId": "RASESP@25Clone1740048386848",
+            "destBlockId": "HD@22Clone1740043663071",
+            "startX": "398.3614592552185px",
+            "startY": "543.4966254234314px",
+            "endX": "403.496591091156px",
+            "endY": "497.49436712265015px"
+        },
+        {
+            "connection_id": 563,
+            "srcBlockId": "ET@12Clone1739534576958",
+            "destBlockId": "SDS@21Clone1740040161272",
+            "startX": "695.996591091156px",
+            "startY": "342.49436712265015px",
+            "endX": "751.5033659934998px",
+            "endY": "440.50111150741577px"
+        },
+        {
+            "connection_id": 574,
+            "srcBlockId": "RSP@24Clone1740050163324",
+            "destBlockId": "BC@23Clone1740045526793",
+            "startX": "676.5484099388123px",
+            "startY": "64.48761510848999px",
+            "endX": "950.5011076927185px",
+            "endY": "158.4966254234314px"
+        },
+        {
+            "connection_id": 571,
+            "srcBlockId": "DPD@20Clone1740036678575",
+            "destBlockId": "RASESP@25Clone1740048386848",
+            "startX": "161.9200530052185px",
+            "startY": "528.4966254234314px",
+            "endX": "295.996591091156px",
+            "endY": "543.4966254234314px"
+        },
+        {
+            "connection_id": 576,
+            "srcBlockId": "PSF@17Clone1739864401809",
+            "destBlockId": "FBP@27Clone1740051097097",
+            "startX": "165.79392385482788px",
+            "startY": "380.48985052108765px",
+            "endX": "179.00336599349976px",
+            "endY": "301.4921088218689px"
+        },
+        {
+            "connection_id": 581,
+            "srcBlockId": "FBP@27Clone1740051097097",
+            "destBlockId": "FFP@26Clone1740049427734",
+            "startX": "246.97635793685913px",
+            "startY": "301.4921088218689px",
+            "endX": "293.496591091156px",
+            "endY": "308.4966254234314px"
+        },
+        {
+            "connection_id": 564,
+            "srcBlockId": "HD@22Clone1740043663071",
+            "destBlockId": "ET@12Clone1739534576958",
+            "startX": "468.10248708724976px",
+            "startY": "497.49436712265015px",
+            "endX": "637.4943327903748px",
+            "endY": "342.49436712265015px"
+        },
+        {
+            "connection_id": 578,
+            "srcBlockId": "TWTP@28Clone1740051870510",
+            "destBlockId": "SDS@21Clone1740040161272",
+            "startX": "644.836678981781px",
+            "startY": "499.4875922203064px",
+            "endX": "751.5033659934998px",
+            "endY": "440.50111150741577px"
+        },
+        {
+            "connection_id": 577,
+            "srcBlockId": "HD@22Clone1740043663071",
+            "destBlockId": "TWTP@28Clone1740051870510",
+            "startX": "468.10248708724976px",
+            "startY": "497.49436712265015px",
+            "endX": "561.5033659934998px",
+            "endY": "499.4875922203064px"
+        },
+        {
+            "connection_id": 579,
+            "srcBlockId": "BC@23Clone1740045526793",
+            "destBlockId": "FBBR@14Clone1740054146166",
+            "startX": "1011.604745388031px",
+            "startY": "158.4966254234314px",
+            "endX": "1078.0011076927185px",
+            "endY": "186.4921088218689px"
+        },
+        {
+            "connection_id": 580,
+            "srcBlockId": "ET@12Clone1739537404591",
+            "destBlockId": "FBBR@14Clone1740054146166",
+            "startX": "1068.0011076927185px",
+            "startY": "307.49436712265015px",
+            "endX": "1078.0011076927185px",
+            "endY": "186.4921088218689px"
+        },
+        {
+            "connection_id": 565,
+            "srcBlockId": "ET@12Clone1739604164253",
+            "destBlockId": "BC@23Clone1740045526793",
+            "startX": "810.005624294281px",
+            "startY": "187.49436712265015px",
+            "endX": "950.5011076927185px",
+            "endY": "158.4966254234314px"
+        },
+        {
+            "connection_id": 570,
+            "srcBlockId": "TWT@19Clone1739870633391",
+            "destBlockId": "SECCLA@15Clone1740048371801",
+            "startX": "196.36823415756226px",
+            "startY": "104.48760747909546px",
+            "endX": "353.496591091156px",
+            "endY": "207.49436712265015px"
+        }
+    ]
+}

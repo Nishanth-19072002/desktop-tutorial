@@ -1,0 +1,544 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Q_per_tank",
+            "unit": "cum/day",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Q_per_tank(cum/day)"
+        },
+        {
+            "param_name": "Time_for_Fill_Aerate_phase_provided",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Time_for_Fill_Aerate_phase_provided(h)"
+        },
+        {
+            "param_name": "No_of_Basins_under_Decant_simultaneously",
+            "unit": "No",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Basins_under_Decant_simultaneously(No)"
+        },
+        {
+            "param_name": "Inlet_BOD",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Inlet_BOD(mg/l)"
+        },
+        {
+            "param_name": "MLSS_considered",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "MLSS_considered(mg/l)"
+        },
+        {
+            "param_name": "F/M",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "F/M(nil)"
+        },
+        {
+            "param_name": "No_of_Tanks",
+            "unit": "Nos",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Tanks(Nos)"
+        },
+        {
+            "param_name": "Side_Water_Depth_Assume",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Side_Water_Depth_Assume(m)"
+        },
+        {
+            "param_name": "Freeboard",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Freeboard(m)"
+        },
+        {
+            "param_name": "Recirculation_Ratio",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Recirculation_Ratio(%)"
+        },
+        {
+            "param_name": "Capacity_of_Return_Activated_Sludge_Pump",
+            "unit": "m3/h",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Capacity_of_Return_Activated_Sludge_Pump(m3/h)"
+        },
+        {
+            "param_name": "Hydraulic_Retention_Time_HRT_DesignFlow",
+            "unit": "min",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Hydraulic_Retention_Time_HRT_DesignFlow(min)"
+        },
+        {
+            "param_name": "No_of_Sub_Compartments_provided_perBasin",
+            "unit": "Nos",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Sub_Compartments_provided_perBasin(Nos)"
+        },
+        {
+            "param_name": "Side_Water_Depth_provided",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Side_Water_Depth_provided(m)"
+        },
+        {
+            "param_name": "Length",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Length(m)"
+        },
+        {
+            "param_name": "Inlet_BOD",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Inlet_BOD(mg/l)"
+        },
+        {
+            "param_name": "Outlet_BOD",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Outlet_BOD(mg/l)"
+        },
+        {
+            "param_name": "O2_required_for_oxidation_of_BOD",
+            "unit": "Kg/Kg",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "O2_required_for_oxidation_of_BOD(Kg/Kg)"
+        },
+        {
+            "param_name": "Inlet_TKN",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Inlet_TKN(mg/l)"
+        },
+        {
+            "param_name": "Outlet_NH3_N",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Outlet_NH3_N(mg/l)"
+        },
+        {
+            "param_name": "O2_required_for_nitrification_of_NH3_N",
+            "unit": "Kg/NH3_N",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "O2_required_for_nitrification_of_NH3_N(Kg/NH3_N)"
+        },
+        {
+            "param_name": "Outlet_NO3_N",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Outlet_NO3_N(mg/l)"
+        },
+        {
+            "param_name": "O2_credit_during_de_nitrification_of_NO3_N",
+            "unit": "Kg/Kg",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "O2_credit_during_de_nitrification_of_NO3_N(Kg/Kg)"
+        },
+        {
+            "param_name": "O2_credit_to_be_considered_during_de_nitrification",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "O2_credit_to_be_considered_during_de_nitrification(%)"
+        },
+        {
+            "param_name": "Actual_Oxygen_Transfer_Rate_AOTR_under_field_conditions",
+            "unit": "kg/d",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Actual_Oxygen_Transfer_Rate_AOTR_under_field_conditions(kg/d)"
+        },
+        {
+            "param_name": "T",
+            "unit": "C",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "T(c)"
+        },
+        {
+            "param_name": "H",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "H(m)"
+        },
+        {
+            "param_name": "CST_Oxygen_Saturation_Concentration_in_Clean_Water_at_Temperature_T",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "CST_Oxygen_Saturation_Concentration_in_Clean_Water_at_Temperature_T(mg/l)"
+        },
+        {
+            "param_name": "g",
+            "unit": "m/s2",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "g(m/s2)"
+        },
+        {
+            "param_name": "M",
+            "unit": "Kg/Kg_mole",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "M(Kg/Kg_mole)"
+        },
+        {
+            "param_name": "zb",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "zb(m)"
+        },
+        {
+            "param_name": "za",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "za(m)"
+        },
+        {
+            "param_name": "R",
+            "unit": "Nm/Kg_mole.K",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "R(Nm/Kg_mole.K)"
+        },
+        {
+            "param_name": "Pa",
+            "unit": "mWC",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Pa(mWC)"
+        },
+        {
+            "param_name": "g1",
+            "unit": "m/s2",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "g1(m/s2)"
+        },
+        {
+            "param_name": "M1",
+            "unit": "Kg/Kg_mole",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "M1(Kg/Kg_mole)"
+        },
+        {
+            "param_name": "zb1",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "zb1(m)"
+        },
+        {
+            "param_name": "za1",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "za1(m)"
+        },
+        {
+            "param_name": "R1",
+            "unit": "Nm/Kg_mole.K",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "R1(Nm/Kg_mole.K)"
+        },
+        {
+            "param_name": "Ot",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Ot(nil)"
+        },
+        {
+            "param_name": "CL:",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "CL:(mg/l)"
+        },
+        {
+            "param_name": "CS20:_Dissolved_Oxygen",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "CS20:_Dissolved_Oxygen(mg/l)"
+        },
+        {
+            "param_name": "alpha",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "alpha(nil)"
+        },
+        {
+            "param_name": "beta",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "beta(nil)"
+        },
+        {
+            "param_name": "F",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "F(nil)"
+        },
+        {
+            "param_name": "Top_Water_Level_in_Basins",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Top_Water_Level_in_Basins(m)"
+        },
+        {
+            "param_name": "Bottom_Water_Level_in_Basins",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Bottom_Water_Level_in_Basins(m)"
+        },
+        {
+            "param_name": "Aeration_Depth",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Aeration_Depth(m)"
+        },
+        {
+            "param_name": "Height_at_which_Diffusers_are_kept",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Height_at_which_Diffusers_are_kept(m)"
+        },
+        {
+            "param_name": "SOTE",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "SOTE(%)"
+        },
+        {
+            "param_name": "Fraction_of_O2_in_Air",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Fraction_of_O2_in_Air(%)"
+        },
+        {
+            "param_name": "Specific_Gravity_of_Air_at_Standard_Condition",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Specific_Gravity_of_Air_at_Standard_Condition(nil)"
+        },
+        {
+            "param_name": "Hours_of_Aeration_per_Basin_perday",
+            "unit": "hr/d/basin",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Hours_of_Aeration_per_Basin_perday(hr/d/basin)"
+        },
+        {
+            "param_name": "No_of_Operating_Air_Blowers_perBasin",
+            "unit": "Nos.",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Operating_Air_Blowers_perBasin(Nos)"
+        },
+        {
+            "param_name": "Time_for_Settle_phase_provided",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Time_for_Settle_phase_provided(h)"
+        },
+        {
+            "param_name": "Time_for_Decant_phase_provided",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Time_for_Decant_phase_provided(h)"
+        },
+        {
+            "param_name": "No_of_Cycles_provided_per_Basin_perday",
+            "unit": "Nos.",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Cycles_provided_per_Basin_perday(Nos)"
+        },
+        {
+            "param_name": "Aeration_time_provided_perbasin",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Aeration_time_provided_perbasin(h)"
+        },
+        {
+            "param_name": "No_of_Basins_under_Fill_simultaneously",
+            "unit": "No",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Basins_under_Fill_simultaneously(No)"
+        },
+        {
+            "param_name": "No_of_Basins_under_Aerate_simultaneously",
+            "unit": "No",
+            "val_from": "excel",
+            "excel_file": "sbr_basin.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Basins_under_Aerate_simultaneously(No)"
+        }
+    ]
+}

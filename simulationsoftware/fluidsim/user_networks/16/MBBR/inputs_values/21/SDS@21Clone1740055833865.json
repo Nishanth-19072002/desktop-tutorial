@@ -1,0 +1,67 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Average_daily_flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_daily_flow(Cum/day)"
+        },
+        {
+            "param_name": "Proportion_of_solids_in_cake",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Proportion_of_solids_in_cake(nil)"
+        },
+        {
+            "param_name": "Slurry_Consistency",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Slurry_Consistency(%)"
+        },
+        {
+            "param_name": "Cake-holding_capacity_of_filter_press",
+            "unit": "Litres",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Cake-holding_capacity_of_filter_press(Litres)"
+        },
+        {
+            "param_name": "Capcity_of_per_chamber",
+            "unit": "lit/chamber",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Capcity_of_per_chamber(lit/chamber)"
+        },
+        {
+            "param_name": "BOD",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD(mg/Lt)"
+        },
+        {
+            "param_name": "Filter_press_Operation,_batch_per_day",
+            "unit": "Litres",
+            "val_from": "excel",
+            "excel_file": "SDS.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Filter_press_Operation,_batch_per_day(Litres)"
+        }
+    ]
+}

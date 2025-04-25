@@ -1,0 +1,93 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "ET@12Clone1738932007209",
+            "blockName": "jk",
+            "blockTrueId": "12",
+            "left": "509px",
+            "top": "188px"
+        },
+        {
+            "blockId": "SC@11Clone1738932131554",
+            "blockName": "dfsg",
+            "blockTrueId": "11",
+            "left": "983px",
+            "top": "392px"
+        },
+        {
+            "blockId": "SC@11Clone1738932013292",
+            "blockName": "ghjkhkj",
+            "blockTrueId": "11",
+            "left": "407px",
+            "top": "332px"
+        },
+        {
+            "blockId": "SC@11Clone1738932119721",
+            "blockName": "ftgujh",
+            "blockTrueId": "11",
+            "left": "964px",
+            "top": "152px"
+        },
+        {
+            "blockId": "SC@11Clone1738932000587",
+            "blockName": "n",
+            "blockTrueId": "11",
+            "left": "293px",
+            "top": "156px"
+        },
+        {
+            "blockId": "ET@12Clone1738932018656",
+            "blockName": "jkbhjk",
+            "blockTrueId": "12",
+            "left": "842px",
+            "top": "281px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 459,
+            "srcBlockId": "ET@12Clone1738932018656",
+            "destBlockId": "SC@11Clone1738932119721",
+            "startX": "907.625px",
+            "startY": "309.5px",
+            "endX": "960.5px",
+            "endY": "180.5px"
+        },
+        {
+            "connection_id": 460,
+            "srcBlockId": "SC@11Clone1738932119721",
+            "destBlockId": "SC@11Clone1738932131554",
+            "startX": "1029.34375px",
+            "startY": "180.5px",
+            "endX": "979.5px",
+            "endY": "420.5px"
+        },
+        {
+            "connection_id": 456,
+            "srcBlockId": "SC@11Clone1738932000587",
+            "destBlockId": "ET@12Clone1738932007209",
+            "startX": "325.5625px",
+            "startY": "184.5px",
+            "endX": "505.5px",
+            "endY": "216.5px"
+        },
+        {
+            "connection_id": 457,
+            "srcBlockId": "ET@12Clone1738932007209",
+            "destBlockId": "SC@11Clone1738932013292",
+            "startX": "544.328125px",
+            "startY": "216.5px",
+            "endX": "403.5px",
+            "endY": "360.5px"
+        },
+        {
+            "connection_id": 458,
+            "srcBlockId": "SC@11Clone1738932013292",
+            "destBlockId": "ET@12Clone1738932018656",
+            "startX": "481.6875px",
+            "startY": "360.5px",
+            "endX": "838.5px",
+            "endY": "309.5px"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Network Configuration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/circuits.png');
+      background-color: #1e293b; /* Dark slate */
+      background-blend-mode: overlay;
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    .overlay-pattern {
+      background-image: url('https://www.svgrepo.com/show/499954/connection.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 80%;
+      opacity: 0.05;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -2;
+    }
+  </style>
+</head>
+<body class="relative bg-gray-900 min-h-screen flex items-center justify-center">
+
+  <!-- Background overlay pattern -->
+  <div class="overlay-pattern"></div>
+
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md z-10">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-2">Welcome!</h2>
+    <p class="text-gray-600 text-center mb-6">Please configure your network below.</p>
+
+    <form action="save_network_details" method="POST" class="space-y-5">
+      {% csrf_token %}
+      
+      <div>
+        <label for="networkName" class="block text-sm font-semibold text-gray-700 mb-1">Network Name</label>
+        <input type="text" id="networkName" name="network_name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter network name" required>
+      </div>
+
+      <div>
+        <label for="networkType" class="block text-sm font-semibold text-gray-700 mb-1">Network Type</label>
+        <select id="networkType" name="network_type" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="" disabled selected>Select a network type</option>
+          <option value="design">Design</option>
+          <option value="performance">Performance</option>
+          <option value="lifing">Lifing</option>
+          <option value="prognostics">Prognostics</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 rounded-lg transition duration-200">
+        Save
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

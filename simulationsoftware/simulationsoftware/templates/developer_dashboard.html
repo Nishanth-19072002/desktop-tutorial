@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+{% load custom_filters %} 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Developer Access Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+  </script>
+</head>
+
+<body class="flex h-screen bg-gray-100 font-sans">
+
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-900 text-white flex flex-col">
+
+    <div class="p-6 text-2xl font-bold text-center border-b border-gray-700">
+      🔧 Developer Panel
+    </div>
+      <!-- User Profile + Dropdown -->
+    <div class="relative px-6 py-4 border-b border-gray-700">
+      <!-- Toggle Button -->
+      <button onclick="toggleUserDropdown()" class="w-full flex items-center space-x-3 focus:outline-none">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" class="w-8 h-8 rounded-full border border-gray-500" />
+        <span>{{ user.username }}</span>
+        <!-- Dropdown arrow icon -->
+        <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <!-- Dropdown Menu -->
+      <div id="userDropdown" class="hidden absolute left-6 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg z-50">
+        <form action="{% url 'logout' %}" method="post" class="block w-full">
+          {% csrf_token %}
+          <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <nav class="flex-1 p-4 space-y-2">
+      <button onclick="showSection('permissions')" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Assign Permissions</button>
+      <button onclick="showSection('users')" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Groups</button>
+      <button onclick="showSection('create')" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Create User ID & Password</button>
+      <button onclick="window.location.href='/admin_panel/'" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">
+        Admin Panel
+      </button>
+      <button onclick="window.location.href='/index'" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">
+        Design Network
+      </button>
+    </nav>
+    <div class="p-4 border-t border-gray-700 text-sm text-gray-400 text-center">
+       XP Simulation &copy; 2025
+    </div>
+    
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-10 overflow-y-auto">
+    
+    <!-- Permissions Section -->
+    <section id="permissions" class="section">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Assign Permissions</h2>
+      <div class="bg-white p-6 rounded-xl shadow mt-6">
+        <h3 class="text-lg font-semibold mb-2">User Access Overview</h3>
+        <table class="w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 text-left">Username</th>
+              <th class="p-2 text-left">Groups</th>
+              <th class="p-2 text-left">Module & Submodule visibility Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr class="border-t">
+              <td class="p-2">{{ user.username }}</td>
+              <td class="p-2">
+                {% for group in user.groups.all %}
+                <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+                {% empty %}
+                <span class="text-gray-400 text-sm">No group</span>
+                {% endfor %}
+              </td>
+              <td class="p-2">
+                <button onclick="togglePanel('module-{{ user.id }}')" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                  Module Visibility
+                </button>
+                <button onclick="togglePanel('submodule-{{ user.id }}')" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700 ms-3">
+                  Submodule Visibility
+                </button>
+              </td>
+            </tr>
+    
+            <!-- Module Panel -->
+            <tr id="module-{{ user.id }}" class="hidden">
+              <td colspan="3" class="p-4 bg-gray-100">
+                <h4 class="text-md font-semibold text-gray-700 mb-2">
+                  Set Modules for <strong>{{ user.username }}</strong>:
+                </h4>
+                <form method="POST" action="{% url 'set_user_visibility' user.id %}">
+                  {% csrf_token %}
+                  <div class="grid grid-cols-2 gap-4">
+                    {% for module in modules_data %}
+                      <label class="flex items-center">
+                        <input type="checkbox" name="modules" value="{{ module.id }}"
+                          {% if module.id in user_module_map|get_item:user.id %}checked{% endif %}>
+                        {{ module.name }}
+                      </label>
+                    {% endfor %}
+                  </div>
+                  <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                    Save
+                  </button>
+                </form>
+              </td>
+            </tr>
+            
+            <!-- Submodule Panel -->
+            <tr id="submodule-{{ user.id }}" class="hidden">
+              <td colspan="3" class="p-4 bg-blue-50">
+                <h4 class="text-md font-semibold text-gray-700 mb-2">
+                  Set Submodules for <strong>{{ user.username }}</strong>:
+                </h4>
+                <form method="POST" action="{% url 'set_user_visibility' user.id %}">
+                  {% csrf_token %}
+                  <div class="grid grid-cols-2 gap-4">
+                    {% for module in modules_data %}
+                      {% for sub in module.submodules %}
+                        <label class="flex items-center text-sm text-gray-600">
+                          <input type="checkbox" name="submodules" value="{{ sub.id }}"
+                            {% if sub.id in user_submodule_map|get_item:user.id %}checked{% endif %}>
+                          {{ sub.name }} - ({{module.name}})
+                        </label>
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                  <button type="submit" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+                    Save
+                  </button>
+                </form>
+              </td>
+            </tr>
+    
+            {% empty %}
+            <tr>
+              <td colspan="3" class="p-2 text-gray-500">No users found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Users Section -->
+    <section id="users" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Manage Groups</h2>
+
+      <!-- Create Group -->
+      <form method="POST" action="{% url 'groups' %}" class="bg-white p-6 rounded-xl shadow mb-6">
+        {% csrf_token %}
+        <label class="block font-semibold mb-2"> Create New Group:</label>
+        <input type="text" name="group_name" class="border p-2 rounded w-full mb-4" required>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Create Group</button>
+      </form>
+
+      <!-- Users Table -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <table class="w-full table-auto">
+          <thead>
+          <strong><h3 class="bg-gray-200">Groups</h3></strong>
+          </thead>
+          <tbody>
+            {% for group in groups %}
+            <tr class="border-t">
+              <td class="p-2">{{ group.name }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td class="p-2 text-gray-500">No groups found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>  
+      </div> 
+    </section>
+
+    <!-- Create User Section -->
+    <section id="create" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Create User ID & Password</h2>
+      <form method="POST" action="{% url 'userss' %}"  class="bg-white p-6 rounded-xl shadow">
+        {% csrf_token %}
+        <label class="block font-semibold mb-1">Username</label>
+        <input type="text" name="username" class="border p-2 rounded w-full mb-4" required>
+
+        <label class="block font-semibold mb-1">Password</label>
+        <input type="password" name="password" class="border p-2 rounded w-full mb-4" required>
+
+        <label class="block font-semibold mb-1">Assign to Group</label>
+        <select name="group" class="border p-2 rounded w-full mb-4">
+          {% for group in groups %}
+
+            {% if group.name != "Developer" %}
+              <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create User</button>
+      </form>
+      <div class="bg-white p-6 rounded-xl shadow mt-6">
+        <h3 class="text-lg font-semibold mb-2">Existing Users</h3>
+        <table class="w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 text-left">Username</th>
+              <th class="p-2 text-left">Groups</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr class="border-t">
+              <td class="p-2">{{ user.username }}</td>
+              <td class="p-2">
+                {% for group in user.groups.all %}
+                <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+                {% empty %}
+                <span class="text-gray-400 text-sm">No group</span>
+                {% endfor %}
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="2" class="p-2 text-gray-500">No users found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    
+    
+
+  </main>
+</body>
+<script>
+  function togglePanel(id) {
+    const panel = document.getElementById(id);
+    panel.classList.toggle('hidden');
+  }
+</script>
+<script>
+  // Check the corresponding module when submodule is checked
+  const submoduleCheckboxes = document.querySelectorAll("input[name='submodules']");
+  
+  submoduleCheckboxes.forEach(submoduleCheckbox => {
+    submoduleCheckbox.addEventListener('change', (event) => {
+      const submoduleId = event.target.value;
+      const submodule = document.querySelector(`input[name="submodules"][value="${submoduleId}"]`);
+      const moduleId = submodule.closest('div').previousElementSibling.querySelector('input').value;  // Get the parent module ID
+      const moduleCheckbox = document.querySelector(`input[name="modules"][value="${moduleId}"]`);
+      
+      if (submodule.checked) {
+        moduleCheckbox.checked = true;
+      }
+    });
+  });
+</script>
+<script>
+  function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    dropdown.classList.toggle('hidden');
+  }
+
+  // Optional: Click outside to close the dropdown
+  window.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('userDropdown');
+    if (!e.target.closest('[onclick="toggleUserDropdown()"]') && !e.target.closest('#userDropdown')) {
+      dropdown.classList.add('hidden');
+    }
+  });
+</script>
+</html>

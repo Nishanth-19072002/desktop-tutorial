@@ -1,0 +1,58 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Solids_Consistency_in_the_Wasted_Sludge",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Solids_Consistency_in_the_Wasted_Sludge(%)"
+        },
+        {
+            "param_name": "Considering_Running-Time_of_Surplus_Activated_Sludge",
+            "unit": "min",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Considering_Running-Time_of_Surplus_Activated_Sludge(min)"
+        },
+        {
+            "param_name": "Specific_Sludge_Yield",
+            "unit": "Kg/Kg",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Specific_Sludge_Yield(Kg/Kg)"
+        },
+        {
+            "param_name": "BOD",
+            "unit": "kg/d",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD(kg/d)"
+        },
+        {
+            "param_name": "No_of_Basins_provided",
+            "unit": "Nos",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Basins_provided(Nos)"
+        },
+        {
+            "param_name": "No_of_Cycles",
+            "unit": "Nos",
+            "val_from": "excel",
+            "excel_file": "sludge_wasting.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Cycles(Nos)"
+        }
+    ]
+}
