@@ -1,0 +1,48 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_Flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "<-- select a Excel -->",
+            "dependent": false,
+            "sheet_name": "",
+            "user_value": ""
+        },
+        {
+            "param_name": "Assumed_Detention_period",
+            "unit": "hours",
+            "val_from": "selected disabled",
+            "VALUE_NONE": "NONE",
+            "dependent": false
+        },
+        {
+            "param_name": "No._of_Tanks_Proposed",
+            "unit": "nil",
+            "val_from": "selected disabled",
+            "VALUE_NONE": "NONE",
+            "dependent": false
+        },
+        {
+            "param_name": "Assumed_Depth_of_Liquid_column",
+            "unit": "m",
+            "val_from": "selected disabled",
+            "VALUE_NONE": "NONE",
+            "dependent": false
+        },
+        {
+            "param_name": "Length_to_Breadth_ratio",
+            "unit": "nil",
+            "val_from": "selected disabled",
+            "VALUE_NONE": "NONE",
+            "dependent": false
+        },
+        {
+            "param_name": "Breadth_of_the_tank",
+            "unit": "m",
+            "val_from": "selected disabled",
+            "VALUE_NONE": "NONE",
+            "dependent": false
+        }
+    ]
+}

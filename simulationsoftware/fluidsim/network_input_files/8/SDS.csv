@@ -1,0 +1,3 @@
+Average_daily_flow(Cum/day),BOD(mg/Lt),Slurry_Consistency(%),Proportion_of_solids_in_cake(nil),Cake-holding_capacity_of_filter_press(Litres),Capcity_of_per_chamber(lit/chamber),"Filter_press_Operation,_batch_per_day(Litres)"
+40,400,0.8,0.25,16,5,3
+40,500,0.8,0.25,46,5,13

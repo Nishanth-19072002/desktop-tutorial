@@ -1,0 +1,3 @@
+Assume_pumping_time(h),Design_Overflow_rate(Cum/Sqm/day),Depth_of_tank(m),Solids_loading_rate(kg/m3/h),Length(m),Average_Flow_in_each_tank(cum/day)
+24,16,4.5,2,4,40
+24,16,4.5,21,4,30

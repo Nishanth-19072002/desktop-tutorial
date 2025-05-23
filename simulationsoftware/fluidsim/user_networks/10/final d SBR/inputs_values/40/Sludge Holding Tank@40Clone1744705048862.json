@@ -1,0 +1,50 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Depth_of_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sludge_holding_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_tank(m)"
+        },
+        {
+            "param_name": "Volume_of_Sludge_to_be_Wasted_perCycle",
+            "unit": "m3",
+            "val_from": "previous",
+            "previous_block": "Sludge Wasting@39Clone1744704417510",
+            "previous_block_proxy": "sw",
+            "dependent": true,
+            "previous_block_output": "384",
+            "previous_block_output_proxy": "Volume_of_Sludge_to_be_Wasted_perCycle(m3)"
+        },
+        {
+            "param_name": "No_of_Basins_provided",
+            "unit": "Nos",
+            "val_from": "excel",
+            "excel_file": "sludge_holding_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Basins_provided(Nos)"
+        },
+        {
+            "param_name": "Holding_time",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "sludge_holding_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Holding_time(h)"
+        },
+        {
+            "param_name": "Width",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "sludge_holding_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Width(m)"
+        }
+    ]
+}

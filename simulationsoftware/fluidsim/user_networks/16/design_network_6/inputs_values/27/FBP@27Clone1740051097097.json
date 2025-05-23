@@ -1,0 +1,32 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Backwash_rate",
+            "unit": "m3/hr",
+            "val_from": "excel",
+            "excel_file": "FBP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Backwash_rate(m3/hr)"
+        },
+        {
+            "param_name": "Area_of_the_Filter_required",
+            "unit": "Sq.m",
+            "val_from": "previous",
+            "previous_block": "PSF@17Clone1739864401809",
+            "previous_block_proxy": "PSF-1",
+            "dependent": true,
+            "previous_block_output": "59",
+            "previous_block_output_proxy": "Area_of_the_Filter_required(Sq.m)"
+        },
+        {
+            "param_name": "Head_required",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "FBP.csv",
+            "dependent": false,
+            "sheet_name": "",
+            "excel_column": "Head_required(m)"
+        }
+    ]
+}

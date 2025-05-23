@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+{% load custom_filters %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Access Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+    function toggleUserDropdown() {
+      document.getElementById("userDropdown").classList.toggle("hidden");
+    }
+  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="../static/js/RenderModules.js" defer></script>
+
+    <script src="../static/js/logicBlockInputs.js" defer></script>
+    <script src="../static/js/logicBlocksInputEdit.js" defer></script>
+
+    <script src="../static/js/logicBlockCodeEditor.js" defer></script>
+    <script src="../static/js/renderEditBlockCodeEditor.js" defer></script>
+
+    <script src="../static/js/logicBlockOutputs.js" defer></script>
+    <script src="../static/js/logicBlocksOutputEdit.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="flex h-screen bg-gray-100 font-sans">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-900 text-white flex flex-col">
+    <div class="p-6 text-2xl font-bold text-center border-b border-gray-700">
+      Admin Panel
+    </div>
+
+    <!-- User Profile + Dropdown -->
+    <div class="relative px-6 py-4 border-b border-gray-700">
+      <button onclick="toggleUserDropdown()" class="w-full flex items-center space-x-3 focus:outline-none">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" class="w-8 h-8 rounded-full border border-gray-500" />
+        <span>{{ user.username }}</span>
+        <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id="userDropdown" class="hidden absolute left-6 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg z-50">
+        <form action="{% url 'logout' %}" method="post" class="block w-full">
+          {% csrf_token %}
+          <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="flex-1 p-4 space-y-2">
+      <button data-section="Manage_Modules" onclick="showSection('Manage_Modules')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Modules</button>
+      <button data-section="Manage_submodules" onclick="showSection('Manage_submodules')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Submodules</button>
+      <button data-section="Manage_logicblocks" onclick="showSection('Manage_logicblocks')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Logic Blocks</button>
+      <button data-section="Manage_code" onclick="showSection('Manage_code')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Input Output & Code</button>
+      <button data-section="Publish" onclick="showSection('Publish')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Publish Block</button>
+      <button onclick="window.location.href='/project/'" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Design Network</button>
+    </nav>
+    <div class="p-4 border-t border-gray-700 text-sm text-gray-400 text-center">
+      XP Simulation &copy; 2025
+   </div>
+  </aside>  
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6 overflow-y-auto">
+    <div id="Manage_Modules" class="section">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Manage Modules</h2>
+    
+      <!-- Add Module -->
+      <div class="bg-white p-6 rounded shadow mb-6">
+        <h3 class="text-lg font-semibold mb-4"> Add Module</h3>
+        <form method="post" action="add-module">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="moduleName" class="block text-gray-700 font-medium mb-2">Module Name</label>
+            <input type="text" id="moduleName" name="module_name" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <button type="submit"
+                  class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
+            Add Module
+          </button>
+        </form>
+      </div>
+    
+      <!-- Delete Module -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4"> Delete Module</h3>
+        <form method="post" action="delete-module" id="deleteModuleForm">          
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="moduleSelectToDelete" class="block text-gray-700 font-medium mb-2">Select Module</label>
+            <select class="form-control" id="moduleSelectToDelete" name="module_id" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" required>
+                   
+              <!-- Populate options dynamically -->
+            </select>
+          </div>
+          <button type="submit"
+                  class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition duration-200">
+            Delete Module
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="Manage_submodules" class="section hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4"> Manage Submodules</h2>
+    
+      <!-- Add Submodule -->
+      <div class="bg-white p-6 rounded shadow mb-6">
+        <h3 class="text-lg font-semibold mb-4"> Add Submodule</h3>
+        <form method="post" action="add-submodule">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="moduleSelect" class="block text-gray-700 font-medium mb-2">Select Module</label>
+            <select id="moduleSelect" name="module_id" required
+                    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <!-- Dynamically filled -->
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="submoduleName" class="block text-gray-700 font-medium mb-2">Submodule Name</label>
+            <input type="text" id="submoduleName" name="submodule_name" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <button type="submit"
+                  class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
+            Add Submodule
+          </button>
+        </form>
+      </div>
+    
+      <!-- Delete Submodule -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4"> Delete Submodule</h3>
+        <form method="post" action="delete-submodule">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="submoduleSelectDelete" class="block text-gray-700 font-medium mb-2">Select Submodule</label>
+            <select id="submoduleSelectDelete" name="submodule_id" required
+                    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+              <!-- Dynamically filled -->
+            </select>
+          </div>
+          <button type="submit"
+                  class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition duration-200">
+            Delete Submodule
+          </button>
+        </form>
+      </div>
+    </div>
+    
+
+    <div id="Manage_logicblocks" class="section hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4"> Manage Logic Blocks</h2>
+    
+      <!-- Add Logic Block -->
+      <div class="bg-white p-6 rounded shadow mb-8">
+        <h3 class="text-lg font-semibold mb-4"> Add Logic Block</h3>
+        <form method="post" action="save_logic_block_details">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="moduleSelect1" class="block text-gray-700 font-medium mb-2">Select Module</label>
+            <select id="moduleSelect1" name="module_id" required onchange="showSubModules(this.value)"
+                    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </select>
+          </div>
+    
+          <div class="mb-4">
+            <label for="submoduleSelect" class="block text-gray-700 font-medium mb-2">Select Submodule</label>
+            <select id="submoduleSelect" name="submodule_id" required
+                    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </select>
+          </div>
+    
+          <div class="mb-4">
+            <label for="logicBlockName" class="block text-gray-700 font-medium mb-2">Logic Block Name</label>
+            <input type="text" id="logicBlockName" name="logic_block_name" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter Logic Block Name">
+          </div>
+    
+          <div class="mb-4">
+            <label for="logicBlockType" class="block text-gray-700 font-medium mb-2">Logic Block Type</label>
+            <input type="text" id="logicBlockType" name="logic_block_type" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter Logic Block Type">
+          </div>
+    
+          <div class="mb-6">
+            <label for="logicBlockMode" class="block text-gray-700 font-medium mb-2">Logic Block Mode</label>
+            <input type="text" id="logicBlockMode" name="logic_block_mode" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter Logic Block Mode">
+          </div>
+    
+          <button type="submit"
+                  class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
+            Save Logic Block Details
+          </button>
+        </form>
+      </div>
+    
+      <!-- Delete Logic Block -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4"> Delete Logic Block</h3>
+        <form method="POST" action="remove_logic_block">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="deleteLogicBlockSelect" class="block text-gray-700 font-medium mb-2">Select Logic Block</label>
+            <select id="deleteLogicBlockSelect" name="logic_block_id" required
+                    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+              <!-- Logic blocks dynamically populated -->
+            </select>
+          </div>
+          <button type="submit"
+                  class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition duration-200">
+            Delete Logic Block
+          </button>
+        </form>
+      </div>
+    </div>
+    
+
+    <div id="Manage_code" class="section hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4"> Manage Block Input Output & Code</h2>
+    
+      <!-- Enter Block Inputs, Code and Outputs -->
+      <div class="bg-white p-6 rounded shadow mb-8">
+        <h3 class="text-lg font-semibold mb-4"> Enter Block Inputs, Code, and Outputs</h3>
+        <form id="BlockICOForm">
+          <div class="mb-4">
+            <label for="blockSelectICO" class="block text-gray-700 font-medium mb-2">Select Block</label>
+            <select class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    id="blockSelectICO" name="block-name" required>
+              <!-- Dynamically populate this list with block options -->
+            </select>
+          </div>
+          <div class="flex gap-4 flex-wrap">
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="blockInputsBtn"
+                    onclick="getInputsFromUserLBUI('blockSelectICO')">Enter Inputs</button>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="blockCodeBtn"
+                    onclick="getCodeEditorUserLBUI('blockSelectICO')">Enter Code</button>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="blockOutputsBtn"
+                    onclick="getOutputsFromUserLBUI('blockSelectICO')">Enter Outputs</button>
+          </div>
+        </form>
+      </div>
+    
+      <!-- Edit Block Inputs, Code, Outputs -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Edit Block Inputs, Code, Outputs</h3>
+        <form id="editBlockICOForm">
+          <div class="mb-4">
+            <label for="editblockSelectICO" class="block text-gray-700 font-medium mb-2">Select Block</label>
+            <select class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    id="editblockSelectICO" name="block_id" required>
+              <!-- Dynamically populate this list with block options -->
+            </select>
+          </div>
+          <div class="flex gap-4 flex-wrap">
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="editInputBtn"
+                    onclick="editBlockInputs('editblockSelectICO')">Edit Inputs</button>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="editCodeBtn"
+                    onclick="get_edit_block_code_editor_ui('editblockSelectICO')">Edit Code</button>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" id="editOutputBtn"
+                    onclick="editBlockOutputs('editblockSelectICO')">Edit Outputs</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="Publish" class="section hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4"> Publish Block</h2>
+    
+    
+      <!-- Publish Block -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Publish Block</h3>
+        <form id="publishBlock">
+          <div class="mb-4">
+            <label for="blockSelectPublish" class="block text-gray-700 font-medium mb-2">Select Block</label>
+            <select class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    id="blockSelectPublish" name="block_id" required>
+              <!-- Dynamically populate this list with block options -->
+            </select>
+          </div>
+          <button type="button" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition duration-200" 
+                  id="editCodeBtn" onclick="publish_block('blockSelectPublish')">
+            Publish
+          </button>
+        </form>
+      </div>
+    </div>
+    
+  </main>
+
+</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+      .nav-button.active {
+        border-left: 4px solid #3B82F6; /* blue-500 */
+        background-color: #374151; /* gray-700 */
+      }
+    </style>
+    <script>
+      function showSection(sectionId) {
+        // Show/Hide Sections
+        document.querySelectorAll('.section').forEach(section => {
+          section.style.display = section.id === sectionId ? 'block' : 'none';
+        });
+    
+        // Set Active Button
+        document.querySelectorAll('.nav-button').forEach(btn => {
+          if (btn.getAttribute('data-section') === sectionId) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    </script>
+</html>
+

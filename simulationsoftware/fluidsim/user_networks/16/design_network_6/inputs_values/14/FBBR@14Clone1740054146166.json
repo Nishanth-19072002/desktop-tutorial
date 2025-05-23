@@ -1,0 +1,85 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Flow",
+            "unit": "kld",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Flow(kld)"
+        },
+        {
+            "param_name": "BOD_in",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD_in(mg/l)"
+        },
+        {
+            "param_name": "BOD_removal",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD_removal(%)"
+        },
+        {
+            "param_name": "protected_surafe_area",
+            "unit": "m2/m3",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "protected_surafe_area(m2/m3)"
+        },
+        {
+            "param_name": "surface_area_of_MBBR_media",
+            "unit": "m2/m3",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "surface_area_of_MBBR_media(m2/m3)"
+        },
+        {
+            "param_name": "no_of_pieces_per_cum",
+            "unit": "per_m3",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "no_of_pieces_per_cum(per_m3)"
+        },
+        {
+            "param_name": "Loading_rates",
+            "unit": "kg_BOD/m3.d",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Loading_rates(kg_BOD/m3.d)"
+        },
+        {
+            "param_name": "fill_range_of_media_percent",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "fill_range_of_media_percent(%)"
+        },
+        {
+            "param_name": "adopting_a_HRT",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "FBBR.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "adopting_a_HRT(hrs)"
+        }
+    ]
+}

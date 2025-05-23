@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Concentration",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "Hypo_Dosing.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Concentration(%)"
+        },
+        {
+            "param_name": "Flow_rate",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "Hypo_Dosing.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Flow_rate(KLD)"
+        },
+        {
+            "param_name": "Working_hours_per_day",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "Hypo_Dosing.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Working_hours_per_day(hrs)"
+        },
+        {
+            "param_name": "Dosage",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "Hypo_Dosing.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Dosage(mg/l)"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Assume_pumping_time",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "Secondary_Clarifier.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assume_pumping_time(h)"
+        },
+        {
+            "param_name": "Design_Overflow_rate",
+            "unit": "Cum/Sqm/day",
+            "val_from": "excel",
+            "excel_file": "Secondary_Clarifier.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Design_Overflow_rate(Cum/Sqm/day)"
+        },
+        {
+            "param_name": "Depth_of_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "Secondary_Clarifier.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_tank(m)"
+        },
+        {
+            "param_name": "Solids_loading_rate",
+            "unit": "kg/m3/h",
+            "val_from": "excel",
+            "excel_file": "Secondary_Clarifier.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Solids_loading_rate(kg/m3/h)"
+        },
+        {
+            "param_name": "Length",
+            "unit": "m",
+            "val_from": "previous",
+            "previous_block": "SHT@16Clone1739862528720",
+            "previous_block_proxy": "SHT-1",
+            "dependent": true,
+            "previous_block_output": "54",
+            "previous_block_output_proxy": "Volume_of_sludge_holding_tank(cum)"
+        },
+        {
+            "param_name": "Average_Flow_in_each_tank",
+            "unit": "cum/day",
+            "val_from": "previous",
+            "previous_block": "TWT@19Clone1739870633391",
+            "previous_block_proxy": "TWT-1",
+            "dependent": true,
+            "previous_block_output": "67",
+            "previous_block_output_proxy": "Width(m)"
+        }
+    ]
+}

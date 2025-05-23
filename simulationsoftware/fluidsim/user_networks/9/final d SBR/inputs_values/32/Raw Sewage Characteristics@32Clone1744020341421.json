@@ -1,0 +1,76 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Assumed_Peak_Factor",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_Peak_Factor(nil)"
+        },
+        {
+            "param_name": "COD",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "COD(mg/Lt)"
+        },
+        {
+            "param_name": "BOD",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD(mg/Lt)"
+        },
+        {
+            "param_name": "TSS",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "TSS(mg/Lt)"
+        },
+        {
+            "param_name": "TKN",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "TKN(mg/Lt)"
+        },
+        {
+            "param_name": "TP",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "TP(mg/Lt)"
+        },
+        {
+            "param_name": "pH",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "pH(nil)"
+        },
+        {
+            "param_name": "Average_Sewage_flow_entering ",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "Raw_sewage_characteristics.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_Sewage_flow_entering(KLD)"
+        }
+    ]
+}

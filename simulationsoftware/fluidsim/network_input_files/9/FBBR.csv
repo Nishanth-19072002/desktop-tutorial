@@ -1,0 +1,3 @@
+Flow(kld),BOD_in(mg/l),BOD_removal(%),surface_area_of_MBBR_media(m2/m3),no_of_pieces_per_cum(per_m3),protected_surafe_area(m2/m3),Loading_rates(kg_BOD/m3.d),fill_range_of_media_percent(%),adopting_a_HRT(hrs)
+40,400,95,500,75500,350,7,39,4
+34,678,23,543,75500,34,7,39,4

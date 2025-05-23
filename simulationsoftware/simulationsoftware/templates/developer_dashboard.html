@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+{% load custom_filters %} 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Developer Access Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+  </script>
+  <script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  </script>
+
+</head>
+
+<body class="flex h-screen bg-gray-100 font-sans">
+
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-900 text-white flex flex-col">
+
+    <div class="p-6 text-2xl font-bold text-center border-b border-gray-700">
+       Developer Panel
+    </div>
+      <!-- User Profile + Dropdown -->
+    <div class="relative px-6 py-4 border-b border-gray-700">
+      <!-- Toggle Button -->
+      <button onclick="toggleUserDropdown()" class="w-full flex items-center space-x-3 focus:outline-none">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" class="w-8 h-8 rounded-full border border-gray-500" />
+        <span>{{ user.username }}</span>
+        <!-- Dropdown arrow icon -->
+        <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <!-- Dropdown Menu -->
+      <div id="userDropdown" class="hidden absolute left-6 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg z-50">
+        <form action="{% url 'logout' %}" method="post" class="block w-full">
+          {% csrf_token %}
+          <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <nav class="flex-1 p-4 space-y-2">
+      <button data-section="permissions" onclick="showSection('permissions')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Assign Permissions</button>
+      <button data-section="users" onclick="showSection('users')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Create Groups</button>
+      <button data-section="create" onclick="showSection('create')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Create User ID, Password & Manage Groups</button>
+      <button onclick="window.location.href='/admin_panel/'" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Admin Panel</button>
+      <button onclick="window.location.href='/project/'" class="w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Design Network</button>
+      <button data-section="share" onclick="showSection('share')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Projects</button>
+      <button data-section="networks" onclick="showSection('networks')" class="nav-button w-full text-left px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded">Manage Networks</button>
+
+    </nav>
+    <div class="p-4 border-t border-gray-700 text-sm text-gray-400 text-center">
+       XP Simulation &copy; 2025
+    </div>
+    
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-10 overflow-y-auto">
+    
+    <!-- Permissions Section -->
+    <section id="permissions" class="section">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Assign Permissions</h2>
+      <div class="bg-white p-6 rounded-xl shadow mt-6">
+        <h3 class="text-lg font-semibold mb-2">User Access Overview</h3>
+        <table class="w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 text-left">Username</th>
+              <th class="p-2 text-left">Groups</th>
+              <th class="p-2 text-left">Module & Submodule visibility Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr class="border-t">
+              <td class="p-2">{{ user.username }}</td>
+              <td class="p-2">
+                {% for group in user.groups.all %}
+                <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+                {% empty %}
+                <span class="text-gray-400 text-sm">No group</span>
+                {% endfor %}
+              </td>
+              <td class="p-2">
+                <button onclick="togglePanel('module-{{ user.id }}')" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                  Module & Submodule Visibility
+                </button>
+                {% comment %} <button onclick="togglePanel('submodule-{{ user.id }}')" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700 ms-3">
+                  Submodule Visibility
+                </button> {% endcomment %}
+              </td>
+            </tr>
+    
+            <!-- Module Panel -->
+            <tr id="module-{{ user.id }}" class="hidden">
+              <td colspan="3" class="p-4 bg-gray-100">
+                <h4 class="text-md font-semibold text-gray-700 mb-2">
+                  Set Modules for <strong>{{ user.username }}</strong>:
+                </h4>
+                <form method="POST" action="{% url 'set_user_visibility' user.id %}">
+                  {% csrf_token %}
+                  <div class="grid grid-cols-2 gap-4">
+                    {% for module in modules_data %}
+                      <div class="p-2 border rounded">
+                        <label class="flex items-center">
+                          <input type="checkbox" name="modules" value="{{ module.id }}"
+                            {% if module.id in user_module_map|get_item:user.id %}checked{% endif %} class="checkbox-module">
+                          <span class="ml-2 font-bold">{{ module.name }}</span>
+                        </label>
+            
+                        <!-- Display submodules related to this module -->
+                        {% if module.submodules %}
+                        <div class="ml-6 mt-2">
+                          {% for sub in module.submodules %}
+                            <label class="flex items-center text-sm text-gray-600">
+                              <input type="checkbox" name="submodules" value="{{ sub.id }}"
+                                {% if sub.id in user_submodule_map|get_item:user.id %}checked{% endif %} class="checkbox-submodule">
+                              <span class="ml-2">{{ sub.name }} - ({{ module.name }})</span>
+                            </label>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                    Save
+                  </button>
+                </form>
+              </td>
+            </tr>
+    
+            {% comment %} <!-- Submodule Panel -->
+            <tr id="submodule-{{ user.id }}" class="hidden">
+              <td colspan="3" class="p-4 bg-blue-50">
+                <h4 class="text-md font-semibold text-gray-700 mb-2">
+                  Set Submodules for <strong>{{ user.username }}</strong>:
+                </h4>
+                <form method="POST" action="{% url 'set_user_visibility' user.id %}">
+                  {% csrf_token %}
+                  <div class="grid grid-cols-2 gap-4">
+                    {% for module in modules_data %}
+                      {% for sub in module.submodules %}
+                        <label class="flex items-center text-sm text-gray-600">
+                          <input type="checkbox" name="submodules" value="{{ sub.id }}"
+                            {% if sub.id in user_submodule_map|get_item:user.id %}checked{% endif %}>
+                          <span class="ml-2">{{ sub.name }} - ({{ module.name }})</span>
+                        </label>
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                  <button type="submit" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+                    Save
+                  </button>
+                </form>
+              </td>
+            </tr> {% endcomment %}
+    
+            {% empty %}
+            <tr>
+              <td colspan="3" class="p-2 text-gray-500">No users found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+
+    <!-- Users Section -->
+    <section id="users" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Manage Groups</h2>
+
+      <!-- Create Group -->
+      <form method="POST" action="{% url 'groups' %}" class="bg-white p-6 rounded-xl shadow mb-6">
+        {% csrf_token %}
+        <label class="block font-semibold mb-2"> Create New Group:</label>
+        <input type="text" name="group_name" class="border p-2 rounded w-full mb-4" required>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Create Group</button>
+      </form>
+
+      <!-- Users Table -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <table class="w-full table-auto">
+          <thead>
+          <strong><h3 class="bg-gray-200">Groups</h3></strong>
+          </thead>
+          <tbody>
+            {% for group in groups %}
+            <tr class="border-t">
+              <td class="p-2">{{ group.name }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td class="p-2 text-gray-500">No groups found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>  
+      </div> 
+    </section>
+
+    <!-- Create User Section -->
+    <section id="create" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Create User ID & Password</h2>
+      <form method="POST" action="{% url 'userss' %}"  class="bg-white p-6 rounded-xl shadow">
+        {% csrf_token %}
+        <label class="block font-semibold mb-1">Username</label>
+        <input type="text" name="username" class="border p-2 rounded w-full mb-4" required>
+
+        <label class="block font-semibold mb-1">Password</label>
+        <input type="password" name="password" class="border p-2 rounded w-full mb-4" required>
+
+        <label class="block font-semibold mb-1">Assign to Group</label>
+        <select name="group" class="border p-2 rounded w-full mb-4">
+          {% for group in groups %}
+
+            {% if group.name != "Developer" %}
+              <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create User</button>
+      </form>
+      <div class="bg-white p-6 rounded-xl shadow mt-6">
+        <h3 class="text-lg font-semibold mb-2">Existing Users</h3>
+        <table class="w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 text-left">Username</th>
+              <th class="p-2 text-left">Groups</th>
+              <th class="p-2 text-left">Groups Management</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr class="border-t">
+              <td class="p-2">{{ user.username }}</td>
+              <td class="p-2">
+                {% for group in user.groups.all %}
+                <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+                {% empty %}
+                <span class="text-gray-400 text-sm">No group</span>
+                {% endfor %}
+              </td>
+              <td class="p-2">
+                <form method="POST" action="{% url 'change_user_group' user.id %}">
+                  {% csrf_token %}
+                  <select name="group" class="border p-1 rounded">
+                    {% for group in groups %}
+                      {% if group.name != "Developer" %}
+                        <option value="{{ group.id }}"
+                          {% if group in user.groups.all %}selected{% endif %}>
+                          {{ group.name }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="ml-2 bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">
+                    Change
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="2" class="p-2 text-gray-500">No users found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="share" class="section  hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Manage Projects</h2>
+    
+      <h3 class="text-lg font-semibold mb-2">User Projects Overview</h3>
+      <table class="w-full table-auto">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 text-left">Username</th>
+            <th class="p-2 text-left">Groups</th>
+            <th class="p-2 text-left">Projects</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr class="border-t">
+            <td class="p-2">{{ user.username }}</td>
+            <td class="p-2">
+              {% for group in user.groups.all %}
+              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+              {% empty %}
+              <span class="text-gray-400 text-sm">No group</span>
+              {% endfor %}
+            </td>
+            
+            <td class="p-2">
+              <button onclick="showProjects('{{ user.id }}', this)" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700">Share projects</button>
+            </td>
+            </tr>
+            
+            <!-- Network display row -->
+            <tr class="network-row hidden">
+              <td colspan="3" class="p-2 bg-gray-50">
+                <div id="networks-{{ user.id }}" class="text-sm text-gray-700">
+                  <!-- JS will populate this -->
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+
+    <section id="networks" class="section  hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Manage Networks</h2>
+    
+      <h3 class="text-lg font-semibold mb-2">User networks Overview</h3>
+      <table class="w-full table-auto">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 text-left">Username</th>
+            <th class="p-2 text-left">Groups</th>
+            <th class="p-2 text-left">Networks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr class="border-t">
+            <td class="p-2">{{ user.username }}</td>
+            <td class="p-2">
+              {% for group in user.groups.all %}
+              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm">{{ group.name }}</span>
+              {% empty %}
+              <span class="text-gray-400 text-sm">No group</span>
+              {% endfor %}
+            </td>
+            
+            <td class="p-2">
+              <button onclick="seleproject('{{ user.id }}', this)" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-indigo-700">Select projects</button>
+            </td>
+            </tr>
+            
+            <!-- Network display row -->
+            <tr class="network-row hidden">
+              <td colspan="3">
+                <div id="select-container-{{ user.id }}" class="mt-2"></div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+
+
+    <!-- Push File Modal -->
+    <!-- Modal -->
+    <div id="pushModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+        <h2 class="text-lg font-semibold mb-4">Push File to Another Project</h2>
+        <input type="hidden" id="push-source-user-id">
+        <input type="hidden" id="push-file-name">
+        <input type="hidden" id="push-project-id">
+
+        <label class="block mb-2 text-sm">Select User:</label>
+        <select id="push-user-select" class="w-full p-2 border rounded mb-4" onchange="loadUserProjects(this.value)">
+          <option value="">-- Choose User --</option>
+        </select>
+
+        <label class="block mb-2 text-sm">Select Project:</label>
+        <select id="push-project-select" class="w-full p-2 border rounded mb-4"></select>
+
+        <label class="block mb-2 text-sm">Select Category:</label>
+        <select id="push-category-select" class="w-full p-2 border rounded mb-4">
+          <option value="Controllers">Controllers</option>
+          <option value="Design">Design</option>
+          <option value="Lifing">Lifing</option>
+          <option value="Performance">Performance</option>
+          <option value="Prognostics">Prognostics</option>
+        </select>
+
+        <label class="block mb-2 text-sm">Select Net Type:</label>
+        <select id="push-net-type-select" class="w-full p-2 border rounded mb-4">
+          <option value="1D">1D</option>
+          <option value="2D">2D</option>
+          <option value="3D">3D</option>
+        </select>
+
+        <div class="flex justify-end gap-2">
+          <button onclick="submitPush()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Push</button>
+          <button onclick="closePushModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="deleteConfirmModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+        <h2 class="text-lg font-semibold mb-4 text-red-700">Confirm Project Deletion</h2>
+        <p class="text-gray-700 mb-4">
+          Are you sure you want to delete this project? This action <strong>cannot be undone</strong>.
+        </p>
+        <div class="flex justify-end">
+          <button onclick="closeDeleteModal()" class="mr-3 px-4 py-2 rounded text-sm bg-gray-300 hover:bg-gray-400">Cancel</button>
+          <button id="confirmDeleteBtn" class="px-4 py-2 rounded text-sm bg-red-600 hover:bg-red-700 text-white">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="deleteNetworkModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+        <h2 class="text-lg font-semibold mb-4">Confirm Delete</h2>
+        <p class="mb-4 text-gray-700">
+          Are you sure you want to delete this network file? <br />
+          <strong>This action cannot be undone.</strong>
+        </p>
+        <input type="hidden" id="delete-network-user-id">
+        <input type="hidden" id="delete-network-project-id">
+        <input type="hidden" id="delete-network-category">
+        <input type="hidden" id="delete-network-nettype">
+        <input type="hidden" id="delete-network-filename">
+
+        <div class="flex justify-end gap-2">
+          <button class="px-3 py-1 bg-gray-400 text-white rounded" onclick="closeDeleteNetworkModal()">Cancel</button>
+          <button id="confirmDeleteNetworkBtn" class="px-3 py-1 bg-red-600 text-white rounded">Delete</button>
+        </div>
+      </div>
+    </div>
+        
+
+
+    
+    
+
+  </main>
+</body>
+
+<script>
+
+let deleteUserId = null;
+let deleteProjectId = null;
+
+function deleteProject(userId, projectId) {
+  // Store ids for use after confirmation
+  deleteUserId = userId;
+  deleteProjectId = projectId;
+
+  // Show the modal
+  document.getElementById("deleteConfirmModal").classList.remove("hidden");
+}
+
+function closeDeleteModal() {
+  document.getElementById("deleteConfirmModal").classList.add("hidden");
+  deleteUserId = null;
+  deleteProjectId = null;
+}
+document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
+  if (deleteUserId && deleteProjectId) {
+    fetch(`/delete-project/${deleteUserId}/${deleteProjectId}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')  
+      },
+      body: JSON.stringify({})
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to delete");
+      return res.json();
+    })
+    .then(data => {
+      alert(data.message || "Project deleted.");
+      closeDeleteModal();
+      location.reload();
+    })
+    .catch(err => {
+      alert("Error deleting project.");
+      console.error(err);
+    });
+  }
+});
+
+// Helper function to read CSRF token from cookies
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      cookie = cookie.trim();
+      if (cookie.startsWith(name + '=')) {
+        cookieValue = decodeURIComponent(cookie.slice(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+</script>
+<script>
+  window.allUsers = [
+    {% for u in users %}
+      { id: {{ u.id }}, username: "{{ u.username|escapejs }}" }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ];
+</script>
+
+<script>
+  function seleproject(userId, button) {
+    const container = document.getElementById(`select-container-${userId}`);
+    const row = container.closest(".network-row");
+
+    if (!row.classList.contains("hidden")) {
+      row.classList.add("hidden");
+      button.textContent = "Select projects";
+      return;
+    }
+
+    container.innerHTML = "Loading...";
+
+    fetch(`/project-structure/${userId}/`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.structure.length === 0) {
+          container.innerHTML = "<div class='text-gray-400'>No projects found.</div>";
+        } else {
+          container.innerHTML = data.structure.map(project => `
+            <div class="border p-2 mb-2 bg-white shadow rounded">
+              <div class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center" onclick="toggleNext(this)">
+                📁 ${project.project_name}
+                <span class="text-sm text-gray-500">(Click to expand)</span>
+              </div>
+              <div class="ml-4 mt-2 hidden">
+                ${project.categories.map(category => `
+                  <div class="mb-2">
+                    <div class="font-medium text-gray-700 cursor-pointer flex justify-between items-center" onclick="toggleNext(this)">
+                      📂 ${category.category_name}
+                      <span class="text-sm text-gray-400">Category</span>
+                    </div>
+                    <div class="ml-4 mt-1 hidden">
+                      ${category.net_types.map(net => `
+                        <div class="mb-1">
+                          <div class="cursor-pointer font-normal text-gray-600 flex justify-between items-center" onclick="toggleNext(this)">
+                            🧩 ${net.net_type}
+                            <span class="text-xs text-gray-400">Net Type</span>
+                          </div>
+                          <div class="ml-4 mt-1 hidden text-sm text-gray-700">
+                            ${net.files.length === 0
+                              ? "<div class='italic text-gray-400'>No files</div>"
+                              : net.files.map(f => `
+                                  <div class="flex items-center justify-between mb-1">
+                                    📄 ${f}
+                                    <div class="flex gap-2">
+                                    <button class="bg-green-600 text-white text-xs px-2 py-1 rounded" onclick="openPushModal(${userId}, '${f}', ${project.project_id})")">Push</button>
+                                    <button class="bg-red-600 text-white text-xs px-2 py-1 rounded" onclick="openDeleteNetworkModal(${userId}, ${project.project_id}, '${category.category_name}', '${net.net_type}', '${f}')">Delete </button>
+                                    </div>
+                                  </div>`).join("")
+                            }
+                          </div>
+                        </div>
+                      `).join("")}
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `).join("");
+        }
+
+        row.classList.remove("hidden");
+        button.textContent = "Hide projects";
+      })
+      .catch(() => {
+        container.innerHTML = "<div class='text-red-500'>Failed to load project structure.</div>";
+        row.classList.remove("hidden");
+      });
+  }
+
+function openDeleteNetworkModal(userId, projectId, category, netType, fileName) {
+  document.getElementById("delete-network-user-id").value = userId;
+  document.getElementById("delete-network-project-id").value = projectId;
+  document.getElementById("delete-network-category").value = category;
+  document.getElementById("delete-network-nettype").value = netType;
+  document.getElementById("delete-network-filename").value = fileName;
+
+  document.getElementById("deleteNetworkModal").classList.remove("hidden");
+}
+
+function closeDeleteNetworkModal() {
+  document.getElementById("deleteNetworkModal").classList.add("hidden");
+}
+
+document.getElementById("confirmDeleteNetworkBtn").addEventListener("click", () => {
+  const userId = document.getElementById("delete-network-user-id").value;
+  const projectId = document.getElementById("delete-network-project-id").value;
+  const category = document.getElementById("delete-network-category").value;
+  const netType = document.getElementById("delete-network-nettype").value;
+  const fileName = document.getElementById("delete-network-filename").value;
+
+  fetch(`/delete-network/${userId}/${projectId}/${category}/${netType}/${fileName}/`, {
+    method: "DELETE",
+    headers: {
+      'X-CSRFToken': getCSRFToken(),  // Make sure to include your CSRF token
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || "Deleted");
+      closeDeleteNetworkModal();
+      location.reload();
+    })
+    .catch(err => {
+      alert("Error deleting network.");
+      console.error(err);
+    });
+});
+
+
+
+function toggleNext(element) {
+  const next = element.nextElementSibling;
+  if (next) {
+    next.classList.toggle("hidden");
+  }
+}
+
+let allUsers = [];  
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/get-all-users/")
+    .then((res) => res.json())
+    .then((data) => {
+      allUsers = data.users;
+
+      // Populate the user dropdown after fetching users
+      const userSelect = document.getElementById("push-user-select");
+      userSelect.innerHTML =
+        '<option value="">-- Choose User --</option>' +
+        allUsers.map(u => `<option value="${u.id}">${u.username}</option>`).join('');
+    })
+    .catch((err) => {
+      console.error("Failed to fetch users", err);
+    });
+});
+
+function openPushModal(sourceUserId, fileName, sourceProjectId) {
+  document.getElementById("push-source-user-id").value = sourceUserId;
+  document.getElementById("push-file-name").value = fileName;
+  document.getElementById("push-project-id").value = sourceProjectId;
+
+  const userSelect = document.getElementById("push-user-select");
+  userSelect.innerHTML = `<option value="">-- Choose User --</option>` +
+    allUsers.map(u => `<option value="${u.id}">${u.username}</option>`).join("")
+
+  document.getElementById("push-project-select").innerHTML = "";
+  document.getElementById("pushModal").classList.remove("hidden");
+}
+
+function closePushModal() {
+  document.getElementById("pushModal").classList.add("hidden");
+}
+
+function loadUserProjects(userId) {
+  const sourceProjectId = document.getElementById("push-project-id").value; // Get the source project ID
+
+  fetch(`/get-user-projects/${userId}/`)
+    .then(res => res.json())
+    .then(data => {
+      const projectSelect = document.getElementById("push-project-select");
+      projectSelect.innerHTML = data.projects
+        .filter(p => p.id != sourceProjectId)  // Exclude the source project
+        .map(p => `<option value="${p.id}">${p.project_name}</option>`)
+        .join("");
+    });
+}
+function submitPush(action = null) {
+  const sourceUserId = document.getElementById("push-source-user-id").value;
+  const fileName = document.getElementById("push-file-name").value;
+  const sourceprojectId = document.getElementById("push-project-id").value;
+  const targetUserId = document.getElementById("push-user-select").value;
+  const projectId = document.getElementById("push-project-select").value;
+  const categoryType = document.getElementById("push-category-select").value;
+  const netType = document.getElementById("push-net-type-select").value;
+
+  if (!targetUserId || !projectId || !categoryType || !netType) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const payload = {
+    source_user_id: sourceUserId,
+    source_prj_id: sourceprojectId,
+    target_user_id: targetUserId,
+    file_name: fileName,
+    project_id: projectId,
+    category_type: categoryType,
+    net_type: netType
+  };
+
+  if (action) {
+    payload.action = action;
+  }
+
+  fetch("/push-network/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-CSRFToken": getCSRFToken() },
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "exists") {
+        if (confirm(`A file named "${fileName}" already exists.\nClick OK to override it, or Cancel to create a new copy.`)) {
+          submitPush("override");
+        } else {
+          submitPush("create_new");
+        }
+      } else {
+        alert(data.message || "File pushed successfully.");
+        closePushModal();
+      }
+    })
+    .catch(() => alert("Failed to push file."));
+}
+function getCSRFToken() {
+  const match = document.cookie.match(/csrftoken=([\w-]+)/);
+  return match ? match[1] : "";
+}
+</script>
+
+
+ 
+
+
+<script>
+  function showProjects(userId, button) {
+    const containerId = `networks-${userId}`;
+    const container = document.getElementById(containerId);
+    const row = container.closest(".network-row");
+
+    if (!row.classList.contains("hidden")) {
+      row.classList.add("hidden");
+      button.textContent = "Show projects";
+      return;
+    }
+
+    container.innerHTML = "Loading...";
+
+    fetch(`/networks/${userId}/`)  // Endpoint should return projects
+      .then(res => res.json())
+      .then(data => {
+        if (data.projects.length === 0) {
+          container.innerHTML = "<div class='text-gray-400'>No projects found.</div>";
+        } else {
+          container.innerHTML = data.projects.map(project => `
+            <div class="flex items-center justify-between mb-2 p-2 border rounded bg-white shadow-sm">
+              <div class="font-medium text-gray-800">📁 ${project.project_name}</div>
+              <div class="flex items-center">
+                <select class="border px-2 py-1 rounded text-sm" id="share-to-${userId}-${project.project_id}">
+                  <option disabled selected value="">Select user</option>
+                  ${window.allUsers
+                    .filter(u => u.id != userId)
+                    .map(u => `<option value="${u.id}">${u.username}</option>`)
+                    .join("")}
+                </select>
+                <button
+                  onclick="shareProject(${userId}, ${project.project_id})"
+                  class="ml-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded">
+                  Share
+                </button>
+                <button
+                  onclick="deleteProject(${userId}, ${project.project_id})"
+                  class="ml-2 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded">
+                  Delete
+                </button>
+
+              </div>
+            </div>
+          `).join("");
+        }
+
+        row.classList.remove("hidden");
+        button.textContent = "Hide projects";
+      })
+      .catch(() => {
+        container.innerHTML = "<div class='text-red-500'>Failed to load projects.</div>";
+        row.classList.remove("hidden");
+      });
+  }
+
+  function shareProject(userId, projectId) {
+    const select = document.getElementById(`share-to-${userId}-${projectId}`);
+    const targetUserId = select.value;
+
+    if (!targetUserId) {
+      alert("Please select a user to share with.");
+      return;
+    }
+
+    fetch("/share_project/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCSRFToken()
+      },
+      body: JSON.stringify({
+        project_id: projectId,
+        to_user_id: targetUserId
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Project shared successfully.");
+      })
+      .catch(() => {
+        alert("Failed to share project.");
+      });
+  }
+
+  function getCSRFToken() {
+    let match = document.cookie.match(/csrftoken=([\w-]+)/);
+    return match ? match[1] : "";
+  }
+</script>
+
+
+<script>
+  function togglePanel(id) {
+    const panel = document.getElementById(id);
+    panel.classList.toggle('hidden');
+  }
+</script>
+<script>
+  // Check the corresponding module when submodule is checked
+  const submoduleCheckboxes = document.querySelectorAll("input[name='submodules']");
+  
+  submoduleCheckboxes.forEach(submoduleCheckbox => {
+    submoduleCheckbox.addEventListener('change', (event) => {
+      const submoduleId = event.target.value;
+      const submodule = document.querySelector(`input[name="submodules"][value="${submoduleId}"]`);
+      const moduleId = submodule.closest('div').previousElementSibling.querySelector('input').value;  // Get the parent module ID
+      const moduleCheckbox = document.querySelector(`input[name="modules"][value="${moduleId}"]`);
+      
+      if (submodule.checked) {
+        moduleCheckbox.checked = true;
+      }
+    });
+  });
+</script>
+<script>
+  function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    dropdown.classList.toggle('hidden');
+  }
+
+  // Optional: Click outside to close the dropdown
+  window.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('userDropdown');
+    if (!e.target.closest('[onclick="toggleUserDropdown()"]') && !e.target.closest('#userDropdown')) {
+      dropdown.classList.add('hidden');
+    }
+  });
+</script>
+<script>
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+</script>
+<style>
+  /* Custom checkbox styling */
+  .checkbox-module:checked,
+  .checkbox-submodule:checked {
+    accent-color: #34D399; /* Green color for the checkbox tick */
+  }
+
+  /* Optional: Color change for the label text when checkbox is checked */
+  .checkbox-module:checked + span,
+  .checkbox-submodule:checked + span {
+    color: #34D399; /* Green color for the text */
+  }
+
+  /* Optional: Adjust background color when checkbox is checked */
+  .checkbox-module:checked {
+    background-color: #34D399; /* Green background */
+    border-color: #34D399;    /* Green border */
+  }
+
+  .checkbox-submodule:checked {
+    background-color: #34D399; /* Green background */
+    border-color: #34D399;    /* Green border */
+  }
+
+  /* Optional: Change text color of submodules and modules when checked */
+  .checkbox-module:checked + span,
+  .checkbox-submodule:checked + span {
+    color: #000; /* Green color */
+  }
+</style>
+<style>
+  .nav-button.active {
+    border-left: 4px solid #3B82F6; /* Tailwind's blue-500 */
+    background-color: #374151; /* Tailwind's gray-700 */
+  }
+</style>
+<script>
+  function showSection(sectionId) {
+    // Toggle visible content (your existing logic)
+    document.querySelectorAll('.section').forEach(section => {
+      section.style.display = section.id === sectionId ? 'block' : 'none';
+    });
+
+    // Highlight the active button
+    document.querySelectorAll('.nav-button').forEach(btn => {
+      if (btn.getAttribute('data-section') === sectionId) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+</script>
+
+
+</html>
+

@@ -1,0 +1,67 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Assumed_Depth_of_Liquid_column",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_Depth_of_Liquid_column(m)"
+        },
+        {
+            "param_name": "Length_to_Breadth_ratio",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Length_to_Breadth_ratio(nil)"
+        },
+        {
+            "param_name": "Air_mixing_rate_per_tank_volume",
+            "unit": "Nm3/h",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Air_mixing_rate_per_tank_volume(Nm3/h)"
+        },
+        {
+            "param_name": "Air_Flux_rate",
+            "unit": "m3/h",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Air_Flux_rate(m3/h)"
+        },
+        {
+            "param_name": "Peak_Flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Peak_Flow(Cum/day)"
+        },
+        {
+            "param_name": "No_of_Tanks_Proposed",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No_of_Tanks_Proposed(nil)"
+        },
+        {
+            "param_name": "Assumed_Detention_period",
+            "unit": "hours",
+            "val_from": "excel",
+            "excel_file": "equalization_tank.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Assumed_Detention_period(hours)"
+        }
+    ]
+}

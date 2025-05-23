@@ -1,0 +1,31 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Average_flow",
+            "unit": "Cum/day",
+            "val_from": "excel",
+            "excel_file": "FFP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_flow(Cum/day)"
+        },
+        {
+            "param_name": "Number_of_working_hours",
+            "unit": "hrs",
+            "val_from": "excel",
+            "excel_file": "FFP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Number_of_working_hours(hrs)"
+        },
+        {
+            "param_name": "Head_required",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "FFP.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Head_required(m)"
+        }
+    ]
+}

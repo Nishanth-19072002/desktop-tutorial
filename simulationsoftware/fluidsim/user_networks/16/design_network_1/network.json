@@ -1,0 +1,79 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "ET@12Clone1738927715841",
+            "blockName": "ET-1",
+            "blockTrueId": "12",
+            "left": "288px",
+            "top": "223px"
+        },
+        {
+            "blockId": "SC@11Clone1738927707338",
+            "blockName": "SC-2",
+            "blockTrueId": "11",
+            "left": "389.5px",
+            "top": "101px"
+        },
+        {
+            "blockId": "SC@11Clone1738927703380",
+            "blockName": "SC-1",
+            "blockTrueId": "11",
+            "left": "128.5px",
+            "top": "153px"
+        },
+        {
+            "blockId": "SC@11Clone1739260834898",
+            "blockName": "SC-3",
+            "blockTrueId": "11",
+            "left": "565.5px",
+            "top": "195px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 440,
+            "srcBlockId": "ET@12Clone1738927715841",
+            "destBlockId": "SC@11Clone1738927707338",
+            "startX": "343.0011076927185px",
+            "startY": "251.4921088218689px",
+            "endX": "385.996591091156px",
+            "endY": "129.48760747909546px"
+        },
+        {
+            "connection_id": 462,
+            "srcBlockId": "ET@12Clone1738927715841",
+            "destBlockId": "SC@11Clone1739260834898",
+            "startX": "343.0011076927185px",
+            "startY": "251.4921088218689px",
+            "endX": "561.9988493919373px",
+            "endY": "223.4966254234314px"
+        },
+        {
+            "connection_id": 463,
+            "srcBlockId": "SC@11Clone1738927707338",
+            "destBlockId": "SC@11Clone1739260834898",
+            "startX": "446.424569606781px",
+            "startY": "129.48760747909546px",
+            "endX": "561.9988493919373px",
+            "endY": "223.4966254234314px"
+        },
+        {
+            "connection_id": 441,
+            "srcBlockId": "SC@11Clone1738927703380",
+            "destBlockId": "SC@11Clone1738927707338",
+            "startX": "185.42228078842163px",
+            "startY": "181.4921088218689px",
+            "endX": "385.996591091156px",
+            "endY": "129.48760747909546px"
+        },
+        {
+            "connection_id": 439,
+            "srcBlockId": "SC@11Clone1738927703380",
+            "destBlockId": "ET@12Clone1738927715841",
+            "startX": "185.42228078842163px",
+            "startY": "181.4921088218689px",
+            "endX": "284.49884939193726px",
+            "endY": "251.4921088218689px"
+        }
+    ]
+}

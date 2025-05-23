@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Flow",
+            "unit": "Cum/h",
+            "val_from": "excel",
+            "excel_file": "centrate_collection_sump.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Flow(Cum/h)"
+        },
+        {
+            "param_name": "Detention_time",
+            "unit": "min",
+            "val_from": "excel",
+            "excel_file": "centrate_collection_sump.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Detention_time(min)"
+        },
+        {
+            "param_name": "Depth",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "centrate_collection_sump.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth(m)"
+        },
+        {
+            "param_name": "Width",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "centrate_collection_sump.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Width(m)"
+        }
+    ]
+}

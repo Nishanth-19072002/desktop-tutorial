@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_flow",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "screen_chamber(fine screens).xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Avg_flow(KLD)"
+        },
+        {
+            "param_name": "Detention_time",
+            "unit": "sec",
+            "val_from": "excel",
+            "excel_file": "screen_chamber(fine screens).xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Detention_time(sec)"
+        },
+        {
+            "param_name": "Depth_of_the_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "screen_chamber(fine screens).xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_the_tank(m)"
+        },
+        {
+            "param_name": "L:B",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "screen_chamber(fine screens).xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "L:B(m)"
+        }
+    ]
+}

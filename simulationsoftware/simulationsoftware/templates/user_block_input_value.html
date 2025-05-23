@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Configure Input Data</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="user-value-inputs" class="container-fluid mt-5 ">
+        <!-- Page Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h6 id="user-value-inputs-title" class="h5">Configure Input Data </h6>
+        </div>
+
+        <!-- Form Body -->
+        <form id="form-user-input-values">
+            <!-- Container for Dynamic Rows -->
+            <div id="fileColumnContainer">
+                <!-- Header Row -->
+                <div class="row font-weight-bold mb-2">
+                    <div class="col-md-2">Parameter Name</div>
+                    <div class="col-md-2">Unit</div>
+                    <div class="col-md-2">Input Value From</div>
+                    <div class="col-md-6">Value</div>
+                </div>
+
+                <!-- Inputs Container -->
+                <div id="inputs-container" class="mb-3">
+                    <!-- Dynamic rows will be appended here -->
+                </div>
+            </div>
+
+            <!-- Page Footer Buttons -->
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary me-2" onclick="save_block_input_values('inputs-container')">Save</button>
+                
+                <button type="button" class="btn btn-secondary" onclick="go_back_to_home()">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="user-initial-value-inputs" class="container-fluid mt-5 ">
+        <!-- Page Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h6 id="user-initial-value-inputs-title" class="h5">Configure Initial Input Data </h6>
+        </div>
+
+        <!-- Form Body -->
+        <form id="form-user-initial-input-values">
+            <!-- Container for Dynamic Rows -->
+            <div id="fileColumnContainer">
+                <!-- Header Row -->
+                <div class="row font-weight-bold mb-2">
+                    <div class="col-md-2">Parameter Name</div>
+                    <div class="col-md-2">Unit</div>
+                    <div class="col-md-2">Input Value From</div>
+                    <div class="col-md-6">Value</div>
+                </div>
+
+                <!-- Inputs Container -->
+                <div id="inputs-intial-container" class="mb-3">
+                    <!-- Dynamic rows will be appended here -->
+                </div>
+            </div>
+
+            <!-- Page Footer Buttons -->
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary me-2" onclick="save_block_input_values('inputs-intial-container')">Save</button>
+                <button type="button" class="btn btn-secondary" onclick="go_back_to_home()">Close</button>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/load_block_user_input.js"></script>
+</body>
+</html>

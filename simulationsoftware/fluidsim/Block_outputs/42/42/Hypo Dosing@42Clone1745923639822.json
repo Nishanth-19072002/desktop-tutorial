@@ -1,0 +1,11 @@
+{
+    "blockId": "Hypo Dosing@42Clone1745923639822",
+    "blockProxyName": "hd",
+    "outputs": [
+        {
+            "Concentration (mg/l)": 120000,
+            "Dosing volume per day (cum/day)": 0.016666666666666666,
+            "Dosing capacity (LPH)": 1.388888888888889
+        }
+    ]
+}

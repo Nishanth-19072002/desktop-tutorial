@@ -1,0 +1,40 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Avg_flow",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "oil_and_grease_trap.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Avg_flow(KLD)"
+        },
+        {
+            "param_name": "Detention_time",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "oil_and_grease_trap.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Detention_time(h)"
+        },
+        {
+            "param_name": "L:W",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "oil_and_grease_trap.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "L:W(nil)"
+        },
+        {
+            "param_name": "Depth_of_the_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "oil_and_grease_trap.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_the_tank(m)"
+        }
+    ]
+}

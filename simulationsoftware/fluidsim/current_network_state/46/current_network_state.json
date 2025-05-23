@@ -1,0 +1,29 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "Hypo Dosing@42Clone1746172689286",
+            "blockName": "hddd",
+            "blockTrueId": "42",
+            "left": "283px",
+            "top": "102px"
+        },
+        {
+            "blockId": "Screen Chamber (Fine Screens)@34Clone1746172698312",
+            "blockName": "sscc",
+            "blockTrueId": "34",
+            "left": "464px",
+            "top": "178px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 774,
+            "srcBlockId": "Hypo Dosing@42Clone1746172689286",
+            "destBlockId": "Screen Chamber (Fine Screens)@34Clone1746172698312",
+            "startX": "343.8249816894531px",
+            "startY": "130.50000381469727px",
+            "endX": "460.5000305175781px",
+            "endY": "206.50000381469727px"
+        }
+    ]
+}

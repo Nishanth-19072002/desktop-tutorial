@@ -1,0 +1,23 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Air_scouring_rate",
+            "unit": "m3/m2",
+            "val_from": "excel",
+            "excel_file": "air_scouring_blowers_for_DMF.xlsx",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Air_scouring_rate(m3/m2)"
+        },
+        {
+            "param_name": "Area_of_the_Filter_required",
+            "unit": "Sq.m",
+            "val_from": "previous",
+            "previous_block": "Dual Media Filter@44Clone1744629191233",
+            "previous_block_proxy": "dmf",
+            "dependent": true,
+            "previous_block_output": "402",
+            "previous_block_output_proxy": "Area_of_the_Filter_required(Sq.m)"
+        }
+    ]
+}

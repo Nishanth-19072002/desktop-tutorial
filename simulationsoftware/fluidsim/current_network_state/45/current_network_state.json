@@ -1,0 +1,45 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "Dual Media Filter@44Clone1746172092700",
+            "blockName": "ddmf",
+            "blockTrueId": "44",
+            "left": "185px",
+            "top": "270px"
+        },
+        {
+            "blockId": "Hypo Dosing@42Clone1746171446169",
+            "blockName": "hypd",
+            "blockTrueId": "42",
+            "left": "266px",
+            "top": "128px"
+        },
+        {
+            "blockId": "Screen Chamber (Fine Screens)@34Clone1746171456852",
+            "blockName": "scc",
+            "blockTrueId": "34",
+            "left": "447px",
+            "top": "251px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 772,
+            "srcBlockId": "Hypo Dosing@42Clone1746171446169",
+            "destBlockId": "Screen Chamber (Fine Screens)@34Clone1746171456852",
+            "startX": "325.1250305175781px",
+            "startY": "156.50000381469727px",
+            "endX": "443.5000305175781px",
+            "endY": "279.50000381469727px"
+        },
+        {
+            "connection_id": 773,
+            "srcBlockId": "Dual Media Filter@44Clone1746172092700",
+            "destBlockId": "Screen Chamber (Fine Screens)@34Clone1746171456852",
+            "startX": "246.13751220703125px",
+            "startY": "298.50000381469727px",
+            "endX": "443.5000305175781px",
+            "endY": "279.50000381469727px"
+        }
+    ]
+}

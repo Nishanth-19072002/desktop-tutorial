@@ -1,0 +1,13 @@
+{
+    "blockId": "Screen Chamber (Fine Screens)@34Clone1746171456852",
+    "blockProxyName": "scc",
+    "outputs": [
+        {
+            "Avg_flow(m3/h)": 16.666666666666668,
+            "Volume_of_tank(cum)": 1.1111111111111112,
+            "Area_of_the_tank(sqm)": 3.703703703703704,
+            "Width(m)": 0.6085806194501846,
+            "Length(m)": 6.085806194501846
+        }
+    ]
+}

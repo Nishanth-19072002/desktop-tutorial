@@ -1,0 +1,58 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Oxygen_Required_for_1_kg_BOD_removal",
+            "unit": "kg/day",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Oxygen_Required_for_1_kg_BOD_removal(kg/day)"
+        },
+        {
+            "param_name": "Actual_requirement_of_air",
+            "unit": "cum/hr",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Actual_requirement_of_air(cum/hr)"
+        },
+        {
+            "param_name": "No._of_working_blowers",
+            "unit": "nil",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "No._of_working_blowers(nil)"
+        },
+        {
+            "param_name": "Flow",
+            "unit": "kld",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Flow(kld)"
+        },
+        {
+            "param_name": "BOD_in",
+            "unit": "mg/l",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD_in(mg/l)"
+        },
+        {
+            "param_name": "Fine_bubble_diffuser_assumed_to_inject_oxygen_of",
+            "unit": "cum/hr",
+            "val_from": "excel",
+            "excel_file": "BC.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Fine_bubble_diffuser_assumed_to_inject_oxygen_of(cum/hr)"
+        }
+    ]
+}

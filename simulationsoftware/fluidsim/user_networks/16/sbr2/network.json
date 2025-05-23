@@ -1,0 +1,328 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "Air Scouring Blowers  for DMF@46Clone1744020308466",
+            "blockName": "air blowers for dmf",
+            "blockTrueId": "46",
+            "left": "337px",
+            "top": "422px"
+        },
+        {
+            "blockId": "Hypo Dosing@42Clone1744020116852",
+            "blockName": "hypodosing",
+            "blockTrueId": "42",
+            "left": "505px",
+            "top": "66px"
+        },
+        {
+            "blockId": "Dual Media Filter@44Clone1744020248760",
+            "blockName": "dualmediafilter",
+            "blockTrueId": "44",
+            "left": "1126px",
+            "top": "241px"
+        },
+        {
+            "blockId": "Raw Sewage Characteristics@32Clone1744020341421",
+            "blockName": "rawsewagecharacteristics",
+            "blockTrueId": "32",
+            "left": "27.5px",
+            "top": "72px"
+        },
+        {
+            "blockId": "Equalization Tank (Collection Chamber )@36Clone1744020681831",
+            "blockName": "equilization chamber",
+            "blockTrueId": "36",
+            "left": "236px",
+            "top": "336px"
+        },
+        {
+            "blockId": "Treated Water Tank@47Clone1744020393165",
+            "blockName": "treatedwatertank",
+            "blockTrueId": "47",
+            "left": "1060px",
+            "top": "368px"
+        },
+        {
+            "blockId": "Treated Sewage Characteristics@33Clone1744020584191",
+            "blockName": "treated sewage characteristics",
+            "blockTrueId": "33",
+            "left": "1065px",
+            "top": "593px"
+        },
+        {
+            "blockId": "Treated Water Transfer Pumps@48Clone1744020769221",
+            "blockName": "treated water transfer pumps",
+            "blockTrueId": "48",
+            "left": "1089px",
+            "top": "495px"
+        },
+        {
+            "blockId": "Sludge Wasting@39Clone1744020840673",
+            "blockName": "sludge wasting",
+            "blockTrueId": "39",
+            "left": "902px",
+            "top": "664px"
+        },
+        {
+            "blockId": "Centrate Collection sump@49Clone1744020934832",
+            "blockName": "centrate collection sump",
+            "blockTrueId": "49",
+            "left": "501px",
+            "top": "558px"
+        },
+        {
+            "blockId": "Raw Sewage Pumps@37Clone1744020724457",
+            "blockName": "raw sewage pump",
+            "blockTrueId": "37",
+            "left": "441px",
+            "top": "239px"
+        },
+        {
+            "blockId": "Filter feed Pumps@43Clone1744020222514",
+            "blockName": "filterfeedpump",
+            "blockTrueId": "43",
+            "left": "1000.5px",
+            "top": "145px"
+        },
+        {
+            "blockId": "DMF Backwash Pumps@45Clone1744021028292",
+            "blockName": "dmf backwash pump",
+            "blockTrueId": "45",
+            "left": "981.5px",
+            "top": "51px"
+        },
+        {
+            "blockId": "Dewatering Polyelectrolyte Dosing@50Clone1744020958133",
+            "blockName": "dewatering polyelectolyte dosing",
+            "blockTrueId": "50",
+            "left": "719.5px",
+            "top": "183px"
+        },
+        {
+            "blockId": "Sludge Holding Tank@40Clone1744020895446",
+            "blockName": "sludge holding tank",
+            "blockTrueId": "40",
+            "left": "722px",
+            "top": "611px"
+        },
+        {
+            "blockId": "Oil & Grease Trap@35Clone1744021116229",
+            "blockName": "oil and grease trap",
+            "blockTrueId": "35",
+            "left": "194px",
+            "top": "235px"
+        },
+        {
+            "blockId": "Screen Chamber (Fine Screens)@34Clone1744020643807",
+            "blockName": "screen chamber",
+            "blockTrueId": "34",
+            "left": "298px",
+            "top": "81px"
+        },
+        {
+            "blockId": "Chlorine Filter Feed Sump@52Clone1744020987154",
+            "blockName": "chlorine filter feed sump",
+            "blockTrueId": "52",
+            "left": "744px",
+            "top": "30px"
+        },
+        {
+            "blockId": "SBR Basin@38Clone1744021153376",
+            "blockName": "sbr basin",
+            "blockTrueId": "38",
+            "left": "650.5px",
+            "top": "324px"
+        }
+    ],
+    "connections_position": [
+        {
+            "connection_id": 627,
+            "srcBlockId": "Equalization Tank (Collection Chamber )@36Clone1744020681831",
+            "destBlockId": "SBR Basin@38Clone1744021153376",
+            "startX": "407.1625061035156px",
+            "startY": "364.50000381469727px",
+            "endX": "647.0000305175781px",
+            "endY": "352.50000381469727px"
+        },
+        {
+            "connection_id": 653,
+            "srcBlockId": "SBR Basin@38Clone1744021153376",
+            "destBlockId": "Dewatering Polyelectrolyte Dosing@50Clone1744020958133",
+            "startX": "737.4125061035156px",
+            "startY": "352.50000381469727px",
+            "endX": "716.0000305175781px",
+            "endY": "211.50000381469727px"
+        },
+        {
+            "connection_id": 652,
+            "srcBlockId": "Oil & Grease Trap@35Clone1744021116229",
+            "destBlockId": "Equalization Tank (Collection Chamber )@36Clone1744020681831",
+            "startX": "349.5749816894531px",
+            "startY": "263.50000381469727px",
+            "endX": "232.5px",
+            "endY": "364.50000381469727px"
+        },
+        {
+            "connection_id": 658,
+            "srcBlockId": "Filter feed Pumps@43Clone1744020222514",
+            "destBlockId": "Dual Media Filter@44Clone1744020248760",
+            "startX": "1128.9250183105469px",
+            "startY": "173.50000381469727px",
+            "endX": "1122.4999694824219px",
+            "endY": "269.50000381469727px"
+        },
+        {
+            "connection_id": 651,
+            "srcBlockId": "Screen Chamber (Fine Screens)@34Clone1744020643807",
+            "destBlockId": "Oil & Grease Trap@35Clone1744021116229",
+            "startX": "433.1250305175781px",
+            "startY": "109.50000381469727px",
+            "endX": "190.5px",
+            "endY": "263.50000381469727px"
+        },
+        {
+            "connection_id": 655,
+            "srcBlockId": "Dewatering Polyelectrolyte Dosing@50Clone1744020958133",
+            "destBlockId": "Centrate Collection sump@49Clone1744020934832",
+            "startX": "977.4999694824219px",
+            "startY": "211.50000381469727px",
+            "endX": "497.5000305175781px",
+            "endY": "586.5000343322754px"
+        },
+        {
+            "connection_id": 660,
+            "srcBlockId": "Chlorine Filter Feed Sump@52Clone1744020987154",
+            "destBlockId": "Filter feed Pumps@43Clone1744020222514",
+            "startX": "939.5125427246094px",
+            "startY": "58.499996185302734px",
+            "endX": "996.9999694824219px",
+            "endY": "173.50000381469727px"
+        },
+        {
+            "connection_id": 640,
+            "srcBlockId": "Treated Water Tank@47Clone1744020393165",
+            "destBlockId": "Treated Sewage Characteristics@33Clone1744020584191",
+            "startX": "1203.8374938964844px",
+            "startY": "396.50000381469727px",
+            "endX": "1061.4999694824219px",
+            "endY": "621.5000343322754px"
+        },
+        {
+            "connection_id": 662,
+            "srcBlockId": "Dual Media Filter@44Clone1744020248760",
+            "destBlockId": "Treated Water Tank@47Clone1744020393165",
+            "startX": "1255.6874694824219px",
+            "startY": "269.50000381469727px",
+            "endX": "1056.4999694824219px",
+            "endY": "396.50000381469727px"
+        },
+        {
+            "connection_id": 659,
+            "srcBlockId": "Dewatering Polyelectrolyte Dosing@50Clone1744020958133",
+            "destBlockId": "Chlorine Filter Feed Sump@52Clone1744020987154",
+            "startX": "977.4999694824219px",
+            "startY": "211.50000381469727px",
+            "endX": "740.5000305175781px",
+            "endY": "58.499996185302734px"
+        },
+        {
+            "connection_id": 661,
+            "srcBlockId": "Hypo Dosing@42Clone1744020116852",
+            "destBlockId": "Chlorine Filter Feed Sump@52Clone1744020987154",
+            "startX": "612.0249938964844px",
+            "startY": "94.50000381469727px",
+            "endX": "740.5000305175781px",
+            "endY": "58.499996185302734px"
+        },
+        {
+            "connection_id": 650,
+            "srcBlockId": "Air Scouring Blowers  for DMF@46Clone1744020308466",
+            "destBlockId": "SBR Basin@38Clone1744021153376",
+            "startX": "494.3249816894531px",
+            "startY": "450.50000381469727px",
+            "endX": "647.0000305175781px",
+            "endY": "352.50000381469727px"
+        },
+        {
+            "connection_id": 667,
+            "srcBlockId": "Treated Water Transfer Pumps@48Clone1744020769221",
+            "destBlockId": "Treated Water Transfer Pumps@48Clone1744020769221",
+            "startX": "1271.1000671386719px",
+            "startY": "523.5000343322754px",
+            "endX": "1085.4999694824219px",
+            "endY": "523.5000343322754px"
+        },
+        {
+            "connection_id": 671,
+            "srcBlockId": "Raw Sewage Pumps@37Clone1744020724457",
+            "destBlockId": "SBR Basin@38Clone1744021153376",
+            "startX": "592.8374938964844px",
+            "startY": "267.50000381469727px",
+            "endX": "647.0000305175781px",
+            "endY": "352.50000381469727px"
+        },
+        {
+            "connection_id": 670,
+            "srcBlockId": "Equalization Tank (Collection Chamber )@36Clone1744020681831",
+            "destBlockId": "Raw Sewage Pumps@37Clone1744020724457",
+            "startX": "407.1625061035156px",
+            "startY": "364.50000381469727px",
+            "endX": "437.5000305175781px",
+            "endY": "267.50000381469727px"
+        },
+        {
+            "connection_id": 669,
+            "srcBlockId": "Raw Sewage Characteristics@32Clone1744020341421",
+            "destBlockId": "Screen Chamber (Fine Screens)@34Clone1744020643807",
+            "startX": "228.08749389648438px",
+            "startY": "100.50000381469727px",
+            "endX": "294.5000305175781px",
+            "endY": "109.50000381469727px"
+        },
+        {
+            "connection_id": 672,
+            "srcBlockId": "Centrate Collection sump@49Clone1744020934832",
+            "destBlockId": "Sludge Holding Tank@40Clone1744020895446",
+            "startX": "698.0249938964844px",
+            "startY": "586.5000343322754px",
+            "endX": "718.5000305175781px",
+            "endY": "639.5000343322754px"
+        },
+        {
+            "connection_id": 673,
+            "srcBlockId": "Sludge Holding Tank@40Clone1744020895446",
+            "destBlockId": "Sludge Wasting@39Clone1744020840673",
+            "startX": "885.8500671386719px",
+            "startY": "639.5000343322754px",
+            "endX": "898.4999694824219px",
+            "endY": "692.5000343322754px"
+        },
+        {
+            "connection_id": 674,
+            "srcBlockId": "Chlorine Filter Feed Sump@52Clone1744020987154",
+            "destBlockId": "DMF Backwash Pumps@45Clone1744021028292",
+            "startX": "939.5125427246094px",
+            "startY": "58.499996185302734px",
+            "endX": "977.9999694824219px",
+            "endY": "79.49999618530273px"
+        },
+        {
+            "connection_id": 675,
+            "srcBlockId": "Dual Media Filter@44Clone1744020248760",
+            "destBlockId": "Sludge Holding Tank@40Clone1744020895446",
+            "startX": "1255.6874694824219px",
+            "startY": "269.50000381469727px",
+            "endX": "718.5000305175781px",
+            "endY": "639.5000343322754px"
+        },
+        {
+            "connection_id": 665,
+            "srcBlockId": "DMF Backwash Pumps@45Clone1744021028292",
+            "destBlockId": "Dual Media Filter@44Clone1744020248760",
+            "startX": "1152.0624694824219px",
+            "startY": "79.49999618530273px",
+            "endX": "1122.4999694824219px",
+            "endY": "269.50000381469727px"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "simulationsoftware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "monaco-editor-webpack-plugin": "^7.1.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.52.0",
+    "monaco-languageclient": "^8.8.3",
+    "normalize-uri": "^2.0.1",
+    "pyright": "^1.1.390",
+    "reconnecting-websocket": "^4.4.0",
+    "tslib": "^2.8.1",
+    "vscode-jsonrpc": "^8.2.1",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-protocol": "^3.17.5",
+    "vscode-uri": "^3.0.8",
+    "vscode-ws-jsonrpc": "^3.3.2",
+    "ws": "^8.18.0"
+  }
+}

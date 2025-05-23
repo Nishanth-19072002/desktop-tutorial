@@ -1,0 +1,19 @@
+{
+    "nodes_position": [
+        {
+            "blockId": "Hypo Dosing@42Clone1746178920261",
+            "blockName": "hdd",
+            "blockTrueId": "42",
+            "left": "140px",
+            "top": "179px"
+        },
+        {
+            "blockId": "Screen Chamber (Fine Screens)@34Clone1746178930806",
+            "blockName": "s",
+            "blockTrueId": "34",
+            "left": "315px",
+            "top": "180px"
+        }
+    ],
+    "connections_position": []
+}

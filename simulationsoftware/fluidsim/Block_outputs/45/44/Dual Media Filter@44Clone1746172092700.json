@@ -1,0 +1,11 @@
+{
+    "blockId": "Dual Media Filter@44Clone1746172092700",
+    "blockProxyName": "ddmf",
+    "outputs": [
+        {
+            "Operating_flow(Cum/hr)": 33.333333333333336,
+            "Area_of_the_Filter_required(Sq.m)": 2.2222222222222223,
+            "Diameter_of_the_Filter_Required(m)": 1.7000000000000002
+        }
+    ]
+}

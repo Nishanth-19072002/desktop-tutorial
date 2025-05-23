@@ -1,0 +1,448 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulation Software - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #111827;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .login-options {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: nowrap; /* Force horizontal */
+      margin: 3rem auto;
+      max-width: 100%;
+      overflow-x: auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+      flex: 1 1 250px;
+      max-width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: #111827;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #111827;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .card a:hover {
+      color: #111827;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #111827;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="bg-gradient-to-r from-blue-900 via-gray-900 to-blue-900 text-white py-8 shadow-lg rounded-b-2xl">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-6">
+      
+      <div class="flex items-center space-x-4">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/simulation.png" alt="Simulation Logo" class="w-12 h-12">
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-wide"> XP Simulation</h1>
+          <p class="text-gray-300 text-sm">Advanced Simulation Software Platform</p>
+        </div>
+      </div>
+  
+     
+    </div>
+  </header>
+  <div class="login-options">
+
+    <div class="flip-card" id="developerFlipCard">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://img.icons8.com/ios-filled/100/code.png" alt="Developer Icon" width="60">
+          <h3>Developer</h3>
+          <p>Access development tools, Manage users, roles, and application settings. </p>
+          <button type="button" style="
+          background-color: #111827; 
+          color: white; 
+          padding: 12px 24px; 
+          font-size: 16px; 
+          border: none; 
+          border-radius: 6px; 
+          cursor: pointer;
+          " onclick="flipCard('developerFlipCard')">Login</button>
+
+        </div>
+        <div class="flip-card-back">
+          <h3>Developer Login</h3>
+          <form method="POST" action="/login/developer">
+            {% csrf_token %}
+            <label>Username</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password</label><br>
+            <input type="password" name="password" required><br>
+            <button type="submit"  style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " class="btn-submit">Login</button>
+            <button type="button" class="btn-back" style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " onclick="flipCard('developerFlipCard')">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="flip-card" id="adminFlipCard">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://img.icons8.com/ios-filled/100/admin-settings-male.png" alt="Admin Icon" width="60">
+          <h3>Admin</h3>
+          <p>Streamline the management of blocks, I/O components, and network settings.</p>
+          <button 
+          type="button" 
+          onclick="flipCard('adminFlipCard')" 
+          style="
+              background-color: #111827; 
+              color: white; 
+              padding: 12px 24px; 
+              font-size: 16px; 
+              border: none; 
+              border-radius: 6px; 
+              cursor: pointer;
+          ">
+          Login
+          </button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Admin Login</h3>
+          <form method="POST" action="{% url 'admin_login' %}">
+            {% csrf_token %}
+            <label>Username</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password</label><br>
+            <input type="password" name="password" required><br>
+            <button type="submit"  style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " class="btn-submit">Login</button>
+            <button type="button"  style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " class="btn-back" onclick="flipCard('adminFlipCard')">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+   
+    <div class="flip-card" id="userFlipCard">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://img.icons8.com/ios-filled/100/user-male-circle.png" alt="User Icon" width="60">
+          <h3>User</h3>
+          <p>Access and manage your networks, create new ones, and run simulations effortlessly.</p>
+          <button type="button" style="
+          background-color: #111827; 
+          color: white; 
+          padding: 12px 24px; 
+          font-size: 16px; 
+          border: none; 
+          border-radius: 6px; 
+          cursor: pointer;
+      "  onclick="flipCard('userFlipCard')">Login</button>
+
+          
+        </div>
+        <div class="flip-card-back">
+          <h3>User Login</h3>
+          <form method="POST" action="/login/user">
+            {% csrf_token %}
+            <label>Username</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password</label><br>
+            <input type="password" name="password" required><br>
+            <button type="submit"  style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " class="btn-submit">Login</button>
+            <button type="button"  style="
+            background-color: #111827; 
+            color: white; 
+            padding: 6px 14px; 
+            font-size: 10px; 
+            border: none; 
+            border-radius: 3px; 
+            cursor: pointer;
+            " class="btn-back" onclick="flipCard('userFlipCard')">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+
+  <footer>
+    &copy; 2025 Simulation . All rights reserved.
+  </footer>
+
+  <script>
+    function flipCard(cardId) {
+      document.getElementById(cardId).classList.toggle('flipped');
+    }
+  </script>
+  <style>
+    .flip-card {
+      width: 280px;
+      height: 360px;
+      perspective: 1000px;
+      flex-shrink: 0;
+      padding:30px;
+    }
+    
+    .flip-card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    
+    .flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .flip-card-front {
+      background: #f0f8ff;
+    }
+    
+    .flip-card-back {
+      background: #fff;
+      transform: rotateY(180deg);
+    }
+  </style>
+
+</body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulation Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+        function toggleForm(id) {
+            const sections = document.querySelectorAll('.login-form');
+            sections.forEach(section => {
+                if (section.id === id) {
+                    section.classList.toggle('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</head>
+<body class="bg-black text-white font-sans">
+
+    <div class="flex h-screen w-full">
+        <!-- Lottie library (include in <head> or top of body) -->
+        <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js"></script>
+
+        <!-- Left 70%: Simulation Graphic -->
+        <div class="w-[70%] relative bg-gray-800 flex items-center justify-center overflow-hidden">
+            <!-- Lottie container -->
+            <div id="lottie-animation" class="w-[60%] max-h-[100%]"></div>
+
+            <div class="absolute bottom-10 text-center bg-gray-800 text-xl tracking-wide animate-pulse">
+                Initializing Simulation...
+            </div>
+        </div>
+        <!-- Right 30%: Login Form -->
+        <div class="w-[30%] flex flex-col h-screen bg-gray-900 text-white">
+        <!-- Header with Logo -->
+        <header class="bg-gray-900 text-white text-center px-6 py-4 border-b border-gray-700">
+          <div class="inline-flex flex-col items-center justify-center">
+            <h1 class="text-2xl font-bold tracking-wide">XP Simulation</h1>
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/simulation.png" alt="Simulation Logo"
+                class="mt-2 w-10 h-10" />
+          </div>
+        </header>
+
+        <!-- Login Section -->
+        <main class="flex-1 flex items-center justify-center">
+          <div class="w-full max-w-md bg-gray-900 p-6 rounded shadow-md space-y-6">
+
+            <h2 class="text-center text-xl font-semibold text-white">Login As</h2>
+
+            <!-- Developer Login -->
+            <button onclick="toggleForm('dev-form')" class="w-full bg-gray-700 hover:bg-gray-600 py-2 rounded font-medium">
+              Developer
+            </button>
+            <div id="dev-form" class="hidden">
+              <form method="POST" action="/login/developer">
+                {% csrf_token %}
+                <input  placeholder="Username" type="text" name="username" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required><br>
+                <input placeholder="Password" type="password" name="password" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required><br>
+                <button type="submit" class="w-full mt-3 bg-white text-gray-800 font-bold py-2 rounded hover:bg-gray-200">Login</button>
+              </form>
+            </div>
+
+            <!-- Admin Login -->
+            <button onclick="toggleForm('admin-form')" class="w-full bg-gray-700 hover:bg-gray-600 py-2 rounded font-medium">
+              Admin
+            </button>
+            <div id="admin-form" class="hidden">
+              <form method="POST" action="{% url 'admin_login' %}">
+              {% csrf_token %}
+              <input  placeholder="Username" type="text" name="username" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required>
+              <input  placeholder="Password" type="password" name="password" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required> 
+                <button type="submit" class="w-full mt-3 bg-white text-gray-800 font-bold py-2 rounded hover:bg-gray-200">Login</button>
+              </form>
+            </div>
+
+            <!-- User Login -->
+            <button onclick="toggleForm('user-form')" class="w-full bg-gray-700 hover:bg-gray-600 py-2 rounded font-medium">
+              User
+            </button>
+            <div id="user-form" class="hidden">
+              <form method="POST" action="/login/user">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required>
+                <input type="password" name="password"  placeholder="password" class="w-full mt-2 px-3 py-2 bg-gray-900 border border-gray-600 rounded" required>
+                <button type="submit" class="w-full mt-3 bg-white text-gray-800 font-bold py-2 rounded hover:bg-gray-200">Login</button>
+              </form>
+            </div>
+
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-400 text-center py-4 border-t border-gray-700">
+          XP Simulation &copy; 2025
+        </footer>
+      </div>
+
+    </div>
+</body>
+<!-- Lottie animation loader -->
+<script>
+    lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: "{% static 'lottie/simulation-man.json' %}"  
+    });
+</script>
+<script>
+  function toggleForm(id) {
+    document.querySelectorAll('.hidden').forEach(el => {
+      if (el.id !== id) el.classList.add('hidden');
+    });
+    const form = document.getElementById(id);
+    form.classList.toggle('hidden');
+  }
+</script>
+</html>

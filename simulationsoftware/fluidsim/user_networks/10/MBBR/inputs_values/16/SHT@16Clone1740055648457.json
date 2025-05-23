@@ -1,0 +1,49 @@
+{
+    "inputs_values": [
+        {
+            "param_name": "Sludge_to_be_wasted",
+            "unit": "%",
+            "val_from": "excel",
+            "excel_file": "SHT.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Sludge_to_be_wasted(%)"
+        },
+        {
+            "param_name": "Holding_time",
+            "unit": "h",
+            "val_from": "excel",
+            "excel_file": "SHT.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Holding_time(h)"
+        },
+        {
+            "param_name": "Depth_of_tank",
+            "unit": "m",
+            "val_from": "excel",
+            "excel_file": "SHT.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Depth_of_tank(m)"
+        },
+        {
+            "param_name": "Average_Sewage_flow_entering_the_treatment_plant",
+            "unit": "KLD",
+            "val_from": "excel",
+            "excel_file": "SHT.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "Average_Sewage_flow_entering_the_treatment_plant(KLD)"
+        },
+        {
+            "param_name": "BOD",
+            "unit": "mg/Lt",
+            "val_from": "excel",
+            "excel_file": "SHT.csv",
+            "dependent": false,
+            "sheet_name": "1",
+            "excel_column": "BOD(mg/Lt)"
+        }
+    ]
+}

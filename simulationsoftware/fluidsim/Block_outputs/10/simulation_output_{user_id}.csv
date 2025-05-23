@@ -1,0 +1,9 @@
+Block Proxy Name,Iteration,Output Key,Output Value
+cscsccs,0,Avg_flow(m3/h),16.666666666666668
+cscsccs,0,Volume_of_tank(cum),1.1111111111111112
+cscsccs,0,Area_of_the_tank(sqm),3.703703703703704
+cscsccs,0,Width(m),0.6085806194501846
+cscsccs,0,Length(m),6.085806194501846
+gh,0,Concentration (mg/l),120000
+gh,0,Dosing volume per day (cum/day),0.016666666666666666
+gh,0,Dosing capacity (LPH),1.388888888888889
